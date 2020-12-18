@@ -58,6 +58,14 @@ public class InterfaceMenuDemarrer {
 		frame.getContentPane().add(bouttonJouer);
 
 		JButton bouttonInstructions = new JButton("Instructions");
+		bouttonInstructions.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				InterfaceInstructions.main(null);
+			}
+		});
+		bouttonInstructions.setBackground(new Color(192, 192, 192));
 		bouttonInstructions.setBackground(Color.LIGHT_GRAY);
 		bouttonInstructions.setForeground(Color.BLACK);
 		bouttonInstructions.setFont(new Font("Times New Roman", Font.BOLD, 20));
