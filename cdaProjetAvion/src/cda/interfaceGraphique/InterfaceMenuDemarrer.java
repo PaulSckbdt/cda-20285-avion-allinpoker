@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 
 public class InterfaceMenuDemarrer {
 
-	private JFrame frame;
+	private static JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -44,51 +44,46 @@ public class InterfaceMenuDemarrer {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private static void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JButton bouttonJouer = new JButton("Jouer");
-		bouttonJouer.setBackground(new Color(192, 192, 192));
+		bouttonJouer.setBackground(Color.LIGHT_GRAY);
 		bouttonJouer.setForeground(Color.BLACK);
 		bouttonJouer.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonJouer.setBounds(220, 200, 200, 70);
 		frame.getContentPane().add(bouttonJouer);
 
 		JButton bouttonInstructions = new JButton("Instructions");
-		bouttonInstructions.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-			InterfaceInstructions.main(null);
-			}
-		});
-		bouttonInstructions.setBackground(new Color(192, 192, 192));
+		bouttonInstructions.setBackground(Color.LIGHT_GRAY);
 		bouttonInstructions.setForeground(Color.BLACK);
 		bouttonInstructions.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonInstructions.setBounds(220, 300, 200, 70);
 		frame.getContentPane().add(bouttonInstructions);
 
 		JButton bouttonScore = new JButton("Scores");
-		bouttonScore.setBackground(new Color(192, 192, 192));
+		bouttonScore.setBackground(Color.LIGHT_GRAY);
 		bouttonScore.setForeground(Color.BLACK);
 		bouttonScore.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonScore.setBounds(220, 400, 200, 70);
 		frame.getContentPane().add(bouttonScore);
 
 		JButton bouttonQuitter = new JButton("Quitter");
+		bouttonQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		bouttonQuitter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
-				frame.setVisible(false);
-				frame.dispose();
+				InterfaceQuitter.main(null);
 			}
 		});
 
-		bouttonQuitter.setBackground(new Color(192, 192, 192));
+		bouttonQuitter.setBackground(Color.LIGHT_GRAY);
 		bouttonQuitter.setForeground(Color.BLACK);
 		bouttonQuitter.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonQuitter.setBounds(220, 500, 200, 70);
@@ -101,5 +96,10 @@ public class InterfaceMenuDemarrer {
 				new ImageIcon(InterfaceMenuDemarrer.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		labelFondMenuDemarrer.setBounds(0, 0, 634, 711);
 		frame.getContentPane().add(labelFondMenuDemarrer);
+	}
+
+	public static void closeFrame() {
+		frame.setVisible(false);
+		frame.dispose();
 	}
 }
