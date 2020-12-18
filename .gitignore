@@ -23,3 +23,11 @@
 hs_err_pid*
 /.metadata/
 /.sonalint/
+
+.project
+.classpath
+/bin/
+/.settings/
+/out/
+/.idea/
+*.iml
