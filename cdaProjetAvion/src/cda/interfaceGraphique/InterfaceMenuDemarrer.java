@@ -50,12 +50,20 @@ public class InterfaceMenuDemarrer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
+		// début bouttonJouer ***********************************************
+
 		JButton bouttonJouer = new JButton("Jouer");
 		bouttonJouer.setBackground(Color.LIGHT_GRAY);
 		bouttonJouer.setForeground(Color.BLACK);
 		bouttonJouer.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonJouer.setBounds(220, 200, 200, 70);
+
+		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(bouttonJouer);
+
+		// fin bouttonJouer ***********************************************
+
+		// début bouttonInstructions ***********************************************
 
 		JButton bouttonInstructions = new JButton("Instructions");
 		bouttonInstructions.addMouseListener(new MouseAdapter() {
@@ -70,14 +78,26 @@ public class InterfaceMenuDemarrer {
 		bouttonInstructions.setForeground(Color.BLACK);
 		bouttonInstructions.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonInstructions.setBounds(220, 300, 200, 70);
+
+		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(bouttonInstructions);
+
+		// fin bouttonInstructions ***********************************************
+
+		// début bouttonScore ***********************************************
 
 		JButton bouttonScore = new JButton("Scores");
 		bouttonScore.setBackground(Color.LIGHT_GRAY);
 		bouttonScore.setForeground(Color.BLACK);
 		bouttonScore.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonScore.setBounds(220, 400, 200, 70);
+
+		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(bouttonScore);
+
+		// fin bouttonScore ***********************************************
+
+		// début bouttonQuitter ***********************************************
 
 		JButton bouttonQuitter = new JButton("Quitter");
 		bouttonQuitter.addActionListener(new ActionListener() {
@@ -95,8 +115,13 @@ public class InterfaceMenuDemarrer {
 		bouttonQuitter.setForeground(Color.BLACK);
 		bouttonQuitter.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonQuitter.setBounds(220, 500, 200, 70);
+
+		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(bouttonQuitter);
 
+		// fin bouttonScore ***********************************************
+
+		// debut labelFondMenuDemarrer qui affiche l'image de fond
 		JLabel labelFondMenuDemarrer = new JLabel("");
 		labelFondMenuDemarrer.setHorizontalAlignment(SwingConstants.LEFT);
 		labelFondMenuDemarrer.setVerticalAlignment(SwingConstants.TOP);
@@ -104,8 +129,11 @@ public class InterfaceMenuDemarrer {
 				new ImageIcon(InterfaceMenuDemarrer.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		labelFondMenuDemarrer.setBounds(0, 0, 634, 711);
 		frame.getContentPane().add(labelFondMenuDemarrer);
+
+		// fin labelFondMenuDemarrer qui affiche l'image de fond
 	}
 
+	// Methode pour fermer la fenetre du menu demarrer
 	public static void closeFrame() {
 		frame.setVisible(false);
 		frame.dispose();
