@@ -12,8 +12,4 @@ public class Joueur {
 		return nom;
 	}
 
-	public static void setNom(String nom) {
-		Joueur.nom = nom;
-	}
-
 }

@@ -61,6 +61,7 @@ public class InterfaceInstructions {
 		bouttonRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
+				InterfaceMenuDemarrer.main(null);
 			}
 		});
 
