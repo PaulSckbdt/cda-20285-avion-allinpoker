@@ -78,7 +78,6 @@ public class InterfaceMenuDemarrer {
 		bouttonInstructions.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
 				InterfaceInstructions.main(null);
 			}
 		});

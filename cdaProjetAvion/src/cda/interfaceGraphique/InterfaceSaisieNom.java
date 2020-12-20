@@ -31,6 +31,7 @@ public class InterfaceSaisieNom {
 				try {
 					InterfaceSaisieNom window = new InterfaceSaisieNom();
 					window.frame.setVisible(true);
+					window.frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,7 +52,7 @@ public class InterfaceSaisieNom {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(600, 350, 650, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JFormattedTextField fieldNomJoueur = new JFormattedTextField();
