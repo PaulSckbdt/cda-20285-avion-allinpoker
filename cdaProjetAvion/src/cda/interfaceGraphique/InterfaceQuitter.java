@@ -29,6 +29,7 @@ public class InterfaceQuitter extends JFrame {
 				try {
 					InterfaceQuitter frame = new InterfaceQuitter();
 					frame.setVisible(true);
+					frame.setResizable(false);
 					vFrame = frame;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +43,7 @@ public class InterfaceQuitter extends JFrame {
 	 */
 	public InterfaceQuitter() {
 
-		setBounds(100, 100, 650, 300);
+		setBounds(600, 350, 650, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -66,6 +67,7 @@ public class InterfaceQuitter extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				vFrame.setVisible(false);
+				InterfaceMenuDemarrer.main(null);
 			}
 		});
 		bouttonQuitterNon.setFont(new Font("Times New Roman", Font.BOLD, 26));

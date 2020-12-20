@@ -27,6 +27,7 @@ public class InterfaceMenuDemarrer {
 				try {
 					InterfaceMenuDemarrer window = new InterfaceMenuDemarrer();
 					window.frame.setVisible(true);
+					window.frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,13 +47,21 @@ public class InterfaceMenuDemarrer {
 	 */
 	private static void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 650, 750);
+		frame.setBounds(600, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		// début bouttonJouer ***********************************************
 
 		JButton bouttonJouer = new JButton("Jouer");
+		bouttonJouer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				InterfaceAvantJeu.main(null);
+				closeFrame();
+			}
+		});
 		bouttonJouer.setBackground(Color.LIGHT_GRAY);
 		bouttonJouer.setForeground(Color.BLACK);
 		bouttonJouer.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -108,6 +117,7 @@ public class InterfaceMenuDemarrer {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				InterfaceQuitter.main(null);
+				closeFrame();
 			}
 		});
 
@@ -122,6 +132,7 @@ public class InterfaceMenuDemarrer {
 		// fin bouttonScore ***********************************************
 
 		// debut labelFondMenuDemarrer qui affiche l'image de fond
+
 		JLabel labelFondMenuDemarrer = new JLabel("");
 		labelFondMenuDemarrer.setHorizontalAlignment(SwingConstants.LEFT);
 		labelFondMenuDemarrer.setVerticalAlignment(SwingConstants.TOP);
@@ -138,4 +149,5 @@ public class InterfaceMenuDemarrer {
 		frame.setVisible(false);
 		frame.dispose();
 	}
+
 }
