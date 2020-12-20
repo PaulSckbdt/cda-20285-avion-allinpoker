@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 
 public class InterfaceAvantJeu {
 
-	private JFrame frame;
+	private static JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -66,7 +66,7 @@ public class InterfaceAvantJeu {
 				InterfaceSaisieNom.main(null);
 			}
 		});
-		
+
 		bouttonNouvellePartie.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		bouttonNouvellePartie.setBackground(Color.LIGHT_GRAY);
 		bouttonNouvellePartie.setBounds(221, 200, 168, 83);
@@ -105,5 +105,10 @@ public class InterfaceAvantJeu {
 
 		// fin fondJouer qui affiche l'image de fond
 
+	}
+
+	public static void closeFrame() {
+		frame.setVisible(false);
+		frame.dispose();
 	}
 }

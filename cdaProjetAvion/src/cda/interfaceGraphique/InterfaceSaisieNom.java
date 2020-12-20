@@ -20,6 +20,7 @@ import java.awt.event.MouseEvent;
 public class InterfaceSaisieNom {
 
 	private JFrame frame;
+	private static Joueur joueurActuel;
 
 	/**
 	 * Launch the application.
@@ -30,6 +31,7 @@ public class InterfaceSaisieNom {
 			public void run() {
 				try {
 					InterfaceSaisieNom window = new InterfaceSaisieNom();
+
 					window.frame.setVisible(true);
 					window.frame.setResizable(false);
 				} catch (Exception e) {
@@ -52,7 +54,7 @@ public class InterfaceSaisieNom {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(600, 350, 650, 300);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JFormattedTextField fieldNomJoueur = new JFormattedTextField();
@@ -72,13 +74,15 @@ public class InterfaceSaisieNom {
 				if (nomSaisi.length() < 3 || nomSaisi.length() > 6) {
 					fieldNomJoueur.setText("");
 
-					System.out.println("nop");
 				}
 				if (nomSaisi.length() >= 3 && nomSaisi.length() <= 6) {
 
 					Joueur joueur = new Joueur(nomSaisi);
+					joueurActuel = joueur;
+					InterfaceJeu.main(null);
+					InterfaceAvantJeu.closeFrame();
+					frame.setVisible(false);
 
-					System.out.println(joueur.getNom());
 				}
 
 			}
@@ -100,6 +104,10 @@ public class InterfaceSaisieNom {
 		saisieNom.setBounds(70, 11, 496, 71);
 		lblNewLabel.add(saisieNom);
 
+	}
+
+	public static String getJoueurActuel() {
+		return joueurActuel.getNom();
 	}
 
 }

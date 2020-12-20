@@ -79,6 +79,7 @@ public class InterfaceMenuDemarrer {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				InterfaceInstructions.main(null);
+				frame.setVisible(false);
 			}
 		});
 		bouttonInstructions.setBackground(new Color(192, 192, 192));
