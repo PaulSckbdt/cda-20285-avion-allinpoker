@@ -59,11 +59,14 @@ public class InterfaceAvantJeu {
 		// début bouttonNouvellePartie ***********************************************
 
 		JButton bouttonNouvellePartie = new JButton("Nouvelle Partie");
-		bouttonNouvellePartie.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		bouttonNouvellePartie.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 
+				InterfaceSaisieNom.main(null);
 			}
 		});
+		
 		bouttonNouvellePartie.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		bouttonNouvellePartie.setBackground(Color.LIGHT_GRAY);
 		bouttonNouvellePartie.setBounds(221, 200, 168, 83);
