@@ -32,6 +32,8 @@ public class InterfaceInstructions {
 				try {
 					InterfaceInstructions window = new InterfaceInstructions();
 					window.frame.setVisible(true);
+					window.frame.setResizable(false);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,7 +53,7 @@ public class InterfaceInstructions {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 650, 750);
+		frame.setBounds(600, 100, 650, 750);
 
 		frame.getContentPane().setLayout(null);
 
