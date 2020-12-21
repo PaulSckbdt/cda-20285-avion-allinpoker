@@ -1,8 +1,10 @@
 package cda.poo.objects;
 
-public class Score {
+import javax.swing.JLabel;
 
-	public Score(Joueur joueur) {
+public class Score extends JLabel  {
+
+	public Score() {
 		
 		
 		

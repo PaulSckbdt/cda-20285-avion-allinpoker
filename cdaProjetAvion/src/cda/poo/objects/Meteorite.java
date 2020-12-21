@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 
-public class Meteorite extends JLabel {
+public class Meteorite extends Score {
 
 	public Meteorite() {
 
@@ -33,7 +33,7 @@ public class Meteorite extends JLabel {
 			}
 		};
 
-		timer.schedule(timerTask, 15, 15);
+		timer.schedule(timerTask, 10, 10);
 
 	}
 

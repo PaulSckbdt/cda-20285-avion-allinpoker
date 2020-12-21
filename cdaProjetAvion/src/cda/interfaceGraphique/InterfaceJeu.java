@@ -31,7 +31,7 @@ public class InterfaceJeu {
 	// fin Image des mouvements de l'avion****************
 
 	// debut ajout joueur***********************
-//	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+	//Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	// fin ajout joueur
 
@@ -86,7 +86,7 @@ public class InterfaceJeu {
 		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/avion-tir.gif")));
 		labelTirAvion.setBounds(260, 234, 60, 398);
 		frame.getContentPane().add(labelTirAvion);
-		labelTirAvion.setVisible(false);
+		labelTirAvion.setVisible(true);
 
 		// Début deplacementAvion et tirAvion
 		frame.addKeyListener(new KeyAdapter() {

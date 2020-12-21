@@ -5,11 +5,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 
-public class MeteoriteGlace extends Meteorite {
+public class MeteoriteGlace extends Score {
 	public MeteoriteGlace() {
 
 		Random r = new Random();
@@ -31,7 +32,7 @@ public class MeteoriteGlace extends Meteorite {
 			}
 		};
 
-		timer.schedule(timerTask, 20, 20);
+		timer.schedule(timerTask, 10, 10);
 
 	}
 }
