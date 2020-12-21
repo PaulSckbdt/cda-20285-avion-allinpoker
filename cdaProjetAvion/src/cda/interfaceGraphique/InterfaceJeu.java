@@ -21,7 +21,7 @@ public class InterfaceJeu {
 	ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
 	ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
 	ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
-	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+//	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 	private JFrame frame;
 
 	/**
@@ -60,8 +60,14 @@ public class InterfaceJeu {
 		frame.getContentPane().setLayout(null);
 
 		JLabel vMonAvion = new Avion();
-		vMonAvion.setBounds(261, 515, 60, 60);
+		vMonAvion.setBounds(260, 600, 60, 60);
 		vMonAvion.setIcon(iAvion);
+
+		JLabel labelTirAvion = new JLabel("");
+		labelTirAvion.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/avion-tir.gif")));
+		labelTirAvion.setBounds(260, 234, 60, 398);
+		frame.getContentPane().add(labelTirAvion);
 
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
@@ -70,21 +76,25 @@ public class InterfaceJeu {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 15);
 					vMonAvion.setIcon(iAvionUp);
 					vMonAvion.setVisible(true);
+					labelTirAvion.setLocation(labelTirAvion.getX(), labelTirAvion.getY() - 15);
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
 					vMonAvion.setIcon(iAvion);
 					vMonAvion.setVisible(true);
+					labelTirAvion.setLocation(labelTirAvion.getX(), labelTirAvion.getY() + 15);
 				}
 				if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < vMonAvion.getX()) {
 					vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
 					vMonAvion.setIcon(iAvionGauche);
 					vMonAvion.setVisible(true);
+					labelTirAvion.setLocation(labelTirAvion.getX() - 15, labelTirAvion.getY());
 				}
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > vMonAvion.getX()) {
 					vMonAvion.setLocation(vMonAvion.getX() + 15, vMonAvion.getY());
 					vMonAvion.setIcon(iAvionDroite);
 					vMonAvion.setVisible(true);
+					labelTirAvion.setLocation(labelTirAvion.getX() + 15, labelTirAvion.getY());
 				}
 			}
 		});
@@ -107,12 +117,12 @@ public class InterfaceJeu {
 			}
 		});
 
-		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
-		LabelNomDuJoueur.setForeground(Color.WHITE);
-		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelNomDuJoueur.setBounds(0, 0, 106, 48);
-		frame.getContentPane().add(LabelNomDuJoueur);
+//		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
+//		LabelNomDuJoueur.setForeground(Color.WHITE);
+//		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
+//		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
+//		LabelNomDuJoueur.setBounds(0, 0, 106, 48);
+//		frame.getContentPane().add(LabelNomDuJoueur);
 		frame.getContentPane().add(vMonAvion);
 		vMonAvion.setVisible(true);
 
@@ -122,5 +132,4 @@ public class InterfaceJeu {
 		fondEcranJeu.setBounds(0, 0, 634, 711);
 		frame.getContentPane().add(fondEcranJeu);
 	}
-
 }
