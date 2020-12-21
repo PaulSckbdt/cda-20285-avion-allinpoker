@@ -5,11 +5,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 
-public class MeteoriteZigZag extends Meteorite {
+public class MeteoriteZigZag extends Score {
 	private boolean bouge;
 
 	public MeteoriteZigZag() {
@@ -47,7 +48,7 @@ public class MeteoriteZigZag extends Meteorite {
 			}
 		};
 
-		timer.schedule(timerTask, 30, 30);
+		timer.schedule(timerTask, 12, 12);
 		timer.schedule(timerBouge, 1000, 1000);
 
 	}

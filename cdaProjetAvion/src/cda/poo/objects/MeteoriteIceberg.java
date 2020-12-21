@@ -10,15 +10,17 @@ import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 
-public class MeteoriteFeu extends Score {
-	public MeteoriteFeu() {
+public class MeteoriteIceberg extends Score {
+	private boolean bouge;
+
+	public MeteoriteIceberg() {
 
 		Random r = new Random();
 		int posXAleatoire = r.nextInt((500 - 100) + 1);
 
-		setBounds(posXAleatoire, 0, 50, 39);
+		setBounds(posXAleatoire, 0, 40, 31);
 
-		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-feu.png")));
+		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-zigzag.png")));
 		setHorizontalAlignment(SwingConstants.CENTER);
 
 		Timer timer = new Timer();
@@ -31,8 +33,23 @@ public class MeteoriteFeu extends Score {
 
 			}
 		};
+		TimerTask timerBouge = new TimerTask() {
+
+			@Override
+			public void run() {
+				if (bouge) {
+					setLocation(getX() + 50, getY());
+					bouge = false;
+				} else {
+
+					setLocation(getX() - 50, getY());
+					bouge = true;
+				}
+			}
+		};
 
 		timer.schedule(timerTask, 12, 12);
+		timer.schedule(timerBouge, 1000, 1000);
 
 	}
 }
