@@ -51,7 +51,7 @@ public class InterfaceMenuDemarrer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		// début bouttonJouer ***********************************************
+		// dï¿½but bouttonJouer ***********************************************
 
 		JButton bouttonJouer = new JButton("Jouer");
 		bouttonJouer.addMouseListener(new MouseAdapter() {
@@ -72,7 +72,7 @@ public class InterfaceMenuDemarrer {
 
 		// fin bouttonJouer ***********************************************
 
-		// début bouttonInstructions ***********************************************
+		// dï¿½but bouttonInstructions ***********************************************
 
 		JButton bouttonInstructions = new JButton("Instructions");
 		bouttonInstructions.addMouseListener(new MouseAdapter() {
@@ -93,7 +93,7 @@ public class InterfaceMenuDemarrer {
 
 		// fin bouttonInstructions ***********************************************
 
-		// début bouttonScore ***********************************************
+		// dï¿½but bouttonScore ***********************************************
 
 		JButton bouttonScore = new JButton("Scores");
 		bouttonScore.setBackground(Color.LIGHT_GRAY);
@@ -106,7 +106,7 @@ public class InterfaceMenuDemarrer {
 
 		// fin bouttonScore ***********************************************
 
-		// début bouttonQuitter ***********************************************
+		// dï¿½but bouttonQuitter ***********************************************
 
 		JButton bouttonQuitter = new JButton("Quitter");
 		bouttonQuitter.addActionListener(new ActionListener() {
@@ -139,9 +139,12 @@ public class InterfaceMenuDemarrer {
 		labelFondMenuDemarrer.setIcon(
 				new ImageIcon(InterfaceMenuDemarrer.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		labelFondMenuDemarrer.setBounds(0, 0, 634, 711);
+		
+		//on ajouter le label contenant l'image de fond au frame
 		frame.getContentPane().add(labelFondMenuDemarrer);
 
-		// fin labelFondMenuDemarrer qui affiche l'image de fond
+		// fin labelFondMenuDemarrer ***********************************************
+
 	}
 
 	// Methode pour fermer la fenetre du menu demarrer
