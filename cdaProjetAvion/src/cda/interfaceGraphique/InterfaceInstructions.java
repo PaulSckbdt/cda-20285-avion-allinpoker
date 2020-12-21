@@ -65,7 +65,7 @@ public class InterfaceInstructions {
 			}
 		});
 
-		JButton BouttonPrecedent = new JButton("Pr\u00E9c\u00E9dent");
+		JButton BouttonPrecedent = new JButton("Précédent");
 		BouttonPrecedent.setBackground(Color.LIGHT_GRAY);
 		BouttonPrecedent.addMouseListener(new MouseAdapter() {
 			@Override
