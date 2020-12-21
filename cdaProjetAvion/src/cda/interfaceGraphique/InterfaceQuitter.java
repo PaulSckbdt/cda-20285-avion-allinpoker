@@ -49,6 +49,8 @@ public class InterfaceQuitter extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		// d�but bouttonQuitterOui ***********************************************
+
 		JButton bouttonQuitterOui = new JButton("Oui");
 		bouttonQuitterOui.addMouseListener(new MouseAdapter() {
 			@Override
@@ -60,7 +62,11 @@ public class InterfaceQuitter extends JFrame {
 		bouttonQuitterOui.setFont(new Font("Times New Roman", Font.BOLD, 26));
 		bouttonQuitterOui.setBackground(Color.LIGHT_GRAY);
 		bouttonQuitterOui.setBounds(70, 133, 180, 71);
+		
+		// on ajoute le bouton a la JFrame
 		contentPane.add(bouttonQuitterOui);
+		
+		// Fin bouttonQuitterNon ***********************************************
 
 		JButton bouttonQuitterNon = new JButton("Non");
 		bouttonQuitterNon.addMouseListener(new MouseAdapter() {
@@ -73,17 +79,29 @@ public class InterfaceQuitter extends JFrame {
 		bouttonQuitterNon.setFont(new Font("Times New Roman", Font.BOLD, 26));
 		bouttonQuitterNon.setBackground(Color.LIGHT_GRAY);
 		bouttonQuitterNon.setBounds(386, 133, 180, 71);
+		
+		// on ajoute le bouton a la JFrame
 		contentPane.add(bouttonQuitterNon);
+		
+		// debut label quitter
 
 		JLabel quitter = new JLabel("        Voulez-vous vraiment quitter ?");
 		quitter.setForeground(new Color(255, 255, 240));
 		quitter.setFont(new Font("Times New Roman", Font.BOLD, 29));
 		quitter.setBounds(70, 11, 496, 71);
 		contentPane.add(quitter);
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(InterfaceQuitter.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
-		lblNewLabel.setBounds(0, 0, 634, 261);
-		contentPane.add(lblNewLabel);
+		
+		// fin labelFondMenuQuitter ***********************************************
+		
+		// debut labelFondMenuQuitter qui affiche l'image de fond
+		
+		JLabel labelFondMenuQuitter = new JLabel("");
+		labelFondMenuQuitter.setIcon(new ImageIcon(InterfaceQuitter.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
+		labelFondMenuQuitter.setBounds(0, 0, 634, 261);
+		
+		//on ajouter le label contenant l'image de fond au frame
+		contentPane.add(labelFondMenuQuitter);
+		
+		// fin labelFondMenuQuitter ***********************************************
 	}
 }

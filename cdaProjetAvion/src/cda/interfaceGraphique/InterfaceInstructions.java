@@ -57,6 +57,8 @@ public class InterfaceInstructions {
 
 		frame.getContentPane().setLayout(null);
 
+		// dï¿½but bouttonRetour ***********************************************
+
 		JButton bouttonRetour = new JButton("Retour");
 		bouttonRetour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,8 +66,21 @@ public class InterfaceInstructions {
 				InterfaceMenuDemarrer.main(null);
 			}
 		});
+		bouttonRetour.setBackground(Color.LIGHT_GRAY);
+		bouttonRetour.setForeground(Color.BLACK);
+		bouttonRetour.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		bouttonRetour.setBounds(10, 10, 148, 70);
+		
+		// on ajoute le bouton a la JFrame
+		frame.getContentPane().add(bouttonRetour);
+		
+		// fin bouttonRetour ***********************************************
 
-		JButton BouttonPrecedent = new JButton("Précédent");
+		// dÃ©but bouttonRetour ***********************************************
+
+
+
+		JButton BouttonPrecedent = new JButton("PrÃ©cÃ©dent");
 		BouttonPrecedent.setBackground(Color.LIGHT_GRAY);
 		BouttonPrecedent.addMouseListener(new MouseAdapter() {
 			@Override
@@ -75,6 +90,8 @@ public class InterfaceInstructions {
 			}
 		});
 		BouttonPrecedent.setBounds(328, 20, 148, 55);
+		
+		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(BouttonPrecedent);
 
 		JButton BouttonSuivant = new JButton("Suivant");
@@ -86,29 +103,37 @@ public class InterfaceInstructions {
 				page2.setVisible(true);
 			}
 		});
-		BouttonSuivant.setBounds(486, 20, 148, 55);
+		BouttonSuivant.setBounds(486, 20, 148, 55);		
+
+		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(BouttonSuivant);
-		bouttonRetour.setBackground(Color.LIGHT_GRAY);
-		bouttonRetour.setForeground(Color.BLACK);
-		bouttonRetour.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		bouttonRetour.setBounds(10, 10, 148, 70);
-		frame.getContentPane().add(bouttonRetour);
+		
+		// fin BouttonSuivant ***********************************************
+		
+		// debut fondMenuInstructionsP1 qui affiche l'image de la page 1 instruction
 
-		JLabel labelFondMenuDemarrerP1 = new JLabel("");
-		labelFondMenuDemarrerP1.setHorizontalAlignment(SwingConstants.TRAILING);
-		labelFondMenuDemarrerP1.setVerticalAlignment(SwingConstants.TOP);
-		labelFondMenuDemarrerP1.setIcon(
+		JLabel fondMenuInstructionsP1 = new JLabel("");
+		fondMenuInstructionsP1.setIcon(
 				new ImageIcon(InterfaceInstructions.class.getResource("/cda/poo/images/fondMenuInstructionsP1.png")));
-		labelFondMenuDemarrerP1.setBounds(0, 0, 634, 711);
-		frame.getContentPane().add(labelFondMenuDemarrerP1);
-		page1 = labelFondMenuDemarrerP1;
+		fondMenuInstructionsP1.setBounds(0, 0, 634, 711);
+		
+		// on ajoute le label a la JFrame
+		frame.getContentPane().add(fondMenuInstructionsP1);
+		page1 = fondMenuInstructionsP1;
+		
+		// fin fondMenuInstructionsP1 ***********************************************
 
-		JLabel labelFondMenuDemarrerP2 = new JLabel("");
-		labelFondMenuDemarrerP2.setIcon(
+
+		// debut fondMenuInstructionsP2 qui affiche l'image de la page 2 instruction
+
+		JLabel fondMenuInstructionsP2 = new JLabel("");
+		fondMenuInstructionsP2.setIcon(
 				new ImageIcon(InterfaceInstructions.class.getResource("/cda/poo/images/fondMenuInstructionsP2.jpg")));
-		labelFondMenuDemarrerP2.setBounds(0, 0, 634, 711);
-		frame.getContentPane().add(labelFondMenuDemarrerP2);
-		page2 = labelFondMenuDemarrerP2;
+		fondMenuInstructionsP2.setBounds(0, 0, 634, 711);
+		
+		// on ajoute le label a la JFrame
+		frame.getContentPane().add(fondMenuInstructionsP2);
+		page2 = fondMenuInstructionsP2;
 	}
 
 }

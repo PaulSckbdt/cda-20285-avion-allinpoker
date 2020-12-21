@@ -56,7 +56,7 @@ public class InterfaceAvantJeu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		// début bouttonNouvellePartie ***********************************************
+		// dï¿½but bouttonNouvellePartie ***********************************************
 
 		JButton bouttonNouvellePartie = new JButton("Nouvelle Partie");
 		bouttonNouvellePartie.addMouseListener(new MouseAdapter() {
@@ -74,7 +74,7 @@ public class InterfaceAvantJeu {
 
 		// fin bouttonNouvellePartie ***********************************************
 
-		// début bouttonRetour ***********************************************
+		// dï¿½but bouttonRetour ***********************************************
 
 		JButton bouttonRetour = new JButton("Retour");
 		bouttonRetour.addMouseListener(new MouseAdapter() {
@@ -101,6 +101,8 @@ public class InterfaceAvantJeu {
 		fondJouer.setHorizontalAlignment(SwingConstants.RIGHT);
 		fondJouer.setIcon(new ImageIcon(InterfaceAvantJeu.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		fondJouer.setBounds(0, 0, 634, 711);
+		
+		// on ajoute le label a la JFrame
 		frame.getContentPane().add(fondJouer);
 
 		// fin fondJouer qui affiche l'image de fond
