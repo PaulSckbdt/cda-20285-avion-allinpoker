@@ -3,22 +3,29 @@ package cda.interfaceGraphique;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+import cda.poo.meteor.Meteorite;
+import cda.poo.meteor.MeteoriteFeu;
+import cda.poo.meteor.MeteoriteGlace;
+import cda.poo.meteor.MeteoriteIceberg;
+import cda.poo.meteor.MeteoriteZigZag;
+import cda.poo.meteor.Score;
 import cda.poo.objects.Avion;
 import cda.poo.objects.Joueur;
-import cda.poo.objects.Meteorite;
-import cda.poo.objects.MeteoriteFeu;
-import cda.poo.objects.MeteoriteGlace;
-import cda.poo.objects.MeteoriteZigZag;
 
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyAdapter;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
 public class InterfaceJeu {
 
@@ -31,7 +38,7 @@ public class InterfaceJeu {
 	// fin Image des mouvements de l'avion****************
 
 	// debut ajout joueur***********************
-	//Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+	// Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	// fin ajout joueur
 
@@ -97,6 +104,7 @@ public class InterfaceJeu {
 					vMonAvion.setIcon(iAvionUp);
 					vMonAvion.setVisible(true);
 					labelTirAvion.setLocation(labelTirAvion.getX(), labelTirAvion.getY() - 15);
+
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
@@ -141,17 +149,14 @@ public class InterfaceJeu {
 		// droit)
 
 		// DEBUT METEORITES************
+
 		Meteorite meteorBasic = new Meteorite();
-		frame.getContentPane().add(meteorBasic);
-
 		MeteoriteFeu meteorFeu = new MeteoriteFeu();
-		frame.getContentPane().add(meteorFeu);
-
 		MeteoriteGlace meteorGlace = new MeteoriteGlace();
-		frame.getContentPane().add(meteorGlace);
-
 		MeteoriteZigZag meteorZigZag = new MeteoriteZigZag();
-		frame.getContentPane().add(meteorZigZag);
+		MeteoriteIceberg meteorIceberg = new MeteoriteIceberg();
+
+		Score.spawnMeteor(frame, meteorBasic, meteorFeu, meteorGlace, meteorZigZag, meteorIceberg);
 
 		// FIN METEORITES*************
 
@@ -167,5 +172,6 @@ public class InterfaceJeu {
 		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
 		fondEcranJeu.setBounds(0, 0, 634, 711);
 		frame.getContentPane().add(fondEcranJeu);
+
 	}
 }

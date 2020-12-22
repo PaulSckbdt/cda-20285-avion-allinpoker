@@ -1,5 +1,6 @@
-package cda.poo.objects;
+package cda.poo.meteor;
 
+import java.awt.Rectangle;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,12 +14,21 @@ import cda.interfaceGraphique.InterfaceJeu;
 public class MeteoriteZigZag extends Score {
 	private boolean bouge;
 
+	public int x;
+	public int y;
+	public int width;
+	public int height;
+
 	public MeteoriteZigZag() {
 
 		Random r = new Random();
-		int posXAleatoire = r.nextInt((500 - 100) + 1);
 
-		setBounds(posXAleatoire, 0, 40, 31);
+		x = r.nextInt((500 - 100) + 1);
+		y = 0;
+		width = 40;
+		height = 31;
+
+		setBounds(x, y, width, height);
 
 		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-zigzag.png")));
 		setHorizontalAlignment(SwingConstants.CENTER);
@@ -51,5 +61,17 @@ public class MeteoriteZigZag extends Score {
 		timer.schedule(timerTask, 12, 12);
 		timer.schedule(timerBouge, 1000, 1000);
 
+	}
+
+	public int getProfondeurY() {
+		return y + height;
+	}
+
+	public int getProfondeurX() {
+		return x + width;
+	}
+
+	public Rectangle bounds() {
+		return (new Rectangle(x, y, width, height));
 	}
 }
