@@ -24,6 +24,7 @@ import java.awt.event.KeyAdapter;
 import javax.swing.JPanel;
 import java.awt.event.HierarchyListener;
 import java.awt.event.HierarchyEvent;
+import java.awt.Color;
 
 public class InterfaceJeu {
 
@@ -76,6 +77,7 @@ public class InterfaceJeu {
 	private void initialize() {
 
 		frame = new JFrame();
+		frame.setAutoRequestFocus(false);
 
 		frame.setBounds(600, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,8 +147,21 @@ public class InterfaceJeu {
 			}
 		});
 
+		// Début fond***********************************************
+		JLabel fondEcranJeu = new JLabel("");
+		fondEcranJeu.setLabelFor(frame);
+		fondEcranJeu.setBackground(Color.DARK_GRAY);
+		fondEcranJeu.setBounds(0, 0, 634, 711);
+		fondEcranJeu.setHorizontalAlignment(SwingConstants.TRAILING);
+		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
+		frame.getContentPane().add(fondEcranJeu);
+		labelTirAvion.setVisible(false);
+
+		// fin fond***********************************************
+
 		// Debut meteorites*********************
-		SpawnMeteor spwn1 = new SpawnMeteor(frame);
+
+		SpawnMeteor spwn1 = new SpawnMeteor(frame, fondEcranJeu);
 
 		spwn1.start();
 
@@ -159,15 +174,5 @@ public class InterfaceJeu {
 //		LabelNomDuJoueur.setBounds(0, 0, 106, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
 
-		// Début fond***********************************************
-		JLabel fondEcranJeu = new JLabel("");
-		fondEcranJeu.setBounds(0, 0, 634, 711);
-		fondEcranJeu.setHorizontalAlignment(SwingConstants.CENTER);
-		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
-		fondEcranJeu.setVisible(false);
-		frame.getContentPane().add(fondEcranJeu);
-		labelTirAvion.setVisible(false);
-
-		// fin fond***********************************************
 	}
 }

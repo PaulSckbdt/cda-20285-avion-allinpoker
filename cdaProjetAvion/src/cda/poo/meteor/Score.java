@@ -10,13 +10,18 @@ import javax.swing.JLabel;
 
 public class Score extends JLabel {
 
+	private static int scoreMeteor;
+
 	public Score() {
-//		Meteorite meteorBasic = new Meteorite();
-//		MeteoriteFeu meteorFeu = new MeteoriteFeu();
-//		MeteoriteGlace meteorGlace = new MeteoriteGlace();
-//		MeteoriteIceberg meteorIceberg = new MeteoriteIceberg();
-//		MeteoriteZigZag meteorZigZag = new MeteoriteZigZag();
+
 	}
 
+	public static int getScoreMeteor() {
+		return scoreMeteor;
+	}
+
+	public static void setScoreMeteor(int vScoreMeteor) {
+		scoreMeteor = vScoreMeteor;
+	}
 
 }
