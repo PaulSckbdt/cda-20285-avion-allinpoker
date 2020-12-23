@@ -23,7 +23,7 @@ public class MeteoriteZigZag extends Score {
 
 		Random r = new Random();
 
-		x = r.nextInt((500 - 100) + 1);
+		x = r.nextInt((690 - 30) + 1);
 		y = 0;
 		width = 40;
 		height = 31;
@@ -40,7 +40,10 @@ public class MeteoriteZigZag extends Score {
 			public void run() {
 
 				setLocation(getX(), getY() + 1);
-
+				if (getY() == 715) {
+					this.cancel();
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
+				}
 			}
 		};
 		TimerTask timerBouge = new TimerTask() {
@@ -50,11 +53,14 @@ public class MeteoriteZigZag extends Score {
 				if (bouge) {
 					setLocation(getX() + 50, getY());
 					bouge = false;
+
 				} else {
 
 					setLocation(getX() - 50, getY());
+
 					bouge = true;
 				}
+
 			}
 		};
 
