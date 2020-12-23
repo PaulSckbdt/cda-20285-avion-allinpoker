@@ -1,8 +1,8 @@
 package cda.interfaceGraphique;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,14 +18,12 @@ import cda.poo.meteor.MeteoriteIceberg;
 import cda.poo.meteor.MeteoriteZigZag;
 import cda.poo.meteor.Score;
 import cda.poo.objects.Avion;
-import cda.poo.objects.Joueur;
+import cda.poo.objects.SpawnMeteor;
 
-import java.awt.event.ComponentListener;
 import java.awt.event.KeyAdapter;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.event.AncestorListener;
-import javax.swing.event.AncestorEvent;
+import javax.swing.JPanel;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class InterfaceJeu {
 
@@ -41,6 +39,8 @@ public class InterfaceJeu {
 	// Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	// fin ajout joueur
+
+	private Object KEY;
 
 	private JFrame frame;
 
@@ -76,6 +76,7 @@ public class InterfaceJeu {
 	private void initialize() {
 
 		frame = new JFrame();
+
 		frame.setBounds(600, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -93,7 +94,6 @@ public class InterfaceJeu {
 		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/avion-tir.gif")));
 		labelTirAvion.setBounds(260, 234, 60, 398);
 		frame.getContentPane().add(labelTirAvion);
-		labelTirAvion.setVisible(true);
 
 		// Début deplacementAvion et tirAvion
 		frame.addKeyListener(new KeyAdapter() {
@@ -145,18 +145,10 @@ public class InterfaceJeu {
 			}
 		});
 
-		// Fin déplacementAvion et tirAvion (quand on relache la touche l'avion se remet
-		// droit)
+		// Debut meteorites*********************
+		SpawnMeteor spwn1 = new SpawnMeteor(frame);
 
-		// DEBUT METEORITES************
-
-		Meteorite meteorBasic = new Meteorite();
-		MeteoriteFeu meteorFeu = new MeteoriteFeu();
-		MeteoriteGlace meteorGlace = new MeteoriteGlace();
-		MeteoriteZigZag meteorZigZag = new MeteoriteZigZag();
-		MeteoriteIceberg meteorIceberg = new MeteoriteIceberg();
-
-		Score.spawnMeteor(frame, meteorBasic, meteorFeu, meteorGlace, meteorZigZag, meteorIceberg);
+		spwn1.start();
 
 		// FIN METEORITES*************
 
@@ -167,11 +159,15 @@ public class InterfaceJeu {
 //		LabelNomDuJoueur.setBounds(0, 0, 106, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
 
+		// Début fond***********************************************
 		JLabel fondEcranJeu = new JLabel("");
+		fondEcranJeu.setBounds(0, 0, 634, 711);
 		fondEcranJeu.setHorizontalAlignment(SwingConstants.CENTER);
 		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
-		fondEcranJeu.setBounds(0, 0, 634, 711);
+		fondEcranJeu.setVisible(false);
 		frame.getContentPane().add(fondEcranJeu);
+		labelTirAvion.setVisible(false);
 
+		// fin fond***********************************************
 	}
 }
