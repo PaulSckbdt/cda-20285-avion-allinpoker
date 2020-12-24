@@ -23,7 +23,7 @@ public class MeteoriteZigZag extends Score {
 
 		Random r = new Random();
 
-		x = r.nextInt((690 - 30) + 1);
+		x = r.nextInt((680 - 40) + 1);
 		y = 0;
 		width = 40;
 		height = 31;
@@ -41,7 +41,6 @@ public class MeteoriteZigZag extends Score {
 
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715) {
-					this.cancel();
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 				}
 			}

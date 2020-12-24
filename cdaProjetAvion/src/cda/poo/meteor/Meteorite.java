@@ -37,8 +37,7 @@ public class Meteorite extends Score {
 			public void run() {
 
 				setLocation(getX(), getY() + 2);
-				if (getY() == 715) {
-					this.cancel();
+				if (getY() == 710) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 				}
 

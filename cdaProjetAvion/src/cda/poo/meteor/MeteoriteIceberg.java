@@ -18,12 +18,11 @@ public class MeteoriteIceberg extends Score {
 	public int width;
 	public int height;
 
-
 	public MeteoriteIceberg() {
 
 		Random r = new Random();
 
-		x = r.nextInt((690 - 30) + 1);
+		x = r.nextInt((680 - 40) + 1);
 		y = 0;
 		width = 80;
 		height = 62;
@@ -40,16 +39,13 @@ public class MeteoriteIceberg extends Score {
 			public void run() {
 
 				setLocation(getX(), getY() + 2);
-				if (getY() == 715) {
-					this.cancel();
+				if (getY() == 710) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
 				}
 			}
 		};
-		
 
 		timer.schedule(timerTask, 10, 10);
-		
 
 	}
 
