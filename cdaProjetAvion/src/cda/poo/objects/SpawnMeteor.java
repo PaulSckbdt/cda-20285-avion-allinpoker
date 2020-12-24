@@ -32,7 +32,7 @@ public class SpawnMeteor extends Thread {
 		while (true) {
 
 			Random r = new Random();
-			int typeMeteorite = r.nextInt(4);
+			int typeMeteorite = r.nextInt(5);
 
 			System.out.println(Score.getScoreMeteor());
 

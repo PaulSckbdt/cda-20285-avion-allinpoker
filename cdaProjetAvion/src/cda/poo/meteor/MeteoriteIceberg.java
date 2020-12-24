@@ -18,7 +18,6 @@ public class MeteoriteIceberg extends Score {
 	public int width;
 	public int height;
 
-	private boolean bouge;
 
 	public MeteoriteIceberg() {
 
@@ -27,11 +26,11 @@ public class MeteoriteIceberg extends Score {
 		x = r.nextInt((690 - 30) + 1);
 		y = 0;
 		width = 80;
-		height = 31;
+		height = 62;
 
 		setBounds(x, y, width, height);
 
-		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-zigzag.png")));
+		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-iceberg.png")));
 		setHorizontalAlignment(SwingConstants.CENTER);
 
 		Timer timer = new Timer();
@@ -40,33 +39,17 @@ public class MeteoriteIceberg extends Score {
 			@Override
 			public void run() {
 
-				setLocation(getX(), getY() + 1);
+				setLocation(getX(), getY() + 2);
 				if (getY() == 715) {
 					this.cancel();
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
 				}
 			}
 		};
-		TimerTask timerBouge = new TimerTask() {
+		
 
-			@Override
-			public void run() {
-
-				if (bouge) {
-					setLocation(getX() + 50, getY());
-
-					bouge = false;
-				} else {
-
-					setLocation(getX() - 50, getY());
-					bouge = true;
-				}
-
-			}
-		};
-
-		timer.schedule(timerTask, 8, 8);
-		timer.schedule(timerBouge, 1000, 1000);
+		timer.schedule(timerTask, 10, 10);
+		
 
 	}
 
