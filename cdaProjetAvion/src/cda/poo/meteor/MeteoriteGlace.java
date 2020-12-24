@@ -22,7 +22,7 @@ public class MeteoriteGlace extends Score {
 
 		Random r = new Random();
 
-		x = r.nextInt((690 - 30) + 1);
+		x = r.nextInt((680 - 40) + 1);
 		y = 0;
 		width = 40;
 		height = 31;
@@ -39,8 +39,7 @@ public class MeteoriteGlace extends Score {
 			public void run() {
 
 				setLocation(getX(), getY() + 2);
-				if (getY() == 715) {
-					this.cancel();
+				if (getY() == 710) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 3);
 				}
 			}

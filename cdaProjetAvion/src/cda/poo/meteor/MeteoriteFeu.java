@@ -22,7 +22,7 @@ public class MeteoriteFeu extends Score {
 
 		Random r = new Random();
 
-		x = r.nextInt((690 - 30) + 1);
+		x = r.nextInt((680 - 40) + 1);
 		y = 0;
 		width = 50;
 		height = 39;
@@ -40,7 +40,6 @@ public class MeteoriteFeu extends Score {
 
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715) {
-					this.cancel();
 					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
 				}
 			}

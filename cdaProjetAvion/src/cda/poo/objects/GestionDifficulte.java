@@ -22,7 +22,7 @@ public class GestionDifficulte {
 
 	public GestionDifficulte() {
 
-		timerDifficulte.schedule(taskDifficulte, 18000, 18000);
+		timerDifficulte.schedule(taskDifficulte, 14000, 14000);
 
 	}
 
