@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
+import cda.poo.objects.Avion;
 
 public class Meteorite extends Score {
 	public int x;
@@ -17,7 +18,7 @@ public class Meteorite extends Score {
 	public int width;
 	public int height;
 
-	public Meteorite() {
+	public Meteorite(Avion avion) {
 
 		Random r = new Random();
 		x = r.nextInt((690 - 30) + 1);
@@ -37,6 +38,8 @@ public class Meteorite extends Score {
 			public void run() {
 
 				setLocation(getX(), getY() + 2);
+				if (avion.bounds() == bounds()) {
+				}
 				if (getY() == 710) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 				}
@@ -57,7 +60,7 @@ public class Meteorite extends Score {
 	}
 
 	public Rectangle bounds() {
-		return (new Rectangle(x, y, width, height));
+		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
 
 }

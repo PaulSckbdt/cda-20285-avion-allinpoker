@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 import cda.poo.meteor.Score;
 import cda.poo.objects.Avion;
+import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
@@ -28,7 +29,7 @@ public class InterfaceJeu {
 	// fin Image des mouvements de l'avion****************
 
 	// debut ajout joueur***********************
-	// Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+//	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	// fin ajout joueur
 
@@ -74,6 +75,7 @@ public class InterfaceJeu {
 
 		// Ajout de l'avion **************************
 		Avion vMonAvion = new Avion();
+		vMonAvion.setBounds(260, 600, 60, 60);
 		frame.getContentPane().add(vMonAvion);
 		vMonAvion.setVisible(true);
 

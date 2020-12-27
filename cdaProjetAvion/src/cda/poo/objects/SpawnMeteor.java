@@ -16,11 +16,11 @@ public class SpawnMeteor extends Thread {
 	public static JLabel fondEcran;
 	public int difficulte;
 	public static GestionDifficulte gestionDiff = new GestionDifficulte();
-	public static Avion avion;
+	public Avion avion;
 
 	public SpawnMeteor(JFrame vFrame, JLabel vFondEcran, Avion vAvion) {
 
-		SpawnMeteor.avion = vAvion;
+		avion = vAvion;
 		SpawnMeteor.frame = vFrame;
 		SpawnMeteor.fondEcran = vFondEcran;
 	}
@@ -36,7 +36,7 @@ public class SpawnMeteor extends Thread {
 
 			switch (typeMeteorite) {
 			case 0:
-				Meteorite meteorBasic = new Meteorite();
+				Meteorite meteorBasic = new Meteorite(avion);
 				frame.getContentPane().add(meteorBasic).setVisible(true);
 				frame.getContentPane().add(fondEcran).setVisible(true);
 
