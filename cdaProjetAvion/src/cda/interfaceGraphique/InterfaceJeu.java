@@ -85,8 +85,6 @@ public class InterfaceJeu {
 
 		// Ajout de l'avion **************************
 		Avion vMonAvion = new Avion();
-		vMonAvion.setBounds(260, 600, 60, 60);
-		vMonAvion.setIcon(iAvion);
 		frame.getContentPane().add(vMonAvion);
 		vMonAvion.setVisible(true);
 

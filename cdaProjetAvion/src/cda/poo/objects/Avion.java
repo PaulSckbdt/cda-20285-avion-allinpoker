@@ -1,30 +1,32 @@
 package cda.poo.objects;
 
+import java.awt.Rectangle;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 
 public class Avion extends JLabel {
 
-	private final String nom = "PEGASUS";
-	private final int nombreVieInit = 5;
-
-	private int nombreVie = nombreVieInit;
-	private int posX; // seul la position lateral nous interesse
-
-	private boolean isAlive = true;
-	private boolean isTouch = false;
-
-	private static JLabel vAvion;
-
+	public final String nom = "PEGASUS";
+	public final int nombreVieInit = 5;
+	public int nombreVie = nombreVieInit;
+	public int x = 260; 
+	public int y = 600;
+	public int width = 60;
+	public int height = 60;
+	public boolean isAlive = true;
+	public boolean isTouch = false;
+	ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
+	
+	public static JLabel vAvion;
 
 	public Avion() {
-
-	}
-
-		public int getPositionX() {
-		return this.posX;
+		setBounds(x, y, width, height);
+		setIcon(iAvion);
+		setVisible(true);
 	}
 
 	public int getNombreVie() {
@@ -63,5 +65,17 @@ public class Avion extends JLabel {
 	public boolean setTouch(boolean isTouch) {
 		this.isTouch = isTouch;
 		return isTouch;
+	}
+
+	public int getProfondeurY() {
+		return y + height;
+	}
+
+	public int getProfondeurX() {
+		return x + width;
+	}
+
+	public Rectangle bounds() {
+		return (new Rectangle(x, y, width, height));
 	}
 }
