@@ -1,38 +1,22 @@
 package cda.poo.music;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
-/**
- * This is an example program that demonstrates how to play back an audio file
- * using the SourceDataLine in Java Sound API.
- * 
- * @author www.codejava.net
- *
- */
-public class AudioPlayerExample {
-
-	// size of the byte buffer used to read/write the audio stream
-	private static final int BUFFER_SIZE = 4096;
-
-	/**
-	 * Play a given audio file.
-	 * 
-	 * @param audioFilePath Path of the audio file.
-	 */
-	void play(String audioFilePath) {
-		File audioFile = new File(audioFilePath);
+public class AudioPlayerExample implements Runnable {
+	
+	@Override
+	public void run() {
+		final int BUFFER_SIZE = 4096;
 		try {
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-
+			java.net.URL defaultSound = getClass().getResource("/cda/poo/music/Gold.wav");
+			File soundFile = new File(defaultSound.toURI());
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
 			AudioFormat format = audioStream.getFormat();
 
 			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
@@ -57,25 +41,8 @@ public class AudioPlayerExample {
 			audioStream.close();
 
 			System.out.println("Playback completed.");
-
-		} catch (UnsupportedAudioFileException ex) {
-			System.out.println("The specified audio file is not supported.");
-			ex.printStackTrace();
-		} catch (LineUnavailableException ex) {
-			System.out.println("Audio line for playing back is unavailable.");
-			ex.printStackTrace();
-		} catch (IOException ex) {
-			System.out.println("Error playing the audio file.");
-			ex.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
-	
-
-
-	public static void main(String[] args) {
-		String audioFilePath = "C:\\Users\\hbogr\\Desktop\\music projet\\Gold.wav";
-		AudioPlayerExample player = new AudioPlayerExample();
-		player.play(audioFilePath);
-	}
-
 }
