@@ -2,6 +2,7 @@ package cda.poo.music;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -16,6 +17,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * using the SourceDataLine in Java Sound API.
  * 
  * @author www.codejava.net
+ * @param <ContinuousAudioDataStream>
  *
  */
 public class AudioPlayerExample {
@@ -28,11 +30,11 @@ public class AudioPlayerExample {
 	 * 
 	 * @param audioFilePath Path of the audio file.
 	 */
-	void play(String audioFilePath) {
-		File audioFile = new File(audioFilePath);
+	void play() {
 		try {
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-
+			java.net.URL defaultSound = getClass().getResource("/cda/poo/music/Gold.wav");
+			File soundFile = new File(defaultSound.toURI());
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
 			AudioFormat format = audioStream.getFormat();
 
 			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
@@ -67,15 +69,15 @@ public class AudioPlayerExample {
 		} catch (IOException ex) {
 			System.out.println("Error playing the audio file.");
 			ex.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-	
-
 
 	public static void main(String[] args) {
-		String audioFilePath = "C:\\Users\\hbogr\\Desktop\\music projet\\Gold.wav";
 		AudioPlayerExample player = new AudioPlayerExample();
-		player.play(audioFilePath);
+		player.play();
 	}
 
 }
