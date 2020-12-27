@@ -32,8 +32,6 @@ public class SpawnMeteor extends Thread {
 			Random r = new Random();
 			int typeMeteorite = r.nextInt(5);
 
-			System.out.println(Score.getScoreMeteor());
-
 			switch (typeMeteorite) {
 			case 0:
 				Meteorite meteorBasic = new Meteorite();
@@ -75,7 +73,6 @@ public class SpawnMeteor extends Thread {
 			try {
 
 				Thread.sleep(GestionDifficulte.getDifficulte());
-				System.out.println(GestionDifficulte.getDifficulte());
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -83,6 +80,22 @@ public class SpawnMeteor extends Thread {
 
 		}
 
+	}
+
+	public int getDifficulte() {
+		return difficulte;
+	}
+
+	public void setDifficulte(int difficulte) {
+		this.difficulte = difficulte;
+	}
+
+	public static GestionDifficulte getGestionDiff() {
+		return gestionDiff;
+	}
+
+	public static void setGestionDiff(GestionDifficulte gestionDiff) {
+		SpawnMeteor.gestionDiff = gestionDiff;
 	};
 
 }
