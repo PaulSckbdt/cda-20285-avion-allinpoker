@@ -58,6 +58,6 @@ public class MeteoriteFeu extends Score {
 	}
 
 	public Rectangle bounds() {
-		return (new Rectangle(x, y, width, height));
+		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
 }

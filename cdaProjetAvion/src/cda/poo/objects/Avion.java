@@ -10,18 +10,13 @@ public class Avion extends JLabel {
 	public final String nom = "PEGASUS";
 	public final int nombreVieInit = 5;
 	public int nombreVie = nombreVieInit;
-	public int x = 260; 
-	public int y = 600;
-	public int width = 60;
-	public int height = 60;
 	public boolean isAlive = true;
 	public boolean isTouch = false;
 	ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
-	
+
 	public static JLabel vAvion;
 
 	public Avion() {
-		setBounds(x, y, width, height);
 		setIcon(iAvion);
 		setVisible(true);
 	}
@@ -64,15 +59,7 @@ public class Avion extends JLabel {
 		return isTouch;
 	}
 
-	public int getProfondeurY() {
-		return y + height;
-	}
-
-	public int getProfondeurX() {
-		return x + width;
-	}
-
 	public Rectangle bounds() {
-		return (new Rectangle(x, y, width, height));
+		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
 }
