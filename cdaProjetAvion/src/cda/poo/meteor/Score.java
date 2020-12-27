@@ -1,20 +1,14 @@
 package cda.poo.meteor;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Score extends JLabel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static int scoreMeteor;
-
-	public Score() {
-
-	}
 
 	public static int getScoreMeteor() {
 		return scoreMeteor;

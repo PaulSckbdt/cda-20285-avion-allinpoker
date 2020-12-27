@@ -150,12 +150,40 @@ public class InterfaceJeu {
 
 		// FIN METEORITES*************
 
+		// DEBUT JOUEUR *************************************
+
 //		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
 //		LabelNomDuJoueur.setForeground(Color.WHITE);
 //		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
 //		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
-//		LabelNomDuJoueur.setBounds(0, 0, 106, 48);
+//		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
+
+		// FIN JOUEUR ******************************
+
+		// DEBUT SCORE *******************
+
+		JLabel LabelScore = new JLabel("Score : " + Score.getScoreMeteor());
+		LabelScore.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelScore.setForeground(Color.WHITE);
+		LabelScore.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		LabelScore.setBounds(226, 0, 154, 48);
+		frame.getContentPane().add(LabelScore);
+		Timer timerScore = new Timer();
+		TimerTask taskScore = new TimerTask() {
+
+			@Override
+			public void run() {
+
+				LabelScore.setText("Score : " + Score.getScoreMeteor());
+
+			}
+		};
+
+		timerScore.schedule(taskScore, 50, 50);
+
+		// FIN SCORE ************************************
+
 
 	}
 }
