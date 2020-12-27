@@ -69,6 +69,8 @@ public class AudioPlayerExample {
 			ex.printStackTrace();
 		}
 	}
+	
+
 
 	public static void main(String[] args) {
 		String audioFilePath = "C:\\Users\\hbogr\\Desktop\\music projet\\Gold.wav";

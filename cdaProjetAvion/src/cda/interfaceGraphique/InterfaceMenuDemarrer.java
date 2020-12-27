@@ -1,18 +1,18 @@
 package cda.interfaceGraphique;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import java.awt.Color;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class InterfaceMenuDemarrer {
 
@@ -25,9 +25,9 @@ public class InterfaceMenuDemarrer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceMenuDemarrer window = new InterfaceMenuDemarrer();
-					window.frame.setVisible(true);
-					window.frame.setResizable(false);
+					new InterfaceMenuDemarrer();
+					InterfaceMenuDemarrer.frame.setVisible(true);
+					InterfaceMenuDemarrer.frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -139,8 +139,8 @@ public class InterfaceMenuDemarrer {
 		labelFondMenuDemarrer.setIcon(
 				new ImageIcon(InterfaceMenuDemarrer.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		labelFondMenuDemarrer.setBounds(0, 0, 634, 711);
-		
-		//on ajouter le label contenant l'image de fond au frame
+
+		// on ajouter le label contenant l'image de fond au frame
 		frame.getContentPane().add(labelFondMenuDemarrer);
 
 		// fin labelFondMenuDemarrer ***********************************************

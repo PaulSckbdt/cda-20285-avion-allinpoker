@@ -1,30 +1,17 @@
 package cda.interfaceGraphique;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Timer;
-import java.util.TimerTask;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-import cda.poo.meteor.Meteorite;
-import cda.poo.meteor.MeteoriteFeu;
-import cda.poo.meteor.MeteoriteGlace;
-import cda.poo.meteor.MeteoriteIceberg;
-import cda.poo.meteor.MeteoriteZigZag;
-import cda.poo.meteor.Score;
 import cda.poo.objects.Avion;
 import cda.poo.objects.SpawnMeteor;
-
-import java.awt.event.KeyAdapter;
-import javax.swing.JPanel;
-import java.awt.event.HierarchyListener;
-import java.awt.event.HierarchyEvent;
-import java.awt.Color;
 
 public class InterfaceJeu {
 
@@ -40,8 +27,6 @@ public class InterfaceJeu {
 	// Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	// fin ajout joueur
-
-	private Object KEY;
 
 	private JFrame frame;
 

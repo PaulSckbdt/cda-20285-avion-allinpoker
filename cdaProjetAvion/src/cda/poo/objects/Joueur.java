@@ -5,7 +5,7 @@ public class Joueur {
 	public static String nom;
 
 	public Joueur(String vNom) {
-		this.nom = vNom;
+		Joueur.nom = vNom;
 	}
 
 	public String getNom() {

@@ -4,9 +4,6 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-import cda.interfaceGraphique.InterfaceJeu;
 
 public class Avion extends JLabel {
 
