@@ -1,16 +1,12 @@
 package cda.poo.objects;
 
-<<<<<<< HEAD
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
-=======
->>>>>>> 938c89e... fix score
 import javax.swing.JLabel;
 
 public class Avion extends JLabel {
 
-<<<<<<< HEAD
 	public final String nom = "PEGASUS";
 	public final int nombreVieInit = 5;
 	public int nombreVie = nombreVieInit;
@@ -28,25 +24,6 @@ public class Avion extends JLabel {
 		setBounds(x, y, width, height);
 		setIcon(iAvion);
 		setVisible(true);
-=======
-	private final String nom = "PEGASUS";
-	private final int nombreVieInit = 5;
-
-	private int nombreVie = nombreVieInit;
-	private int posX; // seul la position lateral nous interesse
-
-	private boolean isAlive = true;
-	private boolean isTouch = false;
-
-	private static JLabel vAvion;
-
-	public Avion() {
-
-	}
-
-	public int getPositionX() {
-		return this.posX;
->>>>>>> 938c89e... fix score
 	}
 
 	public int getNombreVie() {
