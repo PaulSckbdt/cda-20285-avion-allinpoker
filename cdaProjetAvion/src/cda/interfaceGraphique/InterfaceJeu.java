@@ -12,10 +12,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import cda.poo.meteor.Score;
-import cda.poo.music.AudioPlayerExample;
+import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
-import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
@@ -42,9 +42,10 @@ public class InterfaceJeu {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-//				AudioPlayerExample music = new AudioPlayerExample();
-//				music.run();
+				Audio music = new Audio();
+				music.run();
 				try {
+
 					InterfaceJeu window = new InterfaceJeu();
 					window.frame.setVisible(true);
 					window.frame.setResizable(false);
@@ -86,7 +87,6 @@ public class InterfaceJeu {
 		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/avion-tir.gif")));
 		labelTirAvion.setBounds(260, 234, 60, 398);
 		frame.getContentPane().add(labelTirAvion);
-
 
 		// Début deplacementAvion et tirAvion
 		frame.addKeyListener(new KeyAdapter() {
@@ -167,7 +167,6 @@ public class InterfaceJeu {
 //		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
 
-
 		// FIN JOUEUR ******************************
 
 		// DEBUT SCORE *******************
@@ -193,6 +192,5 @@ public class InterfaceJeu {
 
 		// FIN SCORE ************************************
 
-		AudioPlayerExample a1 = new AudioPlayerExample();
 	}
 }
