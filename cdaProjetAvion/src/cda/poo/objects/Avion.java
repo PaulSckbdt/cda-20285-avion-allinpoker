@@ -5,58 +5,71 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import cda.poo.meteor.Meteorite;
+import cda.poo.meteor.MeteoriteFeu;
+import cda.poo.meteor.MeteoriteGlace;
+import cda.poo.meteor.MeteoriteIceberg;
+import cda.poo.meteor.MeteoriteZigZag;
+
 public class Avion extends JLabel {
 
-	public final String nom = "PEGASUS";
-	public final int nombreVieInit = 5;
-	public int nombreVie = nombreVieInit;
-	public boolean isAlive = true;
-	public boolean isTouch = false;
+	public final static int nombreVieInit = 5;
+	public static int nombreVie = nombreVieInit;
+	public static boolean isAlive = true;
 	ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
 
 	public static JLabel vAvion;
 
 	public Avion() {
 		setIcon(iAvion);
+		setBounds(260, 600, 60, 60);
 		setVisible(true);
+	}
+
+	public static void collision(Avion a) {
+		if (a.getY() == Meteorite.x) {
+			setNombreVie(1);
+			a.setVisible(false);
+
+		}
+		if (a.getY() == MeteoriteZigZag.x) {
+			setNombreVie(2);
+			a.setVisible(false);
+
+		}
+		if (a.getY() == MeteoriteFeu.x) {
+			setNombreVie(2);
+			a.setVisible(false);
+
+		}
+		if (a.getY() == MeteoriteGlace.x) {
+			setNombreVie(3);
+			a.setVisible(false);
+		}
+		if (a.getY() == MeteoriteIceberg.x) {
+			setNombreVie(3);
+			a.setVisible(false);
+
+		}
 	}
 
 	public int getNombreVie() {
 		return nombreVie;
 	}
 
-	public void setNombreVie(int degat) {
-		this.nombreVie -= degat;
+	public static void setNombreVie(int degat) {
+		Avion.nombreVie -= degat;
 		if (nombreVie < 1) {
 			setAlive(false); // partie terminée
 		}
 	}
 
 	public void activationBouclier() throws InterruptedException {
-		if (this.setTouch(true))
-			setNombreVie(0);
 		Thread.sleep(10000);
 	}
 
-	public boolean isAlive() {
-		return isAlive;
-	}
-
-	public void setAlive(boolean isAlive) {
-		this.isAlive = isAlive;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public boolean isTouch() {
-		return isTouch;
-	}
-
-	public boolean setTouch(boolean isTouch) {
-		this.isTouch = isTouch;
-		return isTouch;
+	public static void setAlive(boolean isAlive) {
+		Avion.isAlive = isAlive;
 	}
 
 	public Rectangle bounds() {

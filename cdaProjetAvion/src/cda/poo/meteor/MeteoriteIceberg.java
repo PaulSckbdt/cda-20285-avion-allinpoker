@@ -6,18 +6,17 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 
 public class MeteoriteIceberg extends Score {
 
-	public int x;
-	public int y;
-	public int width;
-	public int height;
-
+	public static int x;
+	public static int y;
+	public static int width;
+	public static int height;
+	
 	public MeteoriteIceberg() {
 
 		Random r = new Random();

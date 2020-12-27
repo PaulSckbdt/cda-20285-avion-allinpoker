@@ -42,10 +42,10 @@ public class InterfaceJeu {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				Audio music = new Audio();
-				music.run();
 				try {
 
+					Audio music = new Audio();
+					music.run();
 					InterfaceJeu window = new InterfaceJeu();
 					window.frame.setVisible(true);
 					window.frame.setResizable(false);
@@ -97,7 +97,7 @@ public class InterfaceJeu {
 					vMonAvion.setIcon(iAvionUp);
 					vMonAvion.setVisible(true);
 					labelTirAvion.setLocation(labelTirAvion.getX(), labelTirAvion.getY() - 15);
-
+					
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
@@ -192,5 +192,6 @@ public class InterfaceJeu {
 
 		// FIN SCORE ************************************
 
+		
 	}
 }

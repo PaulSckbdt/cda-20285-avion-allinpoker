@@ -6,7 +6,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
@@ -14,10 +13,11 @@ import cda.interfaceGraphique.InterfaceJeu;
 public class MeteoriteZigZag extends Score {
 	private boolean bouge;
 
-	public int x;
-	public int y;
-	public int width;
-	public int height;
+	public static int x;
+	public static int y;
+	public static int width;
+	public static int height;
+	public static int degat = 1;
 
 	public MeteoriteZigZag() {
 

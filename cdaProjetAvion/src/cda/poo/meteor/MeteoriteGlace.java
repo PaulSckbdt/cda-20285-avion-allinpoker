@@ -12,11 +12,11 @@ import cda.interfaceGraphique.InterfaceJeu;
 
 public class MeteoriteGlace extends Score {
 
-	public int x;
-	public int y;
-	public int width;
-	public int height;
-
+	public static int x;
+	public static int y;
+	public static int width;
+	public static int height;
+	
 	public MeteoriteGlace() {
 
 		Random r = new Random();
