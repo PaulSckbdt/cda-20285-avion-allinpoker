@@ -10,16 +10,17 @@ import cda.poo.meteor.MeteoriteFeu;
 import cda.poo.meteor.MeteoriteGlace;
 import cda.poo.meteor.MeteoriteIceberg;
 import cda.poo.meteor.MeteoriteZigZag;
-import cda.poo.meteor.Score;
 
 public class SpawnMeteor extends Thread {
 	public static JFrame frame;
 	public static JLabel fondEcran;
 	public int difficulte;
 	public static GestionDifficulte gestionDiff = new GestionDifficulte();
+	public static Avion avion;
 
-	public SpawnMeteor(JFrame vFrame, JLabel vFondEcran) {
+	public SpawnMeteor(JFrame vFrame, JLabel vFondEcran, Avion vAvion) {
 
+		SpawnMeteor.avion = vAvion;
 		SpawnMeteor.frame = vFrame;
 		SpawnMeteor.fondEcran = vFondEcran;
 	}
@@ -30,7 +31,8 @@ public class SpawnMeteor extends Thread {
 		while (true) {
 
 			Random r = new Random();
-			int typeMeteorite = r.nextInt(5);
+			int typeMeteorite = 0;
+			// r.nextInt(5);
 
 			switch (typeMeteorite) {
 			case 0:

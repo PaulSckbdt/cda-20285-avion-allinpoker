@@ -2,14 +2,18 @@ package cda.interfaceGraphique;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import cda.poo.meteor.Score;
 import cda.poo.objects.Avion;
 import cda.poo.objects.SpawnMeteor;
 
@@ -144,7 +148,7 @@ public class InterfaceJeu {
 
 		// Debut meteorites*********************
 
-		SpawnMeteor spwn1 = new SpawnMeteor(frame, fondEcranJeu);
+		SpawnMeteor spwn1 = new SpawnMeteor(frame, fondEcranJeu, vMonAvion);
 
 		spwn1.start();
 
@@ -183,7 +187,6 @@ public class InterfaceJeu {
 		timerScore.schedule(taskScore, 50, 50);
 
 		// FIN SCORE ************************************
-
 
 	}
 }
