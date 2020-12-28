@@ -88,7 +88,7 @@ public class InterfaceJeu {
 		labelTirAvion.setBounds(260, 234, 60, 398);
 		frame.getContentPane().add(labelTirAvion);
 
-		// Début deplacementAvion et tirAvion
+		// Dï¿½but deplacementAvion et tirAvion
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -138,7 +138,7 @@ public class InterfaceJeu {
 			}
 		});
 
-		// Début fond***********************************************
+		// Dï¿½but fond***********************************************
 		JLabel fondEcranJeu = new JLabel("");
 		fondEcranJeu.setLabelFor(frame);
 		fondEcranJeu.setBackground(Color.DARK_GRAY);

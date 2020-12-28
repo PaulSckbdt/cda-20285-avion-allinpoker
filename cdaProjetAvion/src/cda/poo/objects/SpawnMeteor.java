@@ -31,8 +31,9 @@ public class SpawnMeteor extends Thread {
 		while (true) {
 
 			Random r = new Random();
-			int typeMeteorite = 0;
-			// r.nextInt(5);
+			int typeMeteorite = r.nextInt(5);
+//			int typeMeteorite = 4;
+			
 
 			switch (typeMeteorite) {
 			case 0:
@@ -43,28 +44,28 @@ public class SpawnMeteor extends Thread {
 				break;
 
 			case 1:
-				MeteoriteFeu meteorFeu = new MeteoriteFeu();
+				MeteoriteFeu meteorFeu = new MeteoriteFeu(avion);
 				frame.getContentPane().add(meteorFeu).setVisible(true);
 				frame.getContentPane().add(fondEcran).setVisible(true);
 
 				break;
 
 			case 2:
-				MeteoriteGlace meteorGlace = new MeteoriteGlace();
+				MeteoriteGlace meteorGlace = new MeteoriteGlace(avion);
 				frame.getContentPane().add(meteorGlace).setVisible(true);
 				frame.getContentPane().add(fondEcran).setVisible(true);
 
 				break;
 
 			case 3:
-				MeteoriteZigZag meteorZigZag = new MeteoriteZigZag();
+				MeteoriteZigZag meteorZigZag = new MeteoriteZigZag(avion);
 				frame.getContentPane().add(meteorZigZag).setVisible(true);
 				frame.getContentPane().add(fondEcran).setVisible(true);
 
 				break;
 
 			case 4:
-				MeteoriteIceberg meteorIceberg = new MeteoriteIceberg();
+				MeteoriteIceberg meteorIceberg = new MeteoriteIceberg(avion);
 				frame.getContentPane().add(meteorIceberg).setVisible(true);
 				frame.getContentPane().add(fondEcran).setVisible(true);
 

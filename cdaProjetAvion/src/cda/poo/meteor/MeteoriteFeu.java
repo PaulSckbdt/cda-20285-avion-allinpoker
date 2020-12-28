@@ -9,15 +9,18 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
+import cda.poo.objects.Avion;
 
 public class MeteoriteFeu extends Score {
-
+	public Avion avion;
 	public static int x;
 	public static int y;
 	public static int width;
 	public static int height;
 	
-	public MeteoriteFeu() {
+	public MeteoriteFeu(Avion vAvion) {
+		
+		this.avion = vAvion;
 
 		Random r = new Random();
 
@@ -36,6 +39,8 @@ public class MeteoriteFeu extends Score {
 
 			@Override
 			public void run() {
+				
+				System.out.println(collision());
 
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715) {
@@ -58,5 +63,39 @@ public class MeteoriteFeu extends Score {
 
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
+	}
+	
+	
+	public boolean collision() {
+
+//		box1 : avion;
+		int avionX = avion.getX();
+		int avionY = avion.getY();
+		int avionW = avion.getWidth();
+		int avionH = avion.getHeight();
+
+//		box2 : météorite
+		int meteoriteX = getX();
+		int meteoriteY = getY();
+		int meteoriteW = getWidth();
+		int meteoriteH = getHeight();
+
+		// trop à droite
+		boolean droite = meteoriteX >= avionX + avionW;
+		// trop à gauche
+		boolean gauche = meteoriteX + meteoriteW <= avionX;
+		// trop à bas
+		boolean bas = meteoriteY >= avionY + avionH;
+		// trop à haut
+		boolean haut = meteoriteY + meteoriteH <= avionY;
+
+		
+		
+		if ((droite) || (gauche) || (bas) || (haut)) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 }
