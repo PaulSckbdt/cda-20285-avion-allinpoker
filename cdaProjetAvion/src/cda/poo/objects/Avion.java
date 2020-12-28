@@ -60,7 +60,7 @@ public class Avion extends JLabel {
 	public static void setNombreVie(int degat) {
 		Avion.nombreVie -= degat;
 		if (nombreVie < 1) {
-			setAlive(false); // partie terminée
+			setAlive(false); // partie terminï¿½e
 		}
 	}
 
