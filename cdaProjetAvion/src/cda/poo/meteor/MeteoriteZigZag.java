@@ -18,6 +18,7 @@ public class MeteoriteZigZag extends Score {
 	public static int width;
 	public static int height;
 
+
 	public MeteoriteZigZag() {
 
 		Random r = new Random();

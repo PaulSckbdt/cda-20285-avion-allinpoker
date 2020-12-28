@@ -6,17 +6,17 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
 import cda.poo.objects.Avion;
 
 public class Meteorite extends Score {
-	public int x;
-	public int y;
-	public int width;
-	public int height;
+
+	public static int x;
+	public static int y;
+	public static int width;
+	public static int height;
 
 	public Meteorite(Avion avion) {
 
@@ -42,6 +42,7 @@ public class Meteorite extends Score {
 				if (getY() == 710) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 				}
+				Avion.collision(avion);
 
 			}
 		};
