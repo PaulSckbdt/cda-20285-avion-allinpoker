@@ -26,42 +26,12 @@ public class Avion extends JLabel {
 		setVisible(true);
 	}
 
-	public static void collision(Avion a) {
-		if (a.getY() == Meteorite.x) {
-			setNombreVie(1);
-			a.setVisible(false);
-
-		}
-		if (a.getY() == MeteoriteZigZag.x) {
-			setNombreVie(2);
-			a.setVisible(false);
-
-		}
-		if (a.getY() == MeteoriteFeu.x) {
-			setNombreVie(2);
-			a.setVisible(false);
-
-		}
-		if (a.getY() == MeteoriteGlace.x) {
-			setNombreVie(3);
-			a.setVisible(false);
-		}
-		if (a.getY() == MeteoriteIceberg.x) {
-			setNombreVie(3);
-			a.setVisible(false);
-
-		}
-	}
-
-	public int getNombreVie() {
+	public static int getNombreVie() {
 		return nombreVie;
 	}
 
-	public static void setNombreVie(int degat) {
-		Avion.nombreVie -= degat;
-		if (nombreVie < 1) {
-			setAlive(false); // partie termin�e
-		}
+	public static void setNombreVie(int nombreVie) {
+		Avion.nombreVie = nombreVie;
 	}
 
 	public void activationBouclier() throws InterruptedException {

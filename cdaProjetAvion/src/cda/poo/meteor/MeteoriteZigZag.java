@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
+import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class MeteoriteZigZag extends Score {
@@ -18,7 +19,6 @@ public class MeteoriteZigZag extends Score {
 	public static int y;
 	public static int width;
 	public static int height;
-
 
 	public MeteoriteZigZag(Avion vAvion) {
 
@@ -41,11 +41,21 @@ public class MeteoriteZigZag extends Score {
 
 			@Override
 			public void run() {
-				
-				System.out.println(collision());
+
+				if (collision()) {
+					Audio a = new Audio("/cda/poo/music/collision.wav");
+
+					if (isEnabled()) {
+						a.run();
+						Avion.setNombreVie(Avion.getNombreVie() - 1);
+
+						setEnabled(false);
+
+					}
+				}
 
 				setLocation(getX(), getY() + 1);
-				if (getY() == 715) {
+				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 				}
 			}
@@ -84,7 +94,7 @@ public class MeteoriteZigZag extends Score {
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
-	
+
 	public boolean collision() {
 
 //		box1 : avion;

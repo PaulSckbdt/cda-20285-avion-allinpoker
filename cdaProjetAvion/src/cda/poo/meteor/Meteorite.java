@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
+import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class Meteorite extends Score {
@@ -38,13 +39,21 @@ public class Meteorite extends Score {
 
 			@Override
 			public void run() {
-				
-				System.out.println(collision());
 
+				if (collision()) {
+					Audio a = new Audio("/cda/poo/music/collision.wav");
+
+					if (isEnabled()) {
+						a.run();
+						Avion.setNombreVie(Avion.getNombreVie() - 1);
+						setEnabled(false);
+
+					}
+				}
 
 				setLocation(getX(), getY() + 2);
 
-				if (getY() == 710) {
+				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 				}
 			}
@@ -65,7 +74,6 @@ public class Meteorite extends Score {
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
-
 
 	public boolean collision() {
 
