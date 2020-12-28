@@ -44,17 +44,15 @@ public class MeteoriteZigZag extends Score {
 
 				if (collision()) {
 					Audio a = new Audio("/cda/poo/music/collision.wav");
-
+					
 					if (isEnabled()) {
 						a.run();
 						Avion.setNombreVie(Avion.getNombreVie() - 1);
-
 						setEnabled(false);
-
 					}
 				}
-
 				setLocation(getX(), getY() + 1);
+				
 				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 				}
@@ -67,14 +65,10 @@ public class MeteoriteZigZag extends Score {
 				if (bouge) {
 					setLocation(getX() + 50, getY());
 					bouge = false;
-
 				} else {
-
 					setLocation(getX() - 50, getY());
-
 					bouge = true;
 				}
-
 			}
 		};
 

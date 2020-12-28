@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.lang.invoke.MutableCallSite;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,7 +34,8 @@ public class InterfaceJeu {
 
 	// fin ajout joueur
 
-	private JFrame frame;
+	public static JFrame frame;
+	public static AudioMainLoop music = new AudioMainLoop();
 
 	/**
 	 * Launch the application.
@@ -43,8 +45,6 @@ public class InterfaceJeu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-
-					AudioMainLoop music = new AudioMainLoop();
 					music.run();
 					InterfaceJeu window = new InterfaceJeu();
 					window.frame.setVisible(true);
@@ -209,12 +209,27 @@ public class InterfaceJeu {
 			public void run() {
 
 				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
-
+				if (Avion.getNombreVie() < 1) {
+					timerVie.cancel();
+					timerScore.cancel();
+					InterfaceGameOver.main(null);
+				}
 			}
 		};
 
 		timerVie.schedule(taskVie, 150, 150);
 
 		// **********************************************
+	}
+
+	public static void gameOver() {
+
+	}
+
+	public static void closeFrame() {
+
+		frame.setVisible(false);
+		frame.dispose();
+
 	}
 }
