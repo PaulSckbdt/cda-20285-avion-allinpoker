@@ -177,6 +177,7 @@ public class InterfaceJeu {
 		LabelScore.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		LabelScore.setBounds(226, 0, 154, 48);
 		frame.getContentPane().add(LabelScore);
+
 		Timer timerScore = new Timer();
 		TimerTask taskScore = new TimerTask() {
 
@@ -192,5 +193,28 @@ public class InterfaceJeu {
 
 		// FIN SCORE ************************************
 
+		// DEBUT VIE ************************************
+
+		JLabel LabelNbVie = new JLabel("Vie : " + Avion.getNombreVie());
+		LabelNbVie.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelNbVie.setForeground(Color.WHITE);
+		LabelNbVie.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		LabelNbVie.setBounds(470, 0, 154, 48);
+		frame.getContentPane().add(LabelNbVie);
+
+		Timer timerVie = new Timer();
+		TimerTask taskVie = new TimerTask() {
+
+			@Override
+			public void run() {
+
+				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
+
+			}
+		};
+
+		timerVie.schedule(taskVie, 150, 150);
+
+		// **********************************************
 	}
 }

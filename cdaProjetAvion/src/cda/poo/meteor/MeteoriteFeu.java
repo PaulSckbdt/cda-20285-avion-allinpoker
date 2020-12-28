@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
+import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class MeteoriteFeu extends Score {
@@ -17,9 +18,9 @@ public class MeteoriteFeu extends Score {
 	public static int y;
 	public static int width;
 	public static int height;
-	
+
 	public MeteoriteFeu(Avion vAvion) {
-		
+
 		this.avion = vAvion;
 
 		Random r = new Random();
@@ -39,11 +40,20 @@ public class MeteoriteFeu extends Score {
 
 			@Override
 			public void run() {
-				
-				System.out.println(collision());
+
+				if (collision()) {
+					Audio a = new Audio("/cda/poo/music/collision.wav");
+
+					if (isEnabled()) {
+						Avion.setNombreVie(Avion.getNombreVie() - 2);
+						a.run();
+						setEnabled(false);
+
+					}
+				}
 
 				setLocation(getX(), getY() + 1);
-				if (getY() == 715) {
+				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
 				}
 			}
@@ -64,8 +74,7 @@ public class MeteoriteFeu extends Score {
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
-	
-	
+
 	public boolean collision() {
 
 //		box1 : avion;
@@ -89,8 +98,6 @@ public class MeteoriteFeu extends Score {
 		// trop à haut
 		boolean haut = meteoriteY + meteoriteH <= avionY;
 
-		
-		
 		if ((droite) || (gauche) || (bas) || (haut)) {
 			return false;
 		} else {

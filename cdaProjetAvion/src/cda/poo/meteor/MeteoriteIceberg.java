@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import cda.interfaceGraphique.InterfaceJeu;
+import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class MeteoriteIceberg extends Score {
@@ -18,7 +19,7 @@ public class MeteoriteIceberg extends Score {
 	public static int y;
 	public static int width;
 	public static int height;
-	
+
 	public MeteoriteIceberg(Avion vAvion) {
 
 		this.avion = vAvion;
@@ -39,11 +40,21 @@ public class MeteoriteIceberg extends Score {
 
 			@Override
 			public void run() {
-				
-				System.out.println(collision());
+
+				if (collision()) {
+					Audio a = new Audio("/cda/poo/music/collision.wav");
+
+					if (isEnabled()) {
+						a.run();
+						Avion.setNombreVie(Avion.getNombreVie() - 2);
+
+						setEnabled(false);
+
+					}
+				}
 
 				setLocation(getX(), getY() + 2);
-				if (getY() == 710) {
+				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
 				}
 			}
@@ -64,8 +75,7 @@ public class MeteoriteIceberg extends Score {
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
-	
-	
+
 	public boolean collision() {
 
 //		box1 : avion;
