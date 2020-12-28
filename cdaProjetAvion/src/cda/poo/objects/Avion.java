@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import cda.interfaceGraphique.InterfaceGameOver;
+import cda.interfaceGraphique.InterfaceJeu;
 import cda.poo.meteor.Meteorite;
 import cda.poo.meteor.MeteoriteFeu;
 import cda.poo.meteor.MeteoriteGlace;
