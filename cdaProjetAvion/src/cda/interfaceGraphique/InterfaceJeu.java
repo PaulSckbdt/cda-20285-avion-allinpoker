@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.poo.meteor.Score;
-import cda.poo.music.Audio;
+import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
 import cda.poo.objects.SpawnMeteor;
 
@@ -44,7 +44,7 @@ public class InterfaceJeu {
 			public void run() {
 				try {
 
-					Audio music = new Audio();
+					AudioMainLoop music = new AudioMainLoop();
 					music.run();
 					InterfaceJeu window = new InterfaceJeu();
 					window.frame.setVisible(true);
@@ -97,7 +97,7 @@ public class InterfaceJeu {
 					vMonAvion.setIcon(iAvionUp);
 					vMonAvion.setVisible(true);
 					labelTirAvion.setLocation(labelTirAvion.getX(), labelTirAvion.getY() - 15);
-					
+
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
@@ -192,6 +192,5 @@ public class InterfaceJeu {
 
 		// FIN SCORE ************************************
 
-		
 	}
 }
