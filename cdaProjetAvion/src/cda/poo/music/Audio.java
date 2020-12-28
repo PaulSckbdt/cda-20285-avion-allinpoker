@@ -8,10 +8,18 @@ import javax.sound.sampled.Clip;
 
 public class Audio implements Runnable {
 
+	public String lienSon;
+
+	public Audio(String chemin) {
+		this.lienSon = chemin;
+	}
+
 	@Override
 	public void run() {
+		// TODO Auto-generated method stub
 		try {
-			java.net.URL defaultSound = getClass().getResource("/cda/poo/music/Gold.wav");
+
+			java.net.URL defaultSound = getClass().getResource(lienSon);
 			File soundFile = new File(defaultSound.toURI());
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 			Clip clip = AudioSystem.getClip();
@@ -21,4 +29,5 @@ public class Audio implements Runnable {
 			ex.printStackTrace();
 		}
 	}
+
 }
