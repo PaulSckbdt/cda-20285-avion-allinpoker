@@ -36,10 +36,9 @@ public class Meteorite extends Score {
 
 			@Override
 			public void run() {
-
+				System.out.println(avion.bounds());
 				setLocation(getX(), getY() + 2);
-				if (avion.bounds() == bounds()) {
-				}
+
 				if (getY() == 710) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 				}
@@ -63,5 +62,6 @@ public class Meteorite extends Score {
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
+
 
 }

@@ -75,4 +75,5 @@ public class Avion extends JLabel {
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
+
 }

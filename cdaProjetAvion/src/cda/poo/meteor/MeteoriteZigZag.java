@@ -17,7 +17,7 @@ public class MeteoriteZigZag extends Score {
 	public static int y;
 	public static int width;
 	public static int height;
-	public static int degat = 1;
+
 
 	public MeteoriteZigZag() {
 
