@@ -13,9 +13,10 @@ import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class MeteoriteFeu extends Score {
+
 	public Avion avion;
-	public static int x;
-	public static int y;
+	public static int xDepart;
+	public static int yDepart;
 	public static int width;
 	public static int height;
 
@@ -23,18 +24,30 @@ public class MeteoriteFeu extends Score {
 
 		this.avion = vAvion;
 
-		Random r = new Random();
-
-		x = r.nextInt((680 - 40) + 1);
-		y = 0;
+		xDepart = new Random().nextInt((680 - 40) + 1);
+		yDepart = 0;
 		width = 50;
 		height = 39;
 
-		setBounds(x, y, width, height);
+		mepImage("/cda/poo/images/meteorite-feu.png");
+		timerMeteoriteFeu();
 
-		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-feu.png")));
-		setHorizontalAlignment(SwingConstants.CENTER);
+	}
 
+	public int getProfondeurY() {
+		return yDepart + height;
+	}
+
+	public int getProfondeurX() {
+		return xDepart + width;
+	}
+
+	public int getXX() {
+		return getX();
+
+	}
+
+	public void timerMeteoriteFeu() {
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
 
@@ -63,27 +76,24 @@ public class MeteoriteFeu extends Score {
 
 	}
 
-	public int getProfondeurY() {
-		return y + height;
-	}
-
-	public int getProfondeurX() {
-		return x + width;
-	}
-
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
 
+	public void mepImage(String lien) {
+
+		setBounds(xDepart, yDepart, width, height);
+		setIcon(new ImageIcon(InterfaceJeu.class.getResource(lien)));
+		setHorizontalAlignment(SwingConstants.CENTER);
+	}
+
 	public boolean collision() {
 
-//		box1 : avion;
 		int avionX = avion.getX();
 		int avionY = avion.getY();
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
-//		box2 : météorite
 		int meteoriteX = getX();
 		int meteoriteY = getY();
 		int meteoriteW = getWidth();
@@ -103,6 +113,5 @@ public class MeteoriteFeu extends Score {
 		} else {
 			return true;
 		}
-
 	}
 }
