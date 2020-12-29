@@ -13,29 +13,47 @@ import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class MeteoriteZigZag extends Score {
+	
 	private boolean bouge;
 	public Avion avion;
-	public static int x;
-	public static int y;
+	public static int xDepart;
+	public static int yDepart;
 	public static int width;
 	public static int height;
 
 	public MeteoriteZigZag(Avion vAvion) {
 
 		this.avion = vAvion;
-
-		Random r = new Random();
-
-		x = r.nextInt((680 - 40) + 1);
-		y = 0;
+		xDepart = new Random().nextInt((680 - 40) + 1);
+		yDepart = 0;
 		width = 40;
 		height = 31;
 
-		setBounds(x, y, width, height);
+		mepImage("/cda/poo/images/meteorite-zigzag.png");
+		timerMeteoriteZigZag();
+	}
 
-		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/meteorite-zigzag.png")));
+	public int getProfondeurY() {
+		return yDepart + height;
+	}
+
+	public int getProfondeurX() {
+		return xDepart + width;
+	}
+
+	public Rectangle bounds() {
+		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
+	}
+
+	public void mepImage(String lien) {
+		
+		setBounds(xDepart, yDepart, width, height);
+		setIcon(new ImageIcon(InterfaceJeu.class.getResource(lien)));
 		setHorizontalAlignment(SwingConstants.CENTER);
-
+	}
+	
+	public void timerMeteoriteZigZag() {
+		
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
 
@@ -44,7 +62,7 @@ public class MeteoriteZigZag extends Score {
 
 				if (collision()) {
 					Audio a = new Audio("/cda/poo/music/collision.wav");
-					
+
 					if (isEnabled()) {
 						a.run();
 						Avion.setNombreVie(Avion.getNombreVie() - 1);
@@ -52,7 +70,7 @@ public class MeteoriteZigZag extends Score {
 					}
 				}
 				setLocation(getX(), getY() + 1);
-				
+
 				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 				}
@@ -77,27 +95,13 @@ public class MeteoriteZigZag extends Score {
 
 	}
 
-	public int getProfondeurY() {
-		return y + height;
-	}
-
-	public int getProfondeurX() {
-		return x + width;
-	}
-
-	public Rectangle bounds() {
-		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
-	}
-
 	public boolean collision() {
 
-//		box1 : avion;
 		int avionX = avion.getX();
 		int avionY = avion.getY();
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
-//		box2 : météorite
 		int meteoriteX = getX();
 		int meteoriteY = getY();
 		int meteoriteW = getWidth();

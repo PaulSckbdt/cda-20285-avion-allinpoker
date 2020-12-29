@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.lang.invoke.MutableCallSite;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,8 +34,6 @@ public class InterfaceJeu {
 	// fin ajout joueur
 
 	public static JFrame frame;
-	public static AudioMainLoop music = new AudioMainLoop();
-
 	/**
 	 * Launch the application.
 	 */
@@ -45,10 +42,9 @@ public class InterfaceJeu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					music.run();
 					InterfaceJeu window = new InterfaceJeu();
-					window.frame.setVisible(true);
-					window.frame.setResizable(false);
+					InterfaceJeu.frame.setVisible(true);
+					InterfaceJeu.frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,18 +52,15 @@ public class InterfaceJeu {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public InterfaceJeu() {
+	public InterfaceJeu(){
+		new AudioMainLoop();
 		initialize();
+
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 
+//		AudioMainLoop music = new AudioMainLoop();
 		frame = new JFrame();
 		frame.setAutoRequestFocus(false);
 
@@ -202,34 +195,6 @@ public class InterfaceJeu {
 		LabelNbVie.setBounds(470, 0, 154, 48);
 		frame.getContentPane().add(LabelNbVie);
 
-		Timer timerVie = new Timer();
-		TimerTask taskVie = new TimerTask() {
-
-			@Override
-			public void run() {
-
-				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
-				if (Avion.getNombreVie() < 1) {
-					timerVie.cancel();
-					timerScore.cancel();
-					InterfaceGameOver.main(null);
-				}
-			}
-		};
-
-		timerVie.schedule(taskVie, 150, 150);
-
 		// **********************************************
-	}
-
-	public static void gameOver() {
-
-	}
-
-	public static void closeFrame() {
-
-		frame.setVisible(false);
-		frame.dispose();
-
 	}
 }
