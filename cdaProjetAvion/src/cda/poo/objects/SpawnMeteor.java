@@ -23,6 +23,7 @@ public class SpawnMeteor extends Thread {
 		avion = vAvion;
 		SpawnMeteor.frame = vFrame;
 		SpawnMeteor.fondEcran = vFondEcran;
+	
 	}
 
 	@Override

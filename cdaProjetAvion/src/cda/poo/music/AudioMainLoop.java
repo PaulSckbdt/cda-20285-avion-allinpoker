@@ -29,7 +29,7 @@ public class AudioMainLoop {
 			TimerTask timerTask = new TimerTask() {
 				@Override
 				public void run() {
-					if (Avion.getNombreVie() < 5) {
+					if (Avion.getNombreVie() < 1 ) {
 						clip.stop();
 						timer.cancel();
 					}
@@ -50,3 +50,4 @@ public class AudioMainLoop {
 //			frame.setVisible(false); //you can't see me!
 //			frame.dispose();
 //			Arrays.asList(Window.getWindows()).forEach(e -> e.dispose());
+//|| InterfaceJeu.game == null

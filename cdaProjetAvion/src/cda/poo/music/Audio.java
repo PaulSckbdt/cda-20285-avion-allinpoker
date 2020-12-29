@@ -22,10 +22,14 @@ public class Audio {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
-			if (Avion.getNombreVie() > 0) 
+			if (Avion.getNombreVie() > 0) {
 				clip.start();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 }
+//if (InterfaceJeu.game == null) {
+//spwn1.interrupt();
+//}

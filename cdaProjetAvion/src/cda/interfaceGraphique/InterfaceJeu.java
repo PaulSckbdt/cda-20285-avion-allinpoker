@@ -3,15 +3,12 @@ package cda.interfaceGraphique;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -24,46 +21,35 @@ import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
-	// INSTANCIATION ***********************************************************************
-	
-	static JFrame frame;
-	static InterfaceJeu window;
-	static Avion vMonAvion;
-	static JLabel labelTirAvion= new JLabel("");
-	static JLabel fondEcranJeu  = new JLabel("");
-	static JLabel LabelScore = new JLabel("Score : " + Score.getScoreMeteor());
-	static JLabel LabelNbVie = new JLabel("Vie : " + Avion.getNombreVie());
-	static SpawnMeteor spwn1 = new SpawnMeteor(frame, fondEcranJeu, vMonAvion);
-	static SpawnBonus spwn2 = new SpawnBonus(frame, fondEcranJeu, vMonAvion);
-	static ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
-	static ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
-	static ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
-	static ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
-	
-	
-	// PROGRAMME ***********************************************************************
-	
-	public static void main(String[] args) {
+	// Image des mouvements de l'avion
 
-					window = new InterfaceJeu();
+	ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
+	ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
+	ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
+	ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
 
-					if (Avion.getNombreVie() == 5) 
-						disposeGame(window);
-						disposeJFrame(frame);
+	// ajout joueur
+
+//	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+
+	public static JFrame frame;
+	public static InterfaceJeu game;
+
+	public static void main(String[] args) throws InterruptedException {
+
+		game = new InterfaceJeu();
 	}
 
-	
 	public InterfaceJeu() {
 		
 		new AudioMainLoop();
 		initialize();
-
 	}
 
+	
 	private void initialize() {
-		
-		// FENETRE  *********************************************************
-		
+
+		frame = new JFrame();
 		frame.setAutoRequestFocus(false);
 		frame.setBounds(600, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,24 +57,23 @@ public class InterfaceJeu {
 		frame.setVisible(true);
 		frame.setResizable(false);
 		
-		
-		// AVION **************************************************************
-		
+		// Ajout de l'avion
+
+		Avion vMonAvion = new Avion();
 		vMonAvion.setBounds(260, 600, 60, 60);
 		frame.getContentPane().add(vMonAvion);
 		vMonAvion.setVisible(true);
-		
 
-		// AVION TIR *********************************************************
-		
+		// Ajout du tir de l'avion
+
+		JLabel labelTirAvion = new JLabel("");
 		labelTirAvion.setHorizontalAlignment(SwingConstants.CENTER);
 		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/avion-tir.gif")));
 		labelTirAvion.setBounds(260, 234, 60, 398);
 		frame.getContentPane().add(labelTirAvion);
-		
 
-		// DEPLACEMENT ET TIR ************************************************
-		
+		// deplacementAvion et tirAvion
+
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -129,10 +114,10 @@ public class InterfaceJeu {
 				}
 			}
 		});
-		
 
-		// FOND ********************************************************************************************************
-		
+		// fond
+
+		JLabel fondEcranJeu = new JLabel("");
 		fondEcranJeu.setLabelFor(frame);
 		fondEcranJeu.setBackground(Color.DARK_GRAY);
 		fondEcranJeu.setBounds(0, 0, 634, 711);
@@ -140,15 +125,19 @@ public class InterfaceJeu {
 		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
 		frame.getContentPane().add(fondEcranJeu);
 		labelTirAvion.setVisible(false);
-		
+		 
 
-		// METEORITE ******************************************************************************
+		// meteorites
 
+		SpawnMeteor spwn1 = new SpawnMeteor(frame, fondEcranJeu, vMonAvion);
 		spwn1.start();
-		spwn2.start();
 		
+		// BONUS
 
-//		JOUEUR **********************************************************************************************
+		SpawnBonus spwn2 = new SpawnBonus(frame, fondEcranJeu, vMonAvion);
+		spwn2.start();
+
+		// JOUEUR
 
 //		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
 //		LabelNomDuJoueur.setForeground(Color.WHITE);
@@ -156,10 +145,11 @@ public class InterfaceJeu {
 //		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
 //		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
+
 		
+		// SCORE
 
-		// GESTION SCORE ****************************************************************************
-
+		JLabel LabelScore = new JLabel("Score : " + Score.getScoreMeteor());
 		LabelScore.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelScore.setForeground(Color.WHITE);
 		LabelScore.setFont(new Font("Times New Roman", Font.BOLD, 17));
@@ -168,20 +158,16 @@ public class InterfaceJeu {
 
 		Timer timerScore = new Timer();
 		TimerTask taskScore = new TimerTask() {
-
 			@Override
 			public void run() {
-
 				LabelScore.setText("Score : " + Score.getScoreMeteor());
-
 			}
 		};
-
 		timerScore.schedule(taskScore, 50, 50);
 
-		
-		//GESTION VIE ************************************
+		// VIE
 
+		JLabel LabelNbVie = new JLabel("Vie : " + Avion.getNombreVie());
 		LabelNbVie.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelNbVie.setForeground(Color.WHITE);
 		LabelNbVie.setFont(new Font("Times New Roman", Font.BOLD, 17));
@@ -190,31 +176,18 @@ public class InterfaceJeu {
 
 		Timer timerVie = new Timer();
 		TimerTask taskVie = new TimerTask() {
-
 			@Override
 			public void run() {
-
 				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
-//				if (Avion.getNombreVie() < 1) {
-//					frame.dispose();
-//					timerVie.cancel();
-//					InterfaceGameOver.main(null);
-//				}
+				if (Avion.getNombreVie() < 1) {
+					timerVie.cancel();
+					timerScore.cancel();
+					InterfaceJeu.frame.setVisible(false);
+					InterfaceJeu.frame.setEnabled(false);
+					InterfaceGameOver.main(null);
+				}
 			}
 		};
-
 		timerVie.schedule(taskVie, 150, 150);
-		
-		
-		//  METHODES **********************************************
-	}
-	public static void disposeGame(InterfaceJeu window) {
-	    window.initialize();
-	    InterfaceJeu.main(null);
-	}
-	
-	public static void disposeJFrame(JFrame frame){
-	    frame.setVisible(false);
-	    frame.dispose();
 	}
 }
