@@ -1,9 +1,7 @@
 package cda.poo.music;
 
-import java.awt.Window;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -32,7 +30,7 @@ public class AudioMainLoop {
 			TimerTask taskVie = new TimerTask() {
 				@Override
 				public void run() {
-					if (Avion.getNombreVie() < 5) {
+					if (Avion.getNombreVie() < 1) {
 						clip.stop();
 						timerVie.cancel();
 						InterfaceGameOver.main(null);

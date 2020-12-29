@@ -204,6 +204,23 @@ public class InterfaceJeu {
 		LabelNbVie.setBounds(470, 0, 154, 48);
 		frame.getContentPane().add(LabelNbVie);
 
+		Timer timerVie = new Timer();
+		TimerTask taskVie = new TimerTask() {
+
+			@Override
+			public void run() {
+
+				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
+				if (Avion.getNombreVie() < 1) {
+					timerVie.cancel();
+					timerScore.cancel();
+					InterfaceGameOver.main(null);
+				}
+			}
+		};
+
+		timerVie.schedule(taskVie, 150, 150);
 		// **********************************************
 	}
 }
+
