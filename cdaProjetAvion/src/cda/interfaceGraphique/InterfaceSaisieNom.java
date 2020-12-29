@@ -87,7 +87,12 @@ public class InterfaceSaisieNom {
 
 					Joueur joueur = new Joueur(nomSaisi);
 					joueurActuel = joueur;
-					InterfaceJeu.main(null);
+					try {
+						InterfaceJeu.main(null);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					InterfaceAvantJeu.closeFrame();
 					frame.setVisible(false);
 				}

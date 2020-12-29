@@ -2,8 +2,6 @@ package cda.poo.music;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -24,23 +22,14 @@ public class Audio {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
-			clip.start();
-			
-			Timer timerVie = new Timer();
-			TimerTask taskVie = new TimerTask() {
-				@Override
-				public void run() {
-					if (Avion.getNombreVie() < 1) {
-						clip.stop();
-						timerVie.cancel();
-					}
-				}
-			};
-			timerVie.schedule(taskVie, 100, 100);
+			if (Avion.getNombreVie() > 0) {
+				clip.start();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
-	
-
 }
+//if (InterfaceJeu.game == null) {
+//spwn1.interrupt();
+//}

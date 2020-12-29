@@ -23,7 +23,6 @@ public class MeteoriteFeu extends Score {
 	public MeteoriteFeu(Avion vAvion) {
 
 		this.avion = vAvion;
-
 		xDepart = new Random().nextInt((680 - 40) + 1);
 		yDepart = 0;
 		width = 50;
@@ -55,7 +54,7 @@ public class MeteoriteFeu extends Score {
 			public void run() {
 				if (collision() && isEnabled()) {
 						new Audio(lien);
-						Avion.setNombreVie(Avion.getNombreVie() - 1);
+						Avion.setNombreVie(Avion.getNombreVie() - 2);
 						setEnabled(false);
 				}
 				setLocation(getX(), getY() + 1);
