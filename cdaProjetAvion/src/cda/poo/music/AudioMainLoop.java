@@ -11,7 +11,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import cda.interfaceGraphique.InterfaceGameOver;
 import cda.poo.objects.Avion;
 
 public class AudioMainLoop {
@@ -30,11 +29,9 @@ public class AudioMainLoop {
 			TimerTask timerTask = new TimerTask() {
 				@Override
 				public void run() {
-					if (Avion.getNombreVie() < 1) {
+					if (Avion.getNombreVie() < 5) {
 						clip.stop();
 						timer.cancel();
-						InterfaceGameOver.main(null);
-//						Arrays.asList(Window.getOwnerlessWindows()).forEach(e -> e.dispose());
 					}
 				}
 			};
@@ -49,7 +46,6 @@ public class AudioMainLoop {
 	}
 }
 
-//			timerScore.cancel();
 //			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 //			frame.setVisible(false); //you can't see me!
 //			frame.dispose();

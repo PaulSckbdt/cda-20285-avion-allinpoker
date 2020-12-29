@@ -58,7 +58,7 @@ public class MeteoriteIceberg extends Score {
 			public void run() {
 				if (collision() && isEnabled()) {
 					new Audio(lien);
-					Avion.setNombreVie(Avion.getNombreVie() - 1);
+					Avion.setNombreVie(Avion.getNombreVie() - 2);
 					setEnabled(false);
 			}
 				setLocation(getX(), getY() + 2);
