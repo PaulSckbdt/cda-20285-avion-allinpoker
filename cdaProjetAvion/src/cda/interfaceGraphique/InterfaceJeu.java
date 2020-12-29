@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import cda.poo.meteor.Score;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
+import cda.poo.objects.SpawnBonus;
 import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
@@ -158,6 +159,14 @@ public class InterfaceJeu {
 
 		// FIN METEORITES*************
 
+		// DEBUT BONUS
+		
+		SpawnBonus spwn2 = new SpawnBonus(frame, fondEcranJeu, vMonAvion);
+
+		spwn2.start();
+		
+		// FIN BONUS
+		
 		// DEBUT JOUEUR *************************************
 
 //		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
