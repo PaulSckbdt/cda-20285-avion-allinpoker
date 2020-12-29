@@ -30,7 +30,7 @@ public class Meteorite extends Score {
 		height = 23;
 
 		mepImage("/cda/poo/images/meteorite.png");
-		timerMeteorite();
+		timerMeteorite("/cda/poo/music/collision.wav");
 	}
 
 	public int getProfondeurY() {
@@ -52,26 +52,19 @@ public class Meteorite extends Score {
 		setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
-	private void timerMeteorite() {
+	private void timerMeteorite(String lien) {
+		
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
-
+			
 			@Override
 			public void run() {
-
-				if (collision()) {
-					Audio a = new Audio("/cda/poo/music/collision.wav");
-
-					if (isEnabled()) {
-						a.run();
-						Avion.setNombreVie(Avion.getNombreVie() - 1);
-						setEnabled(false);
-
-					}
-				}
-
+				if (collision() && isEnabled()) {
+					new Audio(lien);
+					Avion.setNombreVie(Avion.getNombreVie() - 1);
+					setEnabled(false);
+			}
 				setLocation(getX(), getY() + 2);
-
 				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 				}
@@ -108,3 +101,10 @@ public class Meteorite extends Score {
 		}
 	}
 }
+//if (collision()) {
+//					if (isEnabled()) {
+//						new Audio("/cda/poo/music/collision.wav");
+//						Avion.setNombreVie(Avion.getNombreVie() - 1);
+//						setEnabled(false);
+//					}
+//				}

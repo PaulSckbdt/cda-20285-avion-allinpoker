@@ -11,16 +11,13 @@ import javax.sound.sampled.Clip;
 
 import cda.poo.objects.Avion;
 
-public class Audio implements Runnable {
+public class Audio {
 
 	public String lienSon;
 
 	public Audio(String chemin) {
 		this.lienSon = chemin;
-	}
-
-	@Override
-	public void run() {
+		
 		try {
 			URL defaultSound = getClass().getResource(lienSon);
 			File soundFile = new File(defaultSound.toURI());
@@ -28,6 +25,7 @@ public class Audio implements Runnable {
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
+			
 			Timer timerVie = new Timer();
 			TimerTask taskVie = new TimerTask() {
 				@Override
@@ -43,5 +41,6 @@ public class Audio implements Runnable {
 			ex.printStackTrace();
 		}
 	}
+	
 
 }

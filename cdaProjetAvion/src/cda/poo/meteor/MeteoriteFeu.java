@@ -30,7 +30,7 @@ public class MeteoriteFeu extends Score {
 		height = 39;
 
 		mepImage("/cda/poo/images/meteorite-feu.png");
-		timerMeteoriteFeu();
+		timerMeteoriteFeu("/cda/poo/music/collision.wav");
 
 	}
 
@@ -47,33 +47,24 @@ public class MeteoriteFeu extends Score {
 
 	}
 
-	public void timerMeteoriteFeu() {
+	public void timerMeteoriteFeu(String lien) {
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
 
 			@Override
 			public void run() {
-
-				if (collision()) {
-					Audio a = new Audio("/cda/poo/music/collision.wav");
-
-					if (isEnabled()) {
-						Avion.setNombreVie(Avion.getNombreVie() - 2);
-						a.run();
+				if (collision() && isEnabled()) {
+						new Audio(lien);
+						Avion.setNombreVie(Avion.getNombreVie() - 1);
 						setEnabled(false);
-
-					}
 				}
-
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
 				}
 			}
 		};
-
 		timer.schedule(timerTask, 12, 12);
-
 	}
 
 	public Rectangle bounds() {

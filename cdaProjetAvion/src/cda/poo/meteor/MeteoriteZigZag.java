@@ -30,7 +30,7 @@ public class MeteoriteZigZag extends Score {
 		height = 31;
 
 		mepImage("/cda/poo/images/meteorite-zigzag.png");
-		timerMeteoriteZigZag();
+		timerMeteoriteZigZag("/cda/poo/music/collision.wav");
 	}
 
 	public int getProfondeurY() {
@@ -52,25 +52,19 @@ public class MeteoriteZigZag extends Score {
 		setHorizontalAlignment(SwingConstants.CENTER);
 	}
 	
-	public void timerMeteoriteZigZag() {
+	public void timerMeteoriteZigZag(String lien) {
 		
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
 
 			@Override
 			public void run() {
-
-				if (collision()) {
-					Audio a = new Audio("/cda/poo/music/collision.wav");
-
-					if (isEnabled()) {
-						a.run();
-						Avion.setNombreVie(Avion.getNombreVie() - 1);
-						setEnabled(false);
-					}
-				}
+				if (collision() && isEnabled()) {
+					new Audio(lien);
+					Avion.setNombreVie(Avion.getNombreVie() - 1);
+					setEnabled(false);
+			}
 				setLocation(getX(), getY() + 1);
-
 				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 				}
