@@ -26,19 +26,19 @@ public class AudioMainLoop {
 			clip.open(audioIn);
 			clip.start();
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
-			Timer timerVie = new Timer();
-			TimerTask taskVie = new TimerTask() {
+			Timer timer = new Timer();
+			TimerTask timerTask = new TimerTask() {
 				@Override
 				public void run() {
 					if (Avion.getNombreVie() < 1) {
 						clip.stop();
-						timerVie.cancel();
+						timer.cancel();
 						InterfaceGameOver.main(null);
 //						Arrays.asList(Window.getOwnerlessWindows()).forEach(e -> e.dispose());
 					}
 				}
 			};
-			timerVie.schedule(taskVie, 100, 100);
+			timer.schedule(timerTask, 100, 100);
 		} catch (UnsupportedAudioFileException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {

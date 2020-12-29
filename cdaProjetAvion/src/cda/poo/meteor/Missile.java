@@ -15,8 +15,8 @@ import cda.poo.objects.Avion;
 public class Missile extends Score {
 	public Avion avion;
 
-	public static int x;
-	public static int y;
+	public static int xDepart;
+	public static int yDepart;
 	public static int width;
 	public static int height;
 
@@ -24,48 +24,46 @@ public class Missile extends Score {
 
 		this.avion = vAvion;
 		Random r = new Random();
-		x = r.nextInt((690 - 30) + 1);
-		y = 0;
+		xDepart = r.nextInt((690 - 30) + 1);
+		yDepart = 0;
 		width = 40;
 		height = 40;
 
-		setBounds(x, y, width, height);
+		mepImage("/cda/poo/images/powerUpBomb.png");
+		timerMissile("/cda/poo/music/shoot.wav");
+	}
 
-		setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/powerUpBomb.png")));
-		setHorizontalAlignment(SwingConstants.CENTER);
+	private void timerMissile(String lien) {
 
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
 
 			@Override
 			public void run() {
-
-				if (collision()) {
-					Audio a = new Audio("/cda/poo/music/shoot.wav");
-
-					if (isEnabled()) {
-						a.run();
-						
-						setEnabled(false);
-
-					}
+				if (collision() && isEnabled()) {
+					Audio a = new Audio(lien);
+//						a.run();
+					setEnabled(false);
 				}
-
 				setLocation(getX(), getY() + 2);
-
 			}
 		};
-
 		timer.schedule(timerTask, 10, 10);
+	}
 
+	private void mepImage(String string) {
+
+		setBounds(xDepart, yDepart, width, height);
+		setIcon(new ImageIcon(InterfaceJeu.class.getResource(string)));
+		setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
 	public int getProfondeurY() {
-		return y + height;
+		return yDepart + height;
 	}
 
 	public int getProfondeurX() {
-		return x + width;
+		return xDepart + width;
 	}
 
 	public Rectangle bounds() {
@@ -74,13 +72,11 @@ public class Missile extends Score {
 
 	public boolean collision() {
 
-//		box1 : avion;
 		int avionX = avion.getX();
 		int avionY = avion.getY();
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
-//		box2 : missile
 		int missileX = getX();
 		int missileY = getY();
 		int missileW = getWidth();
