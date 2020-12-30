@@ -2,7 +2,6 @@ package cda.interfaceGraphique;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
@@ -28,7 +27,7 @@ public class InterfaceJeu {
 	ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
 	ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
 	ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
-	ImageIcon iAvionTir = new ImageIcon(Avion.class.getResource("cda/poo/images/avion-tir.gif"));
+//	ImageIcon iAvionTir = new ImageIcon(Avion.class.getResource("cda/poo/images/avion-tir.gif"));
 	
 
 	// ajout joueur
