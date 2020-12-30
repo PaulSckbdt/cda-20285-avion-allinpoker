@@ -93,7 +93,7 @@ public class InterfaceGameOver {
 
 		JLabel lblFondEcran = new JLabel("");
 		lblFondEcran
-				.setIcon(new ImageIcon(InterfaceGameOver.class.getResource("/cda/poo/images/gameOver (1).png")));
+				.setIcon(new ImageIcon(InterfaceGameOver.class.getResource("/cda/poo/images/gameOver.png")));
 		lblFondEcran.setBounds(0, -17, 634, 524);
 		frame.getContentPane().add(lblFondEcran);
 	}

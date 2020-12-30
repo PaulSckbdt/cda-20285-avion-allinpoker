@@ -17,9 +17,6 @@ public class AudioGameOver {
 			AudioInputStream audioInputStreamGameOver = AudioSystem.getAudioInputStream(soundFileGameOver);
 			Clip clipGameOver = AudioSystem.getClip();
 			clipGameOver.open(audioInputStreamGameOver);
-//			if (Avion.getNombreVie() < 1) {
-//				clipGameOver.start();
-//			}
 			clipGameOver.start();
 		} catch (Exception ex) {
 			ex.printStackTrace();
