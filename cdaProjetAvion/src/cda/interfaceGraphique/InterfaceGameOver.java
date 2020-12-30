@@ -49,7 +49,7 @@ public class InterfaceGameOver {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 642, 414);
+		frame.setBounds(100, 100, 652, 546);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -61,10 +61,10 @@ public class InterfaceGameOver {
 				InterfaceMenuDemarrer.main(null);
 			}
 		});
-		btnRecommencer.setForeground(Color.BLACK);
+		btnRecommencer.setForeground(Color.RED);
 		btnRecommencer.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnRecommencer.setBackground(Color.LIGHT_GRAY);
-		btnRecommencer.setBounds(28, 45, 167, 62);
+		btnRecommencer.setBackground(Color.DARK_GRAY);
+		btnRecommencer.setBounds(236, 410, 167, 62);
 		frame.getContentPane().add(btnRecommencer);
 
 		JButton btnScore = new JButton("Score");
@@ -73,10 +73,10 @@ public class InterfaceGameOver {
 				// interfacescore
 			}
 		});
-		btnScore.setForeground(Color.BLACK);
+		btnScore.setForeground(Color.RED);
 		btnScore.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnScore.setBackground(Color.LIGHT_GRAY);
-		btnScore.setBounds(28, 149, 167, 62);
+		btnScore.setBackground(Color.DARK_GRAY);
+		btnScore.setBounds(27, 410, 167, 62);
 		frame.getContentPane().add(btnScore);
 
 		JButton btnQuitter = new JButton("Quitter");
@@ -85,16 +85,16 @@ public class InterfaceGameOver {
 				System.exit(0);
 			}
 		});
-		btnQuitter.setForeground(Color.BLACK);
+		btnQuitter.setForeground(Color.RED);
 		btnQuitter.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		btnQuitter.setBackground(Color.LIGHT_GRAY);
-		btnQuitter.setBounds(28, 254, 167, 62);
+		btnQuitter.setBackground(Color.DARK_GRAY);
+		btnQuitter.setBounds(446, 410, 167, 62);
 		frame.getContentPane().add(btnQuitter);
 
 		JLabel lblFondEcran = new JLabel("");
 		lblFondEcran
-				.setIcon(new ImageIcon(InterfaceGameOver.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
-		lblFondEcran.setBounds(0, 0, 626, 375);
+				.setIcon(new ImageIcon(InterfaceGameOver.class.getResource("/cda/poo/images/gameOver (1).png")));
+		lblFondEcran.setBounds(0, -17, 634, 524);
 		frame.getContentPane().add(lblFondEcran);
 	}
 }

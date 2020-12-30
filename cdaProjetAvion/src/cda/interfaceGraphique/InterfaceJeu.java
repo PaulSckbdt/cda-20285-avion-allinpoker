@@ -1,8 +1,8 @@
 package cda.interfaceGraphique;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import cda.poo.meteor.Score;
+import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
 import cda.poo.objects.SpawnBonus;
@@ -27,12 +28,15 @@ public class InterfaceJeu {
 	ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
 	ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
 	ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
+	ImageIcon iAvionTir = new ImageIcon(Avion.class.getResource("cda/poo/images/avion-tir.gif"));
+	
 
 	// ajout joueur
 
 //	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	public static JFrame frame;
+	public static JFrame frameGameOver;
 	public static InterfaceJeu game;
 
 	public static void main(String[] args) throws InterruptedException {
@@ -49,6 +53,8 @@ public class InterfaceJeu {
 	
 	private void initialize() {
 
+		// fenetre principale
+		
 		frame = new JFrame();
 		frame.setAutoRequestFocus(false);
 		frame.setBounds(600, 100, 650, 750);
@@ -180,6 +186,7 @@ public class InterfaceJeu {
 			public void run() {
 				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
 				if (Avion.getNombreVie() < 1) {
+					new AudioGameOver();
 					timerVie.cancel();
 					timerScore.cancel();
 					InterfaceJeu.frame.setVisible(false);

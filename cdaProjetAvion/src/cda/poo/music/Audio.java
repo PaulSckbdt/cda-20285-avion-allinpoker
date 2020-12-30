@@ -30,6 +30,3 @@ public class Audio {
 		}
 	}
 }
-//if (InterfaceJeu.game == null) {
-//spwn1.interrupt();
-//}
