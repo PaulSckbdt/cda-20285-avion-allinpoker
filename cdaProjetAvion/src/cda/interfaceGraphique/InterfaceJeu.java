@@ -12,7 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import cda.poo.meteor.Meteorite;
+import cda.poo.meteor.MeteoriteFeu;
+import cda.poo.meteor.MeteoriteGlace;
+import cda.poo.meteor.MeteoriteIceberg;
+import cda.poo.meteor.MeteoriteZigZag;
 import cda.poo.meteor.Score;
+import cda.poo.music.Audio;
 import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
@@ -36,7 +42,8 @@ public class InterfaceJeu {
 	public static JFrame frame;
 	public static JFrame frameGameOver;
 	public static InterfaceJeu game;
-
+	public static boolean shooting = false;
+	
 	public static void main(String[] args) throws InterruptedException {
 
 		game = new InterfaceJeu();
@@ -79,6 +86,8 @@ public class InterfaceJeu {
 
 		// deplacementAvion et tirAvion
 
+		
+		
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -109,14 +118,17 @@ public class InterfaceJeu {
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()) {
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
 					labelTirAvion.setVisible(true);
+					shooting = true;
+					new Audio("/cda/poo/music/tirCut.wav");
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
 							labelTirAvion.setVisible(false);
+							shooting = false;
 						}
 					}, 270);
+					
 				}
-
 			}
 		});
 

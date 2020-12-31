@@ -30,6 +30,7 @@ public class MeteoriteIceberg extends Score {
 
 		mepImage("/cda/poo/images/meteorite-iceberg.png");
 		timerMeteoriteIceberg("/cda/poo/music/collision.wav");
+		timerMeteoriteDestruction("/cda/poo/music/destruction.wav");
 	}
 
 	public int getProfondeurY() {
@@ -45,7 +46,7 @@ public class MeteoriteIceberg extends Score {
 	}
 
 	public void mepImage(String lien) {
-		
+
 		setBounds(xDepart, yDepart, width, height);
 		setIcon(new ImageIcon(InterfaceJeu.class.getResource(lien)));
 		setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,11 +57,11 @@ public class MeteoriteIceberg extends Score {
 		TimerTask timerTask = new TimerTask() {
 			@Override
 			public void run() {
-				if (collision() && isEnabled()) {
+				if (collision() && isEnabled() ) {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 2);
 					setEnabled(false);
-			}
+				}
 				setLocation(getX(), getY() + 2);
 				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
@@ -68,6 +69,51 @@ public class MeteoriteIceberg extends Score {
 			}
 		};
 		timer.schedule(timerTask, 10, 10);
+	}
+
+	public void timerMeteoriteDestruction(String lien) {
+
+		Timer timer = new Timer();
+		TimerTask timerTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				if (collision() && isEnabled() && InterfaceJeu.shooting == true) {
+					new Audio(lien);
+					setEnabled(false);
+				}
+				setLocation(getX(), getY() + 2);
+			}
+		};
+		timer.schedule(timerTask, 10, 10);
+	}
+
+	public boolean destruction() {
+
+		int meteoriteX = getX();
+		int meteoriteY = getY();
+		int meteoriteW = getWidth();
+		int meteoriteH = getHeight();
+
+		int avionX = avion.getX();
+		int avionY = avion.getY() + 300;
+		int avionW = avion.getWidth();
+		int avionH = avion.getHeight();
+
+		// trop à droite
+		boolean droite = meteoriteX >= avionX + avionW;
+		// trop à gauche
+		boolean gauche = meteoriteX + meteoriteW <= avionX;
+		// trop à bas
+		boolean bas = meteoriteY >= avionY + avionH;
+		// trop à haut
+		boolean haut = meteoriteY + meteoriteH <= avionY;
+
+		if ((droite) || (gauche) || (bas) || (haut)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public boolean collision() {
