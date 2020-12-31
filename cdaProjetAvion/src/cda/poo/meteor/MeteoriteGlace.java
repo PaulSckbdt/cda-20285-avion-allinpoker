@@ -66,7 +66,7 @@ public class MeteoriteGlace extends Score {
 				}
 				setLocation(getX(), getY() + 2);
 				if (getY() == 710 && isEnabled()) {
-					Score.setScoreMeteor(Score.getScoreMeteor() + 3);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 				}
 			}
 		};
@@ -80,8 +80,9 @@ public class MeteoriteGlace extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && InterfaceJeu.shooting == true) {
+				if (collision() && isEnabled() && Missile.shootingActivated == true) {
 					new Audio(lien);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 					setEnabled(false);
 				}
 				setLocation(getX(), getY() + 2);

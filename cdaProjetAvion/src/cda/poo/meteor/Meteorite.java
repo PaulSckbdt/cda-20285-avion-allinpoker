@@ -81,8 +81,9 @@ public class Meteorite extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && InterfaceJeu.shooting == true) {
+				if (collision() && isEnabled() && Missile.shootingActivated == true) {
 					new Audio(lien);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 					 setEnabled(false);
 			   	}
 			 	setLocation(getX(), getY() + 2);

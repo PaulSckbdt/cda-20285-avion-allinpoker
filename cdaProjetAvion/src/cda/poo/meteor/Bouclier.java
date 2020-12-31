@@ -1,6 +1,8 @@
 package cda.poo.meteor;
 
 import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,17 +15,18 @@ import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class Bouclier extends Score {
+	
 	public Avion avion;
-
 	public static int xDepart;
 	public static int yDepart;
 	public static int width;
 	public static int height;
-
-	ImageIcon iAvionShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-shield.png"));
-	ImageIcon iAvionGaucheShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche-shield.png"));
-	ImageIcon iAvionDroiteShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite-shield.png"));
-
+	public static boolean bouclierActived = false;
+	public static int bouclierTime = 10000;
+	public static ImageIcon iAvionShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-shield.png"));
+	public static ImageIcon iAvionGaucheShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche-shield.png"));
+	public static ImageIcon iAvionDroiteShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite-shield.png")); 
+	
 	public Bouclier(Avion vAvion) {
 
 		this.avion = vAvion;
@@ -34,10 +37,11 @@ public class Bouclier extends Score {
 		height = 40;
 
 		mepImage("/cda/poo/images/powerUpShield.png");
-		timerBouclier("/cda/poo/music/bouclier.wav");
+		timerBouclier("/cda/poo/music/activation.wav");
+//		KeyListenerBouvlier();
 	}
 
-	private void timerBouclier(String lien) {
+	public void timerBouclier(String lien) {
 
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
@@ -45,41 +49,50 @@ public class Bouclier extends Score {
 			@Override
 			public void run() {
 				if (collision() && isEnabled()) {
-					Audio a = new Audio(lien);
-//						a.run();
-
-					// TEST CHANGEMENT DE PNG AU DEPLACEMENT //
-
-//						// Ajout de l'avion **************************
-//						Avion vMonAvion = new Avion();
-//						vMonAvion.setBounds(260, 600, 60, 60);
-//						vMonAvion.setVisible(true);
-//						
-//						addKeyListener(new KeyAdapter() {
+					new Audio(lien);
+					Missile.shootingActivated = true;
+//					KeyListenerBouvlier();
+					setEnabled(false);
+				}
+				setLocation(getX(), getY() + 2);
+			}
+		};
+		timer.schedule(timerTask, 10, 10);
+		new java.util.Timer().schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				Missile.shootingActivated = false;
+			}
+		}, bouclierTime);
+	}					
+		
+//		public void KeyListenerBouvlier() {
+//		
+//		InterfaceJeu.frame.addKeyListener(new KeyAdapter() {
 //							@Override
 //							public void keyPressed(KeyEvent e) {
-//								if (e.getKeyCode() == KeyEvent.VK_DOWN && 0 < vMonAvion.getX()) {
-//									vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
-//									vMonAvion.setIcon(iAvionShield);
-//									vMonAvion.setVisible(true);
+//								if (e.getKeyCode() == KeyEvent.VK_DOWN && 0 < InterfaceJeu.vMonAvion.getX()) {
+//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() - 15, InterfaceJeu.vMonAvion.getY());
+//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
+//									InterfaceJeu.vMonAvion.setVisible(true);
 //					
 //								}
-//								if (e.getKeyCode() == KeyEvent.VK_UP && 0 < vMonAvion.getX()) {
-//									vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
-//									vMonAvion.setIcon(iAvionShield);
-//									vMonAvion.setVisible(true);
+//								if (e.getKeyCode() == KeyEvent.VK_UP && 0 < InterfaceJeu.vMonAvion.getX()) {
+//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() - 15, InterfaceJeu.vMonAvion.getY());
+//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
+//									InterfaceJeu.vMonAvion.setVisible(true);
 //					
 //								}
-//								if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < vMonAvion.getX()) {
-//									vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
-//									vMonAvion.setIcon(iAvionGaucheShield);
-//									vMonAvion.setVisible(true);
+//								if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < InterfaceJeu.vMonAvion.getX()) {
+//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() - 15, InterfaceJeu.vMonAvion.getY());
+//									InterfaceJeu.vMonAvion.setIcon(iAvionGaucheShield);
+//									InterfaceJeu.vMonAvion.setVisible(true);
 //					
 //								}
-//								if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > vMonAvion.getX()) {
-//									vMonAvion.setLocation(vMonAvion.getX() + 15, vMonAvion.getY());
-//									vMonAvion.setIcon(iAvionDroiteShield);
-//									vMonAvion.setVisible(true);
+//								if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > InterfaceJeu.vMonAvion.getX()) {
+//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() + 15, InterfaceJeu.vMonAvion.getY());
+//									InterfaceJeu.vMonAvion.setIcon(iAvionDroiteShield);
+//									InterfaceJeu.vMonAvion.setVisible(true);
 //								}
 //							}
 //						});
@@ -88,27 +101,20 @@ public class Bouclier extends Score {
 //							@Override
 //							public void keyReleased(KeyEvent e) {
 //								if (e.getKeyCode() == KeyEvent.VK_UP) {
-//									vMonAvion.setIcon(iAvionShield);
+//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
 //								}
 //								if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-//									vMonAvion.setIcon(iAvionShield);
+//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
 //								}
 //								if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-//									vMonAvion.setIcon(iAvionShield);
+//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
 //								}
 //								if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-//									vMonAvion.setIcon(iAvionShield);
+//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
 //								}
 //							}
 //						});
-
-					setEnabled(false);
-				}
-				setLocation(getX(), getY() + 2);
-			}
-		};
-		timer.schedule(timerTask, 10, 10);
-	}
+//	}
 
 	private void mepImage(String string) {
 

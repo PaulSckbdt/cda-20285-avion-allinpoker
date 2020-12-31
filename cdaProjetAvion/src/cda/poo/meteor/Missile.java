@@ -19,6 +19,8 @@ public class Missile extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
+	public static boolean shootingActivated = false;
+	public static int shootingTime = 10000;
 
 	public Missile(Avion vAvion) {
 
@@ -30,7 +32,7 @@ public class Missile extends Score {
 		height = 40;
 
 		mepImage("/cda/poo/images/powerUpBomb.png");
-		timerMissile("/cda/poo/music/shoot.wav");
+		timerMissile("/cda/poo/music/activation.wav");
 	}
 
 	private void timerMissile(String lien) {
@@ -41,14 +43,20 @@ public class Missile extends Score {
 			@Override
 			public void run() {
 				if (collision() && isEnabled()) {
-					Audio a = new Audio(lien);
-//						a.run();
+					new Audio(lien);
+					Missile.shootingActivated = true;
 					setEnabled(false);
 				}
 				setLocation(getX(), getY() + 2);
 			}
 		};
 		timer.schedule(timerTask, 10, 10);
+		new java.util.Timer().schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				Missile.shootingActivated = false;
+			}
+		}, shootingTime);
 	}
 
 	private void mepImage(String string) {
