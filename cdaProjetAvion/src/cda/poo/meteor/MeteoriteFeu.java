@@ -65,10 +65,20 @@ public class MeteoriteFeu extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled()) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false) {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 2);
 					setEnabled(false);
+				}
+				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
+					new Audio("/cda/poo/music/pointUp.wav");
+					setEnabled(false);
+					new java.util.Timer().schedule(new java.util.TimerTask() {
+						@Override
+						public void run() {
+							Bouclier.bouclierActived = false;
+						}
+					}, Bouclier.bouclierTime);
 				}
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715 && isEnabled()) {

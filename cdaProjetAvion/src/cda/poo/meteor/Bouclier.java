@@ -50,8 +50,7 @@ public class Bouclier extends Score {
 			public void run() {
 				if (collision() && isEnabled()) {
 					new Audio(lien);
-					Missile.shootingActivated = true;
-//					KeyListenerBouvlier();
+					bouclierActived = true;
 					setEnabled(false);
 				}
 				setLocation(getX(), getY() + 2);

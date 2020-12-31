@@ -34,7 +34,7 @@ public class SpawnBonus extends Thread {
 
 			try {
 
-				Thread.sleep(20000);
+				Thread.sleep(2000);
 
 			} catch (Exception e) {
 				e.printStackTrace();
