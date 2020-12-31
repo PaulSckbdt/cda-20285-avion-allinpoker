@@ -10,8 +10,10 @@ public class Avion extends JLabel {
 	public final static int nombreVieInit = 5;
 	public static int nombreVie = nombreVieInit;
 	public static boolean isAlive = true;
-	ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
-
+	public static ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
+	public static ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
+	public static ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
+	public static ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
 	public static JLabel vAvion;
 
 	public Avion() {

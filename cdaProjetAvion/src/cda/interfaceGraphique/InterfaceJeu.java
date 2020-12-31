@@ -12,11 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import cda.poo.meteor.Meteorite;
-import cda.poo.meteor.MeteoriteFeu;
-import cda.poo.meteor.MeteoriteGlace;
-import cda.poo.meteor.MeteoriteIceberg;
-import cda.poo.meteor.MeteoriteZigZag;
+import cda.poo.meteor.Bouclier;
+import cda.poo.meteor.Missile;
 import cda.poo.meteor.Score;
 import cda.poo.music.Audio;
 import cda.poo.music.AudioGameOver;
@@ -27,22 +24,14 @@ import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
-	// Image des mouvements de l'avion
-
-	ImageIcon iAvion = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion.png"));
-	ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
-	ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
-	ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
-//	ImageIcon iAvionTir = new ImageIcon(Avion.class.getResource("cda/poo/images/avion-tir.gif"));
-
-	// ajout joueur
 
 //	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	public static JFrame frame;
 	public static JFrame frameGameOver;
 	public static InterfaceJeu game;
-	public static boolean shooting = false;
+	public static Avion vMonAvion;
+	public static JLabel labelTirAvion;
 	
 	public static void main(String[] args) throws InterruptedException {
 
@@ -70,61 +59,54 @@ public class InterfaceJeu {
 		// Ajout de l'avion
 
 		Avion vMonAvion = new Avion();
-		vMonAvion.setBounds(260, 600, 60, 60);
 		frame.getContentPane().add(vMonAvion);
-		vMonAvion.setVisible(true);
 
 		// Ajout du tir de l'avion
 
 		JLabel labelTirAvion = new JLabel("");
 		labelTirAvion.setHorizontalAlignment(SwingConstants.CENTER);
 		labelTirAvion.setIcon(
-				new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/imageonline-gifspeed-3297225.gif")));
+				new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/shooter.gif")));
 		labelTirAvion.setBounds(260, 338, 60, 269);
 		frame.getContentPane().add(labelTirAvion);
 		labelTirAvion.setVisible(false);
-
-		// deplacementAvion et tirAvion
-
+//		frame.addKeyListener(new Keylistener());
 		
+		
+		// deplacementAvion et tirAvion
 		
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP && 200 < vMonAvion.getY()) {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 15);
-					vMonAvion.setIcon(iAvionUp);
+					vMonAvion.setIcon(Avion.iAvionUp);
 					vMonAvion.setVisible(true);
-
 				}
 				if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
 					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
-					vMonAvion.setIcon(iAvion);
+					vMonAvion.setIcon(Avion.iAvion);
 					vMonAvion.setVisible(true);
-
 				}
 				if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < vMonAvion.getX()) {
 					vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
-					vMonAvion.setIcon(iAvionGauche);
+					vMonAvion.setIcon(Avion.iAvionGauche);
 					vMonAvion.setVisible(true);
-
 				}
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > vMonAvion.getX()) {
 					vMonAvion.setLocation(vMonAvion.getX() + 15, vMonAvion.getY());
-					vMonAvion.setIcon(iAvionDroite);
+					vMonAvion.setIcon(Avion.iAvionDroite);
 					vMonAvion.setVisible(true);
-
 				}
-				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()) {
+
+				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY() && Missile.shootingActivated == true) {
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
 					labelTirAvion.setVisible(true);
-					shooting = true;
 					new Audio("/cda/poo/music/tirCut.wav");
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
 							labelTirAvion.setVisible(false);
-							shooting = false;
 						}
 					}, 270);
 					
@@ -137,7 +119,7 @@ public class InterfaceJeu {
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN
 						|| e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					vMonAvion.setIcon(iAvion);
+					vMonAvion.setIcon(Avion.iAvion);
 				}
 			}
 		});

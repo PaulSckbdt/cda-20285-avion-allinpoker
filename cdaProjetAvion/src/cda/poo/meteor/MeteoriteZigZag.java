@@ -60,10 +60,20 @@ public class MeteoriteZigZag extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled()) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false) {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 1);
 					setEnabled(false);
+				}
+				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
+					new Audio("/cda/poo/music/pointUp.wav");
+					setEnabled(false);
+					new java.util.Timer().schedule(new java.util.TimerTask() {
+						@Override
+						public void run() {
+							Bouclier.bouclierActived = false;
+						}
+					}, Bouclier.bouclierTime);
 				}
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715 && isEnabled()) {
@@ -97,8 +107,9 @@ public class MeteoriteZigZag extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && InterfaceJeu.shooting == true) {
+				if (collision() && isEnabled() && Missile.shootingActivated == true) {
 					new Audio(lien);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 					setEnabled(false);
 				}
 				setLocation(getX(), getY() + 2);
