@@ -19,7 +19,7 @@ public class MeteoriteFeu extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
-
+	
 	public MeteoriteFeu(Avion vAvion) {
 
 		this.avion = vAvion;
@@ -30,9 +30,11 @@ public class MeteoriteFeu extends Score {
 
 		mepImage("/cda/poo/images/meteorite-feu.png");
 		timerMeteoriteFeu("/cda/poo/music/collision.wav");
-
+		timerMeteoriteDestruction("/cda/poo/music/destruction.wav");
 	}
 
+	
+	
 	public int getProfondeurY() {
 		return yDepart + height;
 	}
@@ -46,6 +48,17 @@ public class MeteoriteFeu extends Score {
 
 	}
 
+	public Rectangle bounds() {
+		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
+	}
+
+	public void mepImage(String lien) {
+
+		setBounds(xDepart, yDepart, width, height);
+		setIcon(new ImageIcon(InterfaceJeu.class.getResource(lien)));
+		setHorizontalAlignment(SwingConstants.CENTER);
+	}
+
 	public void timerMeteoriteFeu(String lien) {
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
@@ -53,9 +66,9 @@ public class MeteoriteFeu extends Score {
 			@Override
 			public void run() {
 				if (collision() && isEnabled()) {
-						new Audio(lien);
-						Avion.setNombreVie(Avion.getNombreVie() - 2);
-						setEnabled(false);
+					new Audio(lien);
+					Avion.setNombreVie(Avion.getNombreVie() - 2);
+					setEnabled(false);
 				}
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715 && isEnabled()) {
@@ -66,15 +79,50 @@ public class MeteoriteFeu extends Score {
 		timer.schedule(timerTask, 12, 12);
 	}
 
-	public Rectangle bounds() {
-		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
+
+	public void timerMeteoriteDestruction(String lien) {
+
+		Timer timer = new Timer();
+		TimerTask timerTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				if (collision() && isEnabled() && InterfaceJeu.shooting == true) {
+					new Audio(lien);
+					setEnabled(false);
+				}
+				setLocation(getX(), getY() + 2);
+			}
+		};
+		timer.schedule(timerTask, 10, 10);
 	}
 
-	public void mepImage(String lien) {
+	public boolean destruction() {
 
-		setBounds(xDepart, yDepart, width, height);
-		setIcon(new ImageIcon(InterfaceJeu.class.getResource(lien)));
-		setHorizontalAlignment(SwingConstants.CENTER);
+		int meteoriteX = getX();
+		int meteoriteY = getY();
+		int meteoriteW = getWidth();
+		int meteoriteH = getHeight();
+
+		int avionX = avion.getX();
+		int avionY = avion.getY() + 300;
+		int avionW = avion.getWidth();
+		int avionH = avion.getHeight();
+
+		// trop à droite
+		boolean droite = meteoriteX >= avionX + avionW;
+		// trop à gauche
+		boolean gauche = meteoriteX + meteoriteW <= avionX;
+		// trop à bas
+		boolean bas = meteoriteY >= avionY + avionH;
+		// trop à haut
+		boolean haut = meteoriteY + meteoriteH <= avionY;
+
+		if ((droite) || (gauche) || (bas) || (haut)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public boolean collision() {
