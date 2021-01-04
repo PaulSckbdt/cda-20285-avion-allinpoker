@@ -19,6 +19,7 @@ public class Meteorite extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
+	
 
 	public Meteorite(Avion vAvion) {
 
@@ -137,6 +138,7 @@ public class Meteorite extends Score {
 
 		int avionX = avion.getX();
 		int avionY = avion.getY();
+		int missileY = 350;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
@@ -152,7 +154,12 @@ public class Meteorite extends Score {
 		// trop à bas
 		boolean bas = meteoriteY >= avionY + avionH;
 		// trop à haut
-		boolean haut = meteoriteY + meteoriteH <= avionY;
+		boolean haut;
+		if (InterfaceJeu.isShooting == false) {
+			haut = meteoriteY + meteoriteH <= avionY;
+		} else {
+			haut = meteoriteY + meteoriteH <= missileY;
+		}
 
 		if ((droite) || (gauche) || (bas) || (haut)) {
 			return false;

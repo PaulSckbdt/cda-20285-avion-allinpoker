@@ -29,6 +29,7 @@ public class InterfaceJeu {
 	public static JFrame frameGameOver;
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
+	public static boolean isShooting;
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -99,6 +100,7 @@ public class InterfaceJeu {
 
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()
 						&& Missile.shootingActivated == true) {
+					isShooting = true;
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
 					if (Missile.shootingActivated ==  true) {
 					labelTirAvion.setVisible(true);
@@ -112,6 +114,7 @@ public class InterfaceJeu {
 						@Override
 						public void run() {
 								labelTirAvion.setVisible(false);
+								isShooting = false;
 						}
 					}, 510);
 					
