@@ -4,9 +4,6 @@ import javax.swing.JLabel;
 
 public class Score extends JLabel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static int scoreMeteor;
 

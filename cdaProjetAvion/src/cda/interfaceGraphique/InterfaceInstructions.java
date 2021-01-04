@@ -31,7 +31,6 @@ public class InterfaceInstructions {
 					window.frame.setResizable(false);
 
 				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		});

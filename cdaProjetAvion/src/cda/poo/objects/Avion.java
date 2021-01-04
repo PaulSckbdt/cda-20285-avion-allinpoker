@@ -29,7 +29,6 @@ public class Avion extends JLabel {
 
 		Timer bouclier = new Timer();
 		bouclier.schedule(new TimerTask() {
-
 			@Override
 			public void run() {
 				if (Bouclier.bouclierActived) {
@@ -51,18 +50,6 @@ public class Avion extends JLabel {
 
 	public static void setNombreVie(int nombreVie) {
 		Avion.nombreVie = nombreVie;
-	}
-
-	public void activationBouclier() throws InterruptedException {
-		Thread.sleep(10000);
-	}
-
-	public static void setAlive(boolean isAlive) {
-		Avion.isAlive = isAlive;
-	}
-
-	public Rectangle bounds() {
-		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
 
 }

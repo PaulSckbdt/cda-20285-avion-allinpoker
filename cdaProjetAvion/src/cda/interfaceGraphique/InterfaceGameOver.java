@@ -31,7 +31,6 @@ public class InterfaceGameOver {
 					InterfaceGameOver window = new InterfaceGameOver();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		});

@@ -1,8 +1,6 @@
 package cda.poo.meteor;
 
 import java.awt.Rectangle;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,7 +34,6 @@ public class Bouclier extends Score {
 
 		mepImage("/cda/poo/images/powerUpShield.png");
 		timerBouclier("/cda/poo/music/activation.wav");
-//		KeyListenerBouvlier();
 	}
 
 	public void timerBouclier(String lien) {
@@ -58,78 +55,13 @@ public class Bouclier extends Score {
 			}
 		};
 		timer.schedule(timerTask, 10, 10);
-
-//		new java.util.Timer().schedule(new java.util.TimerTask() {
-//			@Override
-//			public void run() {
-//				bouclierActived = false;
-//			}
-//		}, bouclierTime);
 	}
-
-//		public void KeyListenerBouvlier() {
-//		
-//		InterfaceJeu.frame.addKeyListener(new KeyAdapter() {
-//							@Override
-//							public void keyPressed(KeyEvent e) {
-//								if (e.getKeyCode() == KeyEvent.VK_DOWN && 0 < InterfaceJeu.vMonAvion.getX()) {
-//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() - 15, InterfaceJeu.vMonAvion.getY());
-//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
-//									InterfaceJeu.vMonAvion.setVisible(true);
-//					
-//								}
-//								if (e.getKeyCode() == KeyEvent.VK_UP && 0 < InterfaceJeu.vMonAvion.getX()) {
-//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() - 15, InterfaceJeu.vMonAvion.getY());
-//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
-//									InterfaceJeu.vMonAvion.setVisible(true);
-//					
-//								}
-//								if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < InterfaceJeu.vMonAvion.getX()) {
-//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() - 15, InterfaceJeu.vMonAvion.getY());
-//									InterfaceJeu.vMonAvion.setIcon(iAvionGaucheShield);
-//									InterfaceJeu.vMonAvion.setVisible(true);
-//					
-//								}
-//								if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > InterfaceJeu.vMonAvion.getX()) {
-//									InterfaceJeu.vMonAvion.setLocation(InterfaceJeu.vMonAvion.getX() + 15, InterfaceJeu.vMonAvion.getY());
-//									InterfaceJeu.vMonAvion.setIcon(iAvionDroiteShield);
-//									InterfaceJeu.vMonAvion.setVisible(true);
-//								}
-//							}
-//						});
-//						
-//						addKeyListener(new KeyAdapter() {
-//							@Override
-//							public void keyReleased(KeyEvent e) {
-//								if (e.getKeyCode() == KeyEvent.VK_UP) {
-//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
-//								}
-//								if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
-//								}
-//								if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
-//								}
-//								if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-//									InterfaceJeu.vMonAvion.setIcon(iAvionShield);
-//								}
-//							}
-//						});
-//	}
 
 	private void mepImage(String string) {
 
 		setBounds(xDepart, yDepart, width, height);
 		setIcon(new ImageIcon(InterfaceJeu.class.getResource(string)));
 		setHorizontalAlignment(SwingConstants.CENTER);
-	}
-
-	public int getProfondeurY() {
-		return yDepart + height;
-	}
-
-	public int getProfondeurX() {
-		return xDepart + width;
 	}
 
 	public Rectangle bounds() {

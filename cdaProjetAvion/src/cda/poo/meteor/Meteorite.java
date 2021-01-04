@@ -33,14 +33,6 @@ public class Meteorite extends Score {
 		timerMeteorite("/cda/poo/music/collision.wav");
 	}
 
-	public int getProfondeurY() {
-		return yDepart + height;
-	}
-
-	public int getProfondeurX() {
-		return xDepart + width;
-	}
-
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
@@ -68,19 +60,17 @@ public class Meteorite extends Score {
 					setEnabled(false);
 					setVisible(false);
 				}
-				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == true && InterfaceJeu.isShooting == false ) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
-
 					Bouclier.bouclierActived = false;
-
 				}
 
 				if (collision() && isEnabled() && InterfaceJeu.isShooting == true) {
 					new Audio("/cda/poo/music/destruction.wav");
-					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
 					setIcon(Missile.iExplosion);
 					setVisible(true);
 					try {
@@ -88,7 +78,6 @@ public class Meteorite extends Score {
 						setEnabled(false);
 						setVisible(false);
 					} catch (Exception e) {
-						// TODO: handle exception
 					}
 				}
 				setLocation(getX(), getY() + 2);

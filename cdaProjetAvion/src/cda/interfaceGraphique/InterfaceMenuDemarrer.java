@@ -29,7 +29,6 @@ public class InterfaceMenuDemarrer {
 					InterfaceMenuDemarrer.frame.setVisible(true);
 					InterfaceMenuDemarrer.frame.setResizable(false);
 				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		});

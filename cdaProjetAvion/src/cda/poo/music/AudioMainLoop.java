@@ -1,6 +1,5 @@
 package cda.poo.music;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -8,8 +7,6 @@ import java.util.TimerTask;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import cda.poo.objects.Avion;
 
@@ -36,12 +33,7 @@ public class AudioMainLoop {
 				}
 			};
 			timer.schedule(timerTask, 100, 100);
-		} catch (UnsupportedAudioFileException e1) {
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} catch (LineUnavailableException e1) {
-			e1.printStackTrace();
+		} catch (Exception e) {
 		}
 	}
 }

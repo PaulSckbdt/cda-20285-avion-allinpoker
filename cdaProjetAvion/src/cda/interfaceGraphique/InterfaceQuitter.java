@@ -30,7 +30,6 @@ public class InterfaceQuitter extends JFrame {
 					frame.setResizable(false);
 					vFrame = frame;
 				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		});
