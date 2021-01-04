@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import cda.poo.meteor.Bouclier;
 import cda.poo.meteor.Missile;
 import cda.poo.meteor.Score;
 import cda.poo.music.Audio;
@@ -28,13 +27,12 @@ public class InterfaceJeu {
 
 	public static JFrame frame;
 	public static JFrame frameGameOver;
-	public static InterfaceJeu game;
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
 
 	public static void main(String[] args) throws InterruptedException {
 
-		game = new InterfaceJeu();
+		new InterfaceJeu();
 	}
 
 	public InterfaceJeu() {
@@ -102,18 +100,25 @@ public class InterfaceJeu {
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()
 						&& Missile.shootingActivated == true) {
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
+					if (Missile.shootingActivated ==  true) {
 					labelTirAvion.setVisible(true);
+					}
+					Missile.nbShoot--;
 					new Audio("/cda/poo/music/tirCut.wav");
+					if (Missile.nbShoot < 1) {
+						Missile.shootingActivated = false;
+					}
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
-							labelTirAvion.setVisible(false);
+								labelTirAvion.setVisible(false);
 						}
-					}, 270);
-
+					}, 510);
+					
 				}
 			}
 		});
+		
 
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
@@ -192,7 +197,6 @@ public class InterfaceJeu {
 					timerScore.cancel();
 					SpawnMeteor.setDoSpawn(false);
 					SpawnBonus.setDoSpawn(false);
-					frame.removeAll();
 					InterfaceJeu.frame.setVisible(false);
 					InterfaceJeu.frame.setEnabled(false);
 					InterfaceGameOver.main(null);
@@ -201,14 +205,4 @@ public class InterfaceJeu {
 		};
 		timerVie.schedule(taskVie, 150, 150);
 	}
-
-	public void time() {
-		int X = 5;
-		for (int i = 0; i < 10; i++) {
-			long s = System.nanoTime();
-			while ((System.nanoTime() - s) / 1000000000 < X)
-				;
-		}
-	}
-
 }

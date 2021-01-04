@@ -19,8 +19,9 @@ public class Missile extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
-	public static boolean shootingActivated = false;
-	public static int shootingTime = 10000;
+	public static boolean shootingActivated = true;
+	public static int nbShoot;
+	
 
 	public Missile(Avion vAvion) {
 
@@ -39,24 +40,19 @@ public class Missile extends Score {
 
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
-
+			
 			@Override
 			public void run() {
 				if (collision() && isEnabled()) {
+					shootingActivated = true;
+					nbShoot += 3;
 					new Audio(lien);
-					Missile.shootingActivated = true;
 					setEnabled(false);
 				}
 				setLocation(getX(), getY() + 2);
 			}
 		};
 		timer.schedule(timerTask, 10, 10);
-		new java.util.Timer().schedule(new java.util.TimerTask() {
-			@Override
-			public void run() {
-				Missile.shootingActivated = false;
-			}
-		}, shootingTime);
 	}
 
 	private void mepImage(String string) {

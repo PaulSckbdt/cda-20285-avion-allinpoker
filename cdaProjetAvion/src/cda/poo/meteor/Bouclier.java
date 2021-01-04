@@ -60,7 +60,7 @@ public class Bouclier extends Score {
 		new java.util.Timer().schedule(new java.util.TimerTask() {
 			@Override
 			public void run() {
-				Missile.shootingActivated = false;
+				bouclierActived = false;
 			}
 		}, bouclierTime);
 	}					

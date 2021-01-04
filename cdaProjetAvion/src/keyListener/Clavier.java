@@ -9,9 +9,9 @@ import cda.poo.meteor.Missile;
 import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
-public class Keylistener implements KeyListener {
+public class Clavier implements KeyListener {
 
-	public Keylistener() {
+	public Clavier() {
 		
 		InterfaceJeu.frame.addKeyListener(this);
 	}

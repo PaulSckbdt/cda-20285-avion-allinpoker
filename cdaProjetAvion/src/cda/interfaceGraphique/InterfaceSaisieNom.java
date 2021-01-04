@@ -90,7 +90,6 @@ public class InterfaceSaisieNom {
 					try {
 						InterfaceJeu.main(null);
 					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					InterfaceAvantJeu.closeFrame();
