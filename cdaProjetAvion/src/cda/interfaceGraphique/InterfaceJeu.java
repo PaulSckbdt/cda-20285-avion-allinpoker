@@ -75,11 +75,10 @@ public class InterfaceJeu {
 
 		JLabel labelTirAvion = new JLabel("");
 		labelTirAvion.setHorizontalAlignment(SwingConstants.CENTER);
-		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/shooter.gif")));
-		labelTirAvion.setBounds(260, 338, 60, 269);
+		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/shooter2.gif")));
+		labelTirAvion.setBounds(vMonAvion.getX(), vMonAvion.getY(), vMonAvion.getWidth(), 269);
 		frame.getContentPane().add(labelTirAvion);
 		labelTirAvion.setVisible(false);
-//		frame.addKeyListener(new Keylistener());
 
 		// deplacementAvion et tirAvion
 
@@ -174,8 +173,8 @@ public class InterfaceJeu {
 
 		JLabel LabelMunitions = new JLabel("Munitions : 0");
 		LabelMunitions.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelMunitions.setForeground(Color.WHITE);
-		LabelMunitions.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		LabelMunitions.setForeground(Color.LIGHT_GRAY);
+		LabelMunitions.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
 		LabelMunitions.setBounds(480, 663, 154, 48);
 		frame.getContentPane().add(LabelMunitions);
 
@@ -187,6 +186,14 @@ public class InterfaceJeu {
 		LabelScore.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		LabelScore.setBounds(226, 0, 154, 48);
 		frame.getContentPane().add(LabelScore);
+		
+		// niveau 
+		
+		JLabel lblNiveau = new JLabel("Level  " + SpawnMeteor.niveauDifficulte);
+		lblNiveau.setForeground(Color.WHITE);
+		lblNiveau.setFont(new Font("Viner Hand ITC", Font.BOLD, 16));
+		lblNiveau.setBounds(10, 11, 122, 37);
+		frame.getContentPane().add(lblNiveau);
 
 		Timer timerScore = new Timer();
 		TimerTask taskScore = new TimerTask() {
@@ -194,6 +201,7 @@ public class InterfaceJeu {
 			public void run() {
 				LabelScore.setText("Score : " + Score.getScoreMeteor());
 				LabelMunitions.setText("Munitions : " + Missile.nbShoot);
+				lblNiveau.setText("Level  " + SpawnMeteor.niveauDifficulte);
 			}
 		};
 		timerScore.schedule(taskScore, 50, 50);
@@ -207,6 +215,7 @@ public class InterfaceJeu {
 		LabelNbVie.setBounds(470, 0, 154, 48);
 		frame.getContentPane().add(LabelNbVie);
 
+		
 		Timer timerVie = new Timer();
 		TimerTask taskVie = new TimerTask() {
 			@Override

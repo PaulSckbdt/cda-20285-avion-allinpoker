@@ -1,5 +1,6 @@
 package cda.poo.meteor;
 
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.Random;
 import java.util.Timer;
@@ -27,7 +28,7 @@ public class MeteoriteFeu extends Score {
 		yDepart = 0;
 		width = 50;
 		height = 39;
-
+		Missile.iExplosion.setImage(Missile.iExplosion.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
 		mepImage("/cda/poo/images/meteorite-feu.png");
 		timerMeteoriteFeu("/cda/poo/music/collision.wav");
 	}
@@ -72,7 +73,7 @@ public class MeteoriteFeu extends Score {
 					setIcon(Missile.iExplosion);
 					setVisible(true);
 					try {
-						Thread.sleep(250);
+						Thread.sleep(500);
 						setEnabled(false);
 						setVisible(false);
 					} catch (Exception e) {
@@ -91,7 +92,7 @@ public class MeteoriteFeu extends Score {
 
 		int avionX = avion.getX();
 		int avionY = avion.getY();
-		int missileY = 250;
+		int missileY = 1;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
