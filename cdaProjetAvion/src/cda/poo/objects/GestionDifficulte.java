@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GestionDifficulte {
-	private static int difficulte = 2500;
+	public static int difficulte = 2500;
 
 	Timer timerDifficulte = new Timer();
 	TimerTask taskDifficulte = new TimerTask() {
