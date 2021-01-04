@@ -64,10 +64,13 @@ public class Meteorite extends Score {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 1);
 					setEnabled(false);
+					setVisible(false);
 				}
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
+					setVisible(false);
+
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
@@ -94,10 +97,10 @@ public class Meteorite extends Score {
 				if (collision() && isEnabled() && Missile.shootingActivated == true) {
 					new Audio(lien);
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
-					 setEnabled(false);
-			   	}
-			 	setLocation(getX(), getY() + 2);
-			 }
+					setEnabled(false);
+				}
+				setLocation(getX(), getY() + 2);
+			}
 		};
 		timer.schedule(timerTask, 10, 10);
 	}
