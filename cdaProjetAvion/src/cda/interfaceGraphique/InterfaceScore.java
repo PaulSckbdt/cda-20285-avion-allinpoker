@@ -1,16 +1,11 @@
 package cda.interfaceGraphique;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,41 +13,21 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 public class InterfaceScore {
 
 	private static JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
 					new InterfaceScore();
 					InterfaceScore.frame.setVisible(true);
 					InterfaceScore.frame.setResizable(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public InterfaceScore() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private static void initialize() {
 		frame = new JFrame();
 		frame.setBounds(600, 100, 650, 750);
@@ -107,9 +82,4 @@ public class InterfaceScore {
 		frame.setVisible(false);
 		frame.dispose();
 	}
-	
-	
-	
-
-
 }
