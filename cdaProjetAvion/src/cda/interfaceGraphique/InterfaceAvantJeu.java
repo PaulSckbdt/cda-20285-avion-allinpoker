@@ -29,7 +29,6 @@ public class InterfaceAvantJeu {
 					window.frame.setResizable(false);
 
 				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		});
@@ -106,6 +105,5 @@ public class InterfaceAvantJeu {
 
 	public static void closeFrame() {
 		frame.setVisible(false);
-		frame.dispose();
 	}
 }

@@ -19,7 +19,6 @@ public class AudioGameOver {
 			clipGameOver.open(audioInputStreamGameOver);
 			clipGameOver.start();
 		} catch (Exception ex) {
-			ex.printStackTrace();
 		}
 	}
 }

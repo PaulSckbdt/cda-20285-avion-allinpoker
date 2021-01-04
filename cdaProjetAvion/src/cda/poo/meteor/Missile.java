@@ -64,14 +64,6 @@ public class Missile extends Score {
 		setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
-	public int getProfondeurY() {
-		return yDepart + height;
-	}
-
-	public int getProfondeurX() {
-		return xDepart + width;
-	}
-
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}

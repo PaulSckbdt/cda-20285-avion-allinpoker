@@ -26,7 +26,6 @@ public class Audio {
 				clip.start();
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
 		}
 	}
 }
