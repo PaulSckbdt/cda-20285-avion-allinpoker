@@ -70,7 +70,10 @@ public class InterfaceGameOver {
 		JButton btnScore = new JButton("Score");
 		btnScore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// interfacescore
+
+				frame.setVisible(false);
+				InterfaceScore.main(null);
+
 			}
 		});
 		btnScore.setForeground(Color.RED);
@@ -92,8 +95,7 @@ public class InterfaceGameOver {
 		frame.getContentPane().add(btnQuitter);
 
 		JLabel lblFondEcran = new JLabel("");
-		lblFondEcran
-				.setIcon(new ImageIcon(InterfaceGameOver.class.getResource("/cda/poo/images/gameOver.png")));
+		lblFondEcran.setIcon(new ImageIcon(InterfaceGameOver.class.getResource("/cda/poo/images/gameOver.png")));
 		lblFondEcran.setBounds(0, -17, 634, 524);
 		frame.getContentPane().add(lblFondEcran);
 	}

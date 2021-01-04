@@ -96,6 +96,14 @@ public class InterfaceMenuDemarrer {
 		// d�but bouttonScore ***********************************************
 
 		JButton bouttonScore = new JButton("Scores");
+		
+		bouttonScore.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				InterfaceScore.main(null);
+				frame.setVisible(false);
+			}
+		});
 		bouttonScore.setBackground(Color.LIGHT_GRAY);
 		bouttonScore.setForeground(Color.BLACK);
 		bouttonScore.setFont(new Font("Times New Roman", Font.BOLD, 20));
