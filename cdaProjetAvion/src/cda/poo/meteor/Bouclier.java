@@ -15,7 +15,7 @@ import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
 
 public class Bouclier extends Score {
-	
+
 	public Avion avion;
 	public static int xDepart;
 	public static int yDepart;
@@ -24,9 +24,7 @@ public class Bouclier extends Score {
 	public static boolean bouclierActived = false;
 	public static int bouclierTime = 10000;
 	public static ImageIcon iAvionShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-shield.png"));
-	public static ImageIcon iAvionGaucheShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche-shield.png"));
-	public static ImageIcon iAvionDroiteShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite-shield.png")); 
-	
+
 	public Bouclier(Avion vAvion) {
 
 		this.avion = vAvion;
@@ -48,23 +46,36 @@ public class Bouclier extends Score {
 
 			@Override
 			public void run() {
+				setLocation(getX(), getY() + 2);
 				if (collision() && isEnabled()) {
 					new Audio(lien);
 					bouclierActived = true;
-					setEnabled(false);
+					bouclierTime = 10000;
+					try {
+						setEnabled(false);
+						setVisible(false);
+
+						Thread.sleep(10000);
+						bouclierActived = false;
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
 				}
-				setLocation(getX(), getY() + 2);
+
 			}
 		};
 		timer.schedule(timerTask, 10, 10);
-		new java.util.Timer().schedule(new java.util.TimerTask() {
-			@Override
-			public void run() {
-				bouclierActived = false;
-			}
-		}, bouclierTime);
-	}					
-		
+
+//		new java.util.Timer().schedule(new java.util.TimerTask() {
+//			@Override
+//			public void run() {
+//				bouclierActived = false;
+//			}
+//		}, bouclierTime);
+	}
+
 //		public void KeyListenerBouvlier() {
 //		
 //		InterfaceJeu.frame.addKeyListener(new KeyAdapter() {

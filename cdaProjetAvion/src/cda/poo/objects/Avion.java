@@ -1,9 +1,13 @@
 package cda.poo.objects;
 
 import java.awt.Rectangle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import cda.poo.meteor.Bouclier;
 
 public class Avion extends JLabel {
 
@@ -14,10 +18,29 @@ public class Avion extends JLabel {
 	public static ImageIcon iAvionGauche = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-gauche.png"));
 	public static ImageIcon iAvionDroite = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-droite.png"));
 	public static ImageIcon iAvionUp = new ImageIcon(Avion.class.getResource("/cda/poo/images/avionUp.png"));
+	public static ImageIcon iAvionShield = new ImageIcon(Avion.class.getResource("/cda/poo/images/avion-shield.png"));
+	public static ImageIcon iAvionShieldGauche = new ImageIcon(
+			Avion.class.getResource("/cda/poo/images/avion-gauche-shield.png"));
+	public static ImageIcon iAvionShieldDroite = new ImageIcon(
+			Avion.class.getResource("/cda/poo/images/avion-droite-shield.png"));
 	public static JLabel vAvion;
 
 	public Avion() {
-		setIcon(iAvion);
+
+		Timer bouclier = new Timer();
+		bouclier.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				if (Bouclier.bouclierActived) {
+					setIcon(iAvionShield);
+				} else {
+					setIcon(iAvion);
+
+				}
+			}
+		}, 100, 100);
+
 		setBounds(260, 600, 60, 60);
 		setVisible(true);
 	}

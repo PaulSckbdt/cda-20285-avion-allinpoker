@@ -63,10 +63,14 @@ public class MeteoriteGlace extends Score {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 1);
 					setEnabled(false);
+					setVisible(false);
+
 				}
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
+					setVisible(false);
+
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
