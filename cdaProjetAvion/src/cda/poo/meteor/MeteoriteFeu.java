@@ -40,11 +40,6 @@ public class MeteoriteFeu extends Score {
 		return xDepart + width;
 	}
 
-	public int getXX() {
-		return getX();
-
-	}
-
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
 	}
@@ -62,25 +57,20 @@ public class MeteoriteFeu extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && Bouclier.bouclierActived == false && InterfaceJeu.isShooting == false) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false
+						&& InterfaceJeu.isShooting == false) {
 					new Audio(lien);
 					if (InterfaceJeu.isShooting == false) {
 						Avion.setNombreVie(Avion.getNombreVie() - 2);
 					}
 					setEnabled(false);
 					setVisible(false);
- 				}
+				}
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
-
-					new java.util.Timer().schedule(new java.util.TimerTask() {
-						@Override
-						public void run() {
-							Bouclier.bouclierActived = false;
-						}
-					}, Bouclier.bouclierTime);
+					Bouclier.bouclierActived = false;
 				}
 
 				if (collision() && isEnabled() && InterfaceJeu.isShooting == true) {
@@ -104,8 +94,6 @@ public class MeteoriteFeu extends Score {
 		};
 		timer.schedule(timerTask, 12, 12);
 	}
-
-
 
 	public boolean collision() {
 

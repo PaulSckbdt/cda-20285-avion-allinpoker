@@ -30,7 +30,7 @@ public class InterfaceJeu {
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
 	public static boolean isShooting;
-	
+
 	public static void main(String[] args) throws InterruptedException {
 
 		new InterfaceJeu();
@@ -114,7 +114,7 @@ public class InterfaceJeu {
 						@Override
 						public void run() {
 							labelTirAvion.setVisible(false);
-								isShooting = false;
+							isShooting = false;
 						}
 					}, 510);
 
@@ -160,6 +160,8 @@ public class InterfaceJeu {
 //		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
 //		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
+
+		// MUNITIONS
 
 		JLabel LabelMunitions = new JLabel("Munitions : 0");
 		LabelMunitions.setHorizontalAlignment(SwingConstants.CENTER);

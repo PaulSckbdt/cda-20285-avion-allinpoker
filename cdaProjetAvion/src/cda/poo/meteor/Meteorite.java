@@ -31,7 +31,6 @@ public class Meteorite extends Score {
 
 		mepImage("/cda/poo/images/meteorite.png");
 		timerMeteorite("/cda/poo/music/collision.wav");
-		timerMeteoriteDestruction("/cda/poo/music/destruction.wav");
 	}
 
 	public int getProfondeurY() {
@@ -60,18 +59,19 @@ public class Meteorite extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && Bouclier.bouclierActived == false && InterfaceJeu.isShooting == false) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false
+						&& InterfaceJeu.isShooting == false) {
 					new Audio(lien);
 					if (InterfaceJeu.isShooting == false) {
 						Avion.setNombreVie(Avion.getNombreVie() - 1);
 					}
 					setEnabled(false);
 					setVisible(false);
- 				}
+				}
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
-//					setVisible(false);
+					setVisible(false);
 					Score.setScoreMeteor(Score.getScoreMeteor() + 2);
 
 					Bouclier.bouclierActived = false;
@@ -100,16 +100,11 @@ public class Meteorite extends Score {
 		timer.schedule(timerTask, 10, 10);
 	}
 
-	public void timerMeteoriteDestruction(String lien) {
-
-		Timer timer = new Timer();
-		TimerTask timerTask = new TimerTask() {
-
 	public boolean collision() {
 
 		int avionX = avion.getX();
 		int avionY = avion.getY();
-		int missileY = 250 ;
+		int missileY = 250;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
