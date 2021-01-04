@@ -30,7 +30,6 @@ public class MeteoriteGlace extends Score {
 
 		mepImage("/cda/poo/images/meteorite-glace.png");
 		timerMeteoriteGlace("/cda/poo/music/collision.wav");
-		timerMeteoriteDestruction("/cda/poo/music/destruction.wav");
 	}
 
 	public int getProfondeurY() {
@@ -59,7 +58,7 @@ public class MeteoriteGlace extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && Bouclier.bouclierActived == false) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false && InterfaceJeu.isShooting == false) {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 1);
 					setEnabled(false);
@@ -78,6 +77,19 @@ public class MeteoriteGlace extends Score {
 						}
 					}, Bouclier.bouclierTime);
 				}
+				if (collision() && isEnabled() && InterfaceJeu.isShooting == true) {
+					new Audio("/cda/poo/music/destruction.wav");
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
+					setIcon(Missile.iExplosion);
+					setVisible(true);
+					try {
+						Thread.sleep(150);
+						setEnabled(false);
+						setVisible(false);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
 				setLocation(getX(), getY() + 2);
 				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
@@ -87,56 +99,12 @@ public class MeteoriteGlace extends Score {
 		timer.schedule(timerTask, 10, 10);
 	}
 
-	public void timerMeteoriteDestruction(String lien) {
-
-		Timer timer = new Timer();
-		TimerTask timerTask = new TimerTask() {
-
-			@Override
-			public void run() {
-				if (collision() && isEnabled() && Missile.shootingActivated == true) {
-					new Audio(lien);
-					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
-					setEnabled(false);
-				}
-				setLocation(getX(), getY() + 2);
-			}
-		};
-		timer.schedule(timerTask, 10, 10);
-	}
-
-	public boolean destruction() {
-
-		int meteoriteX = getX();
-		int meteoriteY = getY();
-		int meteoriteW = getWidth();
-		int meteoriteH = getHeight();
-
-		int avionX = avion.getX();
-		int avionY = avion.getY() + 300;
-		int avionW = avion.getWidth();
-		int avionH = avion.getHeight();
-
-		// trop à droite
-		boolean droite = meteoriteX >= avionX + avionW;
-		// trop à gauche
-		boolean gauche = meteoriteX + meteoriteW <= avionX;
-		// trop à bas
-		boolean bas = meteoriteY >= avionY + avionH;
-		// trop à haut
-		boolean haut = meteoriteY + meteoriteH <= avionY;
-
-		if ((droite) || (gauche) || (bas) || (haut)) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 
 	public boolean collision() {
 
 		int avionX = avion.getX();
 		int avionY = avion.getY();
+		int missileY = 250;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
@@ -152,7 +120,12 @@ public class MeteoriteGlace extends Score {
 		// trop à bas
 		boolean bas = meteoriteY >= avionY + avionH;
 		// trop à haut
-		boolean haut = meteoriteY + meteoriteH <= avionY;
+		boolean haut;
+		if (InterfaceJeu.isShooting == false) {
+			haut = meteoriteY + meteoriteH <= avionY;
+		} else {
+			haut = meteoriteY + meteoriteH <= missileY;
+		}
 
 		if ((droite) || (gauche) || (bas) || (haut)) {
 			return false;

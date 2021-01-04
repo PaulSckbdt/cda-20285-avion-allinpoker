@@ -30,7 +30,7 @@ public class InterfaceJeu {
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
 	public static boolean isShooting;
-
+	
 	public static void main(String[] args) throws InterruptedException {
 
 		new InterfaceJeu();
