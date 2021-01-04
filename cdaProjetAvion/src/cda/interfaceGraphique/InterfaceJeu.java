@@ -12,12 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import cda.poo.meteor.Bouclier;
 import cda.poo.meteor.Missile;
 import cda.poo.meteor.Score;
 import cda.poo.music.Audio;
 import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
+import cda.poo.objects.GestionDifficulte;
 import cda.poo.objects.SpawnBonus;
 import cda.poo.objects.SpawnMeteor;
 
@@ -59,8 +61,13 @@ public class InterfaceJeu {
 		Avion vMonAvion = new Avion();
 		frame.getContentPane().add(vMonAvion);
 		Avion.setNombreVie(5);
+		GestionDifficulte.difficulte = 2500;
+		Missile.nbShoot = 0;
+		Missile.shootingActivated = false;
+		Bouclier.bouclierActived = false;
 		SpawnBonus.setDoSpawn(true);
 		SpawnMeteor.setDoSpawn(true);
+		Score.setScoreMeteor(0);
 
 		// Ajout du tir de l'avion
 
