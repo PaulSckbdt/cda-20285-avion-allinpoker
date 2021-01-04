@@ -21,6 +21,8 @@ public class Missile extends Score {
 	public static int height;
 	public static boolean shootingActivated = false;
 	public static int nbShoot;
+	public static ImageIcon iExplosion = new ImageIcon(Avion.class.getResource("/cda/poo/images/explosion.png"));
+	
 
 	public Missile(Avion vAvion) {
 
@@ -47,6 +49,7 @@ public class Missile extends Score {
 					nbShoot += 3;
 					new Audio(lien);
 					setEnabled(false);
+					setVisible(false);
 				}
 				setLocation(getX(), getY() + 2);
 			}
@@ -75,10 +78,10 @@ public class Missile extends Score {
 
 	public boolean collision() {
 
-		int meteorX = avion.getX();
-		int meteorY = avion.getY();
-		int meteorW = avion.getWidth();
-		int meteorH = avion.getHeight();
+		int avionX = avion.getX();
+		int avionY = avion.getY();
+		int avionW = avion.getWidth();
+		int avionH = avion.getHeight();
 
 		int missileX = getX();
 		int missileY = getY();
@@ -86,13 +89,13 @@ public class Missile extends Score {
 		int missileH = getHeight();
 
 		// trop à droite
-		boolean droite = missileX >= meteorX + meteorW;
+		boolean droite = missileX >= avionX + avionW;
 		// trop à gauche
-		boolean gauche = missileX + missileW <= meteorX;
+		boolean gauche = missileX + missileW <= avionX;
 		// trop à bas
-		boolean bas = missileY >= meteorY + meteorH;
+		boolean bas = missileY >= avionY + avionH;
 		// trop à haut
-		boolean haut = missileY + missileH <= meteorY;
+		boolean haut = missileY + missileH <= avionY;
 
 		if ((droite) || (gauche) || (bas) || (haut)) {
 			return false;

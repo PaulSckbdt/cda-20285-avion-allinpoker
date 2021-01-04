@@ -30,7 +30,6 @@ public class MeteoriteIceberg extends Score {
 
 		mepImage("/cda/poo/images/meteorite-iceberg.png");
 		timerMeteoriteIceberg("/cda/poo/music/collision.wav");
-		timerMeteoriteDestruction("/cda/poo/music/destruction.wav");
 	}
 
 	public int getProfondeurY() {
@@ -57,14 +56,23 @@ public class MeteoriteIceberg extends Score {
 		TimerTask timerTask = new TimerTask() {
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && Bouclier.bouclierActived == false) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false && InterfaceJeu.isShooting == false) {
 					new Audio(lien);
+<<<<<<< HEAD
 					Avion.setNombreVie(Avion.getNombreVie() - 2);
 					setEnabled(false);
 					setVisible(false);
 
 				}
 
+=======
+					if (InterfaceJeu.isShooting == false) {
+						Avion.setNombreVie(Avion.getNombreVie() - 2);
+					}
+					setEnabled(false);
+					setVisible(false);
+ 				}
+>>>>>>> main
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
@@ -74,7 +82,23 @@ public class MeteoriteIceberg extends Score {
 					Bouclier.bouclierActived = false;
 
 				}
+<<<<<<< HEAD
 
+=======
+				if (collision() && isEnabled() && InterfaceJeu.isShooting == true) {
+					new Audio("/cda/poo/music/destruction.wav");
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
+					setIcon(Missile.iExplosion);
+					setVisible(true);
+					try {
+						Thread.sleep(250);
+						setEnabled(false);
+						setVisible(false);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
+>>>>>>> main
 				setLocation(getX(), getY() + 2);
 				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
@@ -84,6 +108,7 @@ public class MeteoriteIceberg extends Score {
 		timer.schedule(timerTask, 10, 10);
 	}
 
+<<<<<<< HEAD
 	public void timerMeteoriteDestruction(String lien) {
 
 		Timer timer = new Timer();
@@ -102,6 +127,8 @@ public class MeteoriteIceberg extends Score {
 		};
 		timer.schedule(timerTask, 10, 10);
 	}
+=======
+>>>>>>> main
 
 	public boolean destruction() {
 
@@ -135,6 +162,7 @@ public class MeteoriteIceberg extends Score {
 
 		int avionX = avion.getX();
 		int avionY = avion.getY();
+		int missileY = 250;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 
@@ -150,7 +178,12 @@ public class MeteoriteIceberg extends Score {
 		// trop à bas
 		boolean bas = meteoriteY >= avionY + avionH;
 		// trop à haut
-		boolean haut = meteoriteY + meteoriteH <= avionY;
+		boolean haut;
+		if (InterfaceJeu.isShooting == false) {
+			haut = meteoriteY + meteoriteH <= avionY;
+		} else {
+			haut = meteoriteY + meteoriteH <= missileY;
+		}
 
 		if ((droite) || (gauche) || (bas) || (haut)) {
 			return false;
