@@ -19,9 +19,8 @@ public class Missile extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
-	public static boolean shootingActivated = true;
+	public static boolean shootingActivated = false;
 	public static int nbShoot;
-	
 
 	public Missile(Avion vAvion) {
 
@@ -40,7 +39,7 @@ public class Missile extends Score {
 
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
-			
+
 			@Override
 			public void run() {
 				if (collision() && isEnabled()) {
@@ -76,10 +75,10 @@ public class Missile extends Score {
 
 	public boolean collision() {
 
-		int avionX = avion.getX();
-		int avionY = avion.getY();
-		int avionW = avion.getWidth();
-		int avionH = avion.getHeight();
+		int meteorX = avion.getX();
+		int meteorY = avion.getY();
+		int meteorW = avion.getWidth();
+		int meteorH = avion.getHeight();
 
 		int missileX = getX();
 		int missileY = getY();
@@ -87,13 +86,13 @@ public class Missile extends Score {
 		int missileH = getHeight();
 
 		// trop à droite
-		boolean droite = missileX >= avionX + avionW;
+		boolean droite = missileX >= meteorX + meteorW;
 		// trop à gauche
-		boolean gauche = missileX + missileW <= avionX;
+		boolean gauche = missileX + missileW <= meteorX;
 		// trop à bas
-		boolean bas = missileY >= avionY + avionH;
+		boolean bas = missileY >= meteorY + meteorH;
 		// trop à haut
-		boolean haut = missileY + missileH <= avionY;
+		boolean haut = missileY + missileH <= meteorY;
 
 		if ((droite) || (gauche) || (bas) || (haut)) {
 			return false;

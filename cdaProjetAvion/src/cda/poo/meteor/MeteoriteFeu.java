@@ -19,7 +19,7 @@ public class MeteoriteFeu extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
-	
+
 	public MeteoriteFeu(Avion vAvion) {
 
 		this.avion = vAvion;
@@ -33,8 +33,6 @@ public class MeteoriteFeu extends Score {
 		timerMeteoriteDestruction("/cda/poo/music/destruction.wav");
 	}
 
-	
-	
 	public int getProfondeurY() {
 		return yDepart + height;
 	}
@@ -76,14 +74,12 @@ public class MeteoriteFeu extends Score {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
 
-					new java.util.Timer().schedule(new java.util.TimerTask() {
-						@Override
-						public void run() {
-							Bouclier.bouclierActived = false;
-						}
-					}, Bouclier.bouclierTime);
+					Bouclier.bouclierActived = false;
+
 				}
+
 				setLocation(getX(), getY() + 1);
 				if (getY() == 715 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
@@ -92,7 +88,6 @@ public class MeteoriteFeu extends Score {
 		};
 		timer.schedule(timerTask, 12, 12);
 	}
-
 
 	public void timerMeteoriteDestruction(String lien) {
 
@@ -105,6 +100,7 @@ public class MeteoriteFeu extends Score {
 					new Audio(lien);
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 					setEnabled(false);
+					setVisible(false);
 				}
 				setLocation(getX(), getY() + 2);
 			}

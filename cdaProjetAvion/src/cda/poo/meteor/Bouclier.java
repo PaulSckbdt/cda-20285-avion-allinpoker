@@ -50,17 +50,8 @@ public class Bouclier extends Score {
 				if (collision() && isEnabled()) {
 					new Audio(lien);
 					bouclierActived = true;
-					bouclierTime = 10000;
-					try {
-						setEnabled(false);
-						setVisible(false);
-
-						Thread.sleep(10000);
-						bouclierActived = false;
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					setEnabled(false);
+					setVisible(false);
 
 				}
 

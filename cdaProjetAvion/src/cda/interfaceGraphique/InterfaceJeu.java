@@ -100,8 +100,8 @@ public class InterfaceJeu {
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()
 						&& Missile.shootingActivated == true) {
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
-					if (Missile.shootingActivated ==  true) {
-					labelTirAvion.setVisible(true);
+					if (Missile.shootingActivated == true) {
+						labelTirAvion.setVisible(true);
 					}
 					Missile.nbShoot--;
 					new Audio("/cda/poo/music/tirCut.wav");
@@ -111,14 +111,13 @@ public class InterfaceJeu {
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
-								labelTirAvion.setVisible(false);
+							labelTirAvion.setVisible(false);
 						}
 					}, 510);
-					
+
 				}
 			}
 		});
-		
 
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
@@ -159,6 +158,13 @@ public class InterfaceJeu {
 //		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
 //		frame.getContentPane().add(LabelNomDuJoueur);
 
+		JLabel LabelMunitions = new JLabel("Munitions : 0");
+		LabelMunitions.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelMunitions.setForeground(Color.WHITE);
+		LabelMunitions.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		LabelMunitions.setBounds(480, 663, 154, 48);
+		frame.getContentPane().add(LabelMunitions);
+
 		// SCORE
 
 		JLabel LabelScore = new JLabel("Score : " + Score.getScoreMeteor());
@@ -173,6 +179,7 @@ public class InterfaceJeu {
 			@Override
 			public void run() {
 				LabelScore.setText("Score : " + Score.getScoreMeteor());
+				LabelMunitions.setText("Munitions : " + Missile.nbShoot);
 			}
 		};
 		timerScore.schedule(taskScore, 50, 50);

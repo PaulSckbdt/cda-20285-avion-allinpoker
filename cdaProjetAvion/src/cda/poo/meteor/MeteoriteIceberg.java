@@ -59,23 +59,22 @@ public class MeteoriteIceberg extends Score {
 			public void run() {
 				if (collision() && isEnabled() && Bouclier.bouclierActived == false) {
 					new Audio(lien);
-					Avion.setNombreVie(Avion.getNombreVie() -2);
+					Avion.setNombreVie(Avion.getNombreVie() - 2);
 					setEnabled(false);
 					setVisible(false);
 
 				}
+
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
 
-					new java.util.Timer().schedule(new java.util.TimerTask() {
-						@Override
-						public void run() {
-							Bouclier.bouclierActived = false;
-						}
-					}, Bouclier.bouclierTime);
+					Bouclier.bouclierActived = false;
+
 				}
+
 				setLocation(getX(), getY() + 2);
 				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
@@ -96,6 +95,7 @@ public class MeteoriteIceberg extends Score {
 					new Audio(lien);
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 					setEnabled(false);
+					setVisible(false);
 				}
 				setLocation(getX(), getY() + 2);
 			}

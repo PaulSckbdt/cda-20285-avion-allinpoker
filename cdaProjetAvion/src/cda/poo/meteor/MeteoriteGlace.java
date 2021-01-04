@@ -70,14 +70,11 @@ public class MeteoriteGlace extends Score {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
+					Bouclier.bouclierActived = false;
 
-					new java.util.Timer().schedule(new java.util.TimerTask() {
-						@Override
-						public void run() {
-							Bouclier.bouclierActived = false;
-						}
-					}, Bouclier.bouclierTime);
 				}
+
 				setLocation(getX(), getY() + 2);
 				if (getY() == 710 && isEnabled()) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
@@ -98,6 +95,7 @@ public class MeteoriteGlace extends Score {
 					new Audio(lien);
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
 					setEnabled(false);
+					setVisible(false);
 				}
 				setLocation(getX(), getY() + 2);
 			}

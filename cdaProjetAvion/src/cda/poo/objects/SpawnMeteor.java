@@ -28,7 +28,7 @@ public class SpawnMeteor extends Thread {
 		avion = vAvion;
 		SpawnMeteor.frame = vFrame;
 		SpawnMeteor.fondEcran = vFondEcran;
-	
+
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class SpawnMeteor extends Thread {
 //			int typeMeteorite = 4;
 
 			switch (typeMeteorite) {
-			
+
 			case 0:
 				Meteorite meteorBasic = new Meteorite(avion);
 				frame.getContentPane().add(meteorBasic).setVisible(true);
