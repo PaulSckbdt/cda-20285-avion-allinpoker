@@ -10,12 +10,12 @@ import cda.poo.meteor.MeteoriteFeu;
 import cda.poo.meteor.MeteoriteGlace;
 import cda.poo.meteor.MeteoriteIceberg;
 import cda.poo.meteor.MeteoriteZigZag;
+import cda.poo.meteor.Score;
 
 public class SpawnMeteor extends Thread {
 	public static JFrame frame;
 	public static JLabel fondEcran;
-	public int difficulte;
-	public static GestionDifficulte gestionDiff = new GestionDifficulte();
+	public static int niveauDifficulte;
 	public Avion avion;
 	public static boolean doSpawn = true;
 
@@ -28,76 +28,144 @@ public class SpawnMeteor extends Thread {
 		avion = vAvion;
 		SpawnMeteor.frame = vFrame;
 		SpawnMeteor.fondEcran = vFondEcran;
-
 	}
 
 	@Override
 	public void run() {
 
 		while (doSpawn) {
+			
+			int level1 = 0;
+			int level2 = new Random().nextInt(1);
+			int level3 = new Random().nextInt(2);
+			int level4 = new Random().nextInt(3);
+			int level5 = new Random().nextInt(4);
 
-			int typeMeteorite = new Random().nextInt(5);
-//			int typeMeteorite = 4;
+			if (Score.getScoreMeteor() < 10) {
+				setDifficulte(1);
+				switch (level1) {
+				case 0:
+					Meteorite meteorBasic = new Meteorite(avion);
+					frame.getContentPane().add(meteorBasic).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				}
+			}
 
-			switch (typeMeteorite) {
+			if (Score.getScoreMeteor() > 10 && Score.getScoreMeteor() < 20) {
+				setDifficulte(2);
+				switch (level2) {
+				
+				case 0:
+					Meteorite meteorBasic = new Meteorite(avion);
+					frame.getContentPane().add(meteorBasic).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				case 1:
+					MeteoriteFeu meteorFeu = new MeteoriteFeu(avion);
+					frame.getContentPane().add(meteorFeu).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				}
+			}
 
-			case 0:
-				Meteorite meteorBasic = new Meteorite(avion);
-				frame.getContentPane().add(meteorBasic).setVisible(true);
-				frame.getContentPane().add(fondEcran).setVisible(true);
-				break;
+			if (Score.getScoreMeteor() > 20 && Score.getScoreMeteor() < 30) {
+				setDifficulte(3);
+				switch (level3) {
+				case 0:
+					Meteorite meteorBasic = new Meteorite(avion);
+					frame.getContentPane().add(meteorBasic).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				case 1:
+					MeteoriteFeu meteorFeu = new MeteoriteFeu(avion);
+					frame.getContentPane().add(meteorFeu).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				case 2:
+					MeteoriteGlace meteorGlace = new MeteoriteGlace(avion);
+					frame.getContentPane().add(meteorGlace).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				}
+			}
 
-			case 1:
-				MeteoriteFeu meteorFeu = new MeteoriteFeu(avion);
-				frame.getContentPane().add(meteorFeu).setVisible(true);
-				frame.getContentPane().add(fondEcran).setVisible(true);
-				break;
+			if (Score.getScoreMeteor() > 30 && Score.getScoreMeteor() < 40) {
+				setDifficulte(4);
+				switch (level4) {
+				case 0:
+					Meteorite meteorBasic = new Meteorite(avion);
+					frame.getContentPane().add(meteorBasic).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				case 1:
+					MeteoriteFeu meteorFeu = new MeteoriteFeu(avion);
+					frame.getContentPane().add(meteorFeu).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				case 2:
+					MeteoriteGlace meteorGlace = new MeteoriteGlace(avion);
+					frame.getContentPane().add(meteorGlace).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				case 3:
+					MeteoriteZigZag meteorZigZag = new MeteoriteZigZag(avion);
+					frame.getContentPane().add(meteorZigZag).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				}
+			}
 
-			case 2:
-				MeteoriteGlace meteorGlace = new MeteoriteGlace(avion);
-				frame.getContentPane().add(meteorGlace).setVisible(true);
-				frame.getContentPane().add(fondEcran).setVisible(true);
-				break;
+			if (Score.getScoreMeteor() > 40) {
+				setDifficulte(5);
+				switch (level5) {
+				case 0:
+					Meteorite meteorBasic = new Meteorite(avion);
+					frame.getContentPane().add(meteorBasic).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
 
-			case 3:
-				MeteoriteZigZag meteorZigZag = new MeteoriteZigZag(avion);
-				frame.getContentPane().add(meteorZigZag).setVisible(true);
-				frame.getContentPane().add(fondEcran).setVisible(true);
-				break;
+				case 1:
+					MeteoriteFeu meteorFeu = new MeteoriteFeu(avion);
+					frame.getContentPane().add(meteorFeu).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
 
-			case 4:
-				MeteoriteIceberg meteorIceberg = new MeteoriteIceberg(avion);
-				frame.getContentPane().add(meteorIceberg).setVisible(true);
-				frame.getContentPane().add(fondEcran).setVisible(true);
-				break;
+				case 2:
+					MeteoriteGlace meteorGlace = new MeteoriteGlace(avion);
+					frame.getContentPane().add(meteorGlace).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+
+				case 3:
+					MeteoriteZigZag meteorZigZag = new MeteoriteZigZag(avion);
+					frame.getContentPane().add(meteorZigZag).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+
+				case 4:
+					MeteoriteIceberg meteorIceberg = new MeteoriteIceberg(avion);
+					frame.getContentPane().add(meteorIceberg).setVisible(true);
+					frame.getContentPane().add(fondEcran).setVisible(true);
+				}
 			}
 
 			try {
-
-				Thread.sleep(GestionDifficulte.getDifficulte());
+				if (Score.getScoreMeteor() < 10) {
+					Thread.sleep(1000);
+				}
+				if (Score.getScoreMeteor() > 10 && Score.getScoreMeteor() < 20) {
+					Thread.sleep(1500);
+				}
+				if (Score.getScoreMeteor() > 20 && Score.getScoreMeteor() < 30) {
+					Thread.sleep(2000);
+				}
+				if (Score.getScoreMeteor() > 30 && Score.getScoreMeteor() < 40) {
+					Thread.sleep(2500);
+				}
+				if (Score.getScoreMeteor() > 40 && Score.getScoreMeteor() < 50) {
+					Thread.sleep(3000);
+				}
+				if (Score.getScoreMeteor() > 50 && Score.getScoreMeteor() < 60) {
+					Thread.sleep(2500);
+				}
+				if (Score.getScoreMeteor() > 60) {
+					Thread.sleep(2000);
+				}
 
 			} catch (Exception e) {
-				e.printStackTrace();
 			}
-
 		}
-
 	}
 
-	public int getDifficulte() {
-		return difficulte;
+	public void setDifficulte(int niveauDifficulte) {
+		SpawnMeteor.niveauDifficulte = niveauDifficulte;
 	}
-
-	public void setDifficulte(int difficulte) {
-		this.difficulte = difficulte;
-	}
-
-	public static GestionDifficulte getGestionDiff() {
-		return gestionDiff;
-	}
-
-	public static void setGestionDiff(GestionDifficulte gestionDiff) {
-		SpawnMeteor.gestionDiff = gestionDiff;
-	};
 
 }

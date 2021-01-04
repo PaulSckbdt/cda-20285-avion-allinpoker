@@ -1,11 +1,14 @@
 package cda.poo.meteor;
 
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+
 import cda.interfaceGraphique.InterfaceJeu;
 import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
@@ -24,6 +27,7 @@ public class MeteoriteZigZag extends Score {
 		yDepart = 0;
 		width = 40;
 		height = 31;
+		Missile.iExplosion.setImage(Missile.iExplosion.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
 		mepImage("/cda/poo/images/meteorite-zigzag.png");
 		timerMeteoriteZigZag("/cda/poo/music/collision.wav");
 	}
@@ -67,7 +71,7 @@ public class MeteoriteZigZag extends Score {
 
 					Score.setScoreMeteor(Score.getScoreMeteor() + 4);
 					try {
-						Thread.sleep(250);
+						Thread.sleep(500);
 						setEnabled(false);
 						setVisible(false);
 					} catch (Exception e) {
@@ -98,7 +102,7 @@ public class MeteoriteZigZag extends Score {
 	public boolean collision() {
 		int avionX = avion.getX();
 		int avionY = avion.getY();
-		int missileY = 250;
+		int missileY = 1;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 		int meteoriteX = getX();

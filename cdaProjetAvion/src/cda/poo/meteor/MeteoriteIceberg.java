@@ -1,5 +1,6 @@
 package cda.poo.meteor;
 
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.Random;
 import java.util.Timer;
@@ -23,6 +24,7 @@ public class MeteoriteIceberg extends Score {
 		yDepart = 0;
 		width = 80;
 		height = 62;
+		Missile.iExplosion.setImage(Missile.iExplosion.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
 		mepImage("/cda/poo/images/meteorite-iceberg.png");
 		timerMeteoriteIceberg("/cda/poo/music/collision.wav");
 	}
@@ -66,7 +68,7 @@ public class MeteoriteIceberg extends Score {
 					setIcon(Missile.iExplosion);
 					setVisible(true);
 					try {
-						Thread.sleep(250);
+						Thread.sleep(500);
 						setEnabled(false);
 						setVisible(false);
 					} catch (Exception e) {
@@ -85,7 +87,7 @@ public class MeteoriteIceberg extends Score {
 	public boolean collision() {
 		int avionX = avion.getX();
 		int avionY = avion.getY();
-		int missileY = 250;
+		int missileY = 1;
 		int avionW = avion.getWidth();
 		int avionH = avion.getHeight();
 		int meteoriteX = getX();

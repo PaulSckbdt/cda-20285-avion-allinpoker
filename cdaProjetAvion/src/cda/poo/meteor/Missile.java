@@ -21,8 +21,7 @@ public class Missile extends Score {
 	public static int height;
 	public static boolean shootingActivated = false;
 	public static int nbShoot;
-	public static ImageIcon iExplosion = new ImageIcon(Avion.class.getResource("/cda/poo/images/explosion.png"));
-	
+	public static ImageIcon iExplosion = new ImageIcon(Avion.class.getResource("/cda/poo/images/explosion.gif"));
 
 	public Missile(Avion vAvion) {
 
@@ -32,7 +31,6 @@ public class Missile extends Score {
 		yDepart = 0;
 		width = 40;
 		height = 40;
-
 		mepImage("/cda/poo/images/powerUpBomb.png");
 		timerMissile("/cda/poo/music/activation.wav");
 	}
