@@ -24,7 +24,6 @@ import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
-
 //	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	public static JFrame frame;
@@ -32,7 +31,7 @@ public class InterfaceJeu {
 	public static InterfaceJeu game;
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
-	
+
 	public static void main(String[] args) throws InterruptedException {
 
 		game = new InterfaceJeu();
@@ -60,21 +59,22 @@ public class InterfaceJeu {
 
 		Avion vMonAvion = new Avion();
 		frame.getContentPane().add(vMonAvion);
+		Avion.setNombreVie(5);
+		SpawnBonus.setDoSpawn(true);
+		SpawnMeteor.setDoSpawn(true);
 
 		// Ajout du tir de l'avion
 
 		JLabel labelTirAvion = new JLabel("");
 		labelTirAvion.setHorizontalAlignment(SwingConstants.CENTER);
-		labelTirAvion.setIcon(
-				new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/shooter.gif")));
+		labelTirAvion.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/shooter.gif")));
 		labelTirAvion.setBounds(260, 338, 60, 269);
 		frame.getContentPane().add(labelTirAvion);
 		labelTirAvion.setVisible(false);
 //		frame.addKeyListener(new Keylistener());
-		
-		
+
 		// deplacementAvion et tirAvion
-		
+
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -99,7 +99,8 @@ public class InterfaceJeu {
 					vMonAvion.setVisible(true);
 				}
 
-				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY() && Missile.shootingActivated == true) {
+				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()
+						&& Missile.shootingActivated == true) {
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
 					labelTirAvion.setVisible(true);
 					new Audio("/cda/poo/music/tirCut.wav");
@@ -109,7 +110,7 @@ public class InterfaceJeu {
 							labelTirAvion.setVisible(false);
 						}
 					}, 270);
-					
+
 				}
 			}
 		});
@@ -189,6 +190,9 @@ public class InterfaceJeu {
 					new AudioGameOver();
 					timerVie.cancel();
 					timerScore.cancel();
+					SpawnMeteor.setDoSpawn(false);
+					SpawnBonus.setDoSpawn(false);
+					frame.removeAll();
 					InterfaceJeu.frame.setVisible(false);
 					InterfaceJeu.frame.setEnabled(false);
 					InterfaceGameOver.main(null);

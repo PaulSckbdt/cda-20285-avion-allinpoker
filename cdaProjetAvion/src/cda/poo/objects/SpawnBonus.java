@@ -15,6 +15,11 @@ public class SpawnBonus extends Thread {
 	public int frequence;
 	//public static GestionFrequence gestionFre = new GestionFrequence();
 	public Avion avion;
+	public static boolean doSpawn = true;
+
+	public static void setDoSpawn(boolean doSpawn) {
+		SpawnBonus.doSpawn = doSpawn;
+	}
 
 	public SpawnBonus(JFrame vFrame, JLabel vFondEcran, Avion vAvion) {
 
@@ -26,7 +31,7 @@ public class SpawnBonus extends Thread {
 	@Override
 	public void run() {
 
-		while (true) {
+		while (doSpawn) {
 
 			Random r = new Random();
 			int typeBonus = r.nextInt(2);

@@ -96,7 +96,7 @@ public class InterfaceAvantJeu {
 		fondJouer.setHorizontalAlignment(SwingConstants.RIGHT);
 		fondJouer.setIcon(new ImageIcon(InterfaceAvantJeu.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		fondJouer.setBounds(0, 0, 634, 711);
-		
+
 		// on ajoute le label a la JFrame
 		frame.getContentPane().add(fondJouer);
 
