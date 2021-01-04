@@ -20,13 +20,10 @@ import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
 import cda.poo.objects.GestionDifficulte;
-import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnBonus;
 import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
-
-	static Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	public static JFrame frame;
 	public static JFrame frameGameOver;
@@ -237,23 +234,6 @@ public class InterfaceJeu {
 		timerVie.schedule(taskVie, 150, 150);
 	}
 
-
-	public void time() {
-		int X = 5;
-		for (int i = 0; i < 10; i++) {
-			long s = System.nanoTime();
-			while ((System.nanoTime() - s) / 1000000000 < X)
-				;
-		}
-	}
-
-	public static String getNom() {
-		return joueur.getNom();
-	}
-
-	public static int getScore() {
-		return Score.getScoreMeteor();
-	}
 
 }
 

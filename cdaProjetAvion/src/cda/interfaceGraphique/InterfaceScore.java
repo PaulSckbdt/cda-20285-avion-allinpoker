@@ -20,8 +20,8 @@ public class InterfaceScore {
 
 	public static void main(String[] args) {
 					new InterfaceScore();
-					InterfaceScore.frame.setVisible(true);
-					InterfaceScore.frame.setResizable(false);
+					frame.setVisible(true);
+					frame.setResizable(false);
 	}
 
 	public InterfaceScore() {
@@ -33,10 +33,6 @@ public class InterfaceScore {
 		frame.setBounds(600, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
-		// fin bouttonScore ***********************************************
-
-		// d�but bouttonQuitter ***********************************************
 
 		JButton bouttonRetour = new JButton("Retour");
 		bouttonRetour.addActionListener(new ActionListener() {
@@ -55,13 +51,7 @@ public class InterfaceScore {
 		bouttonRetour.setForeground(Color.BLACK);
 		bouttonRetour.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		bouttonRetour.setBounds(65, 630, 200, 70);
-
-		// on ajoute le bouton a la JFrame
 		frame.getContentPane().add(bouttonRetour);
-
-		// fin bouttonScore ***********************************************
-
-		// debut labelFondMenuDemarrer qui affiche l'image de fond
 
 		JLabel labelFondMenuDemarrer = new JLabel("");
 		labelFondMenuDemarrer.setHorizontalAlignment(SwingConstants.LEFT);
@@ -69,15 +59,9 @@ public class InterfaceScore {
 		labelFondMenuDemarrer.setIcon(
 				new ImageIcon(InterfaceScore.class.getResource("/cda/poo/images/fondMenuDemarrer.jpg")));
 		labelFondMenuDemarrer.setBounds(0, 0, 634, 711);
-
-		// on ajouter le label contenant l'image de fond au frame
 		frame.getContentPane().add(labelFondMenuDemarrer);
-
-		// fin labelFondMenuDemarrer ***********************************************
-
 	}
-
-	// Methode pour fermer la fenetre du menu demarrer
+	
 	public static void closeFrame() {
 		frame.setVisible(false);
 		frame.dispose();

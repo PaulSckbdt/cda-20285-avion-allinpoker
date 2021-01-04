@@ -14,42 +14,31 @@ import javax.swing.SwingConstants;
 
 public class InterfaceAvantJeu {
 
-	private static JFrame frame;
+	public static JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceAvantJeu window = new InterfaceAvantJeu();
-					window.frame.setVisible(true);
-					window.frame.setResizable(false);
-
+					new InterfaceAvantJeu();
 				} catch (Exception e) {
 				}
 			}
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public InterfaceAvantJeu() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(600, 100, 650, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
+		frame.setVisible(true);
+		frame.setResizable(false);
 		// d�but bouttonNouvellePartie ***********************************************
 
 		JButton bouttonNouvellePartie = new JButton("Nouvelle Partie");
@@ -65,8 +54,6 @@ public class InterfaceAvantJeu {
 		bouttonNouvellePartie.setBackground(Color.LIGHT_GRAY);
 		bouttonNouvellePartie.setBounds(221, 200, 168, 83);
 		frame.getContentPane().add(bouttonNouvellePartie);
-
-		// fin bouttonNouvellePartie ***********************************************
 
 		// d�but bouttonRetour ***********************************************
 
@@ -86,8 +73,6 @@ public class InterfaceAvantJeu {
 		bouttonRetour.setBounds(221, 500, 168, 83);
 		frame.getContentPane().add(bouttonRetour);
 
-		// fin bouttonRetour ***********************************************
-
 		// debut fondJouer qui affiche l'image de fond
 
 		JLabel fondJouer = new JLabel("");
@@ -98,8 +83,6 @@ public class InterfaceAvantJeu {
 
 		// on ajoute le label a la JFrame
 		frame.getContentPane().add(fondJouer);
-
-		// fin fondJouer qui affiche l'image de fond
 
 	}
 
