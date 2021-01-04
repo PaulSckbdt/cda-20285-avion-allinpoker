@@ -19,7 +19,7 @@ public class MeteoriteFeu extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
-	
+
 	public MeteoriteFeu(Avion vAvion) {
 
 		this.avion = vAvion;
@@ -32,19 +32,12 @@ public class MeteoriteFeu extends Score {
 		timerMeteoriteFeu("/cda/poo/music/collision.wav");
 	}
 
-	
-	
 	public int getProfondeurY() {
 		return yDepart + height;
 	}
 
 	public int getProfondeurX() {
 		return xDepart + width;
-	}
-
-	public int getXX() {
-		return getX();
-
 	}
 
 	public Rectangle bounds() {
@@ -64,26 +57,22 @@ public class MeteoriteFeu extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && Bouclier.bouclierActived == false && InterfaceJeu.isShooting == false) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false
+						&& InterfaceJeu.isShooting == false) {
 					new Audio(lien);
 					if (InterfaceJeu.isShooting == false) {
 						Avion.setNombreVie(Avion.getNombreVie() - 2);
 					}
 					setEnabled(false);
 					setVisible(false);
- 				}
+				}
 				if (collision() && isEnabled() && Bouclier.bouclierActived == true) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
-
-					new java.util.Timer().schedule(new java.util.TimerTask() {
-						@Override
-						public void run() {
-							Bouclier.bouclierActived = false;
-						}
-					}, Bouclier.bouclierTime);
+					Bouclier.bouclierActived = false;
 				}
+
 				if (collision() && isEnabled() && InterfaceJeu.isShooting == true) {
 					new Audio("/cda/poo/music/destruction.wav");
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
@@ -105,8 +94,6 @@ public class MeteoriteFeu extends Score {
 		};
 		timer.schedule(timerTask, 12, 12);
 	}
-
-
 
 	public boolean collision() {
 

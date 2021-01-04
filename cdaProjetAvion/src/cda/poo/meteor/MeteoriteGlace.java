@@ -58,7 +58,8 @@ public class MeteoriteGlace extends Score {
 
 			@Override
 			public void run() {
-				if (collision() && isEnabled() && Bouclier.bouclierActived == false && InterfaceJeu.isShooting == false) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == false
+						&& InterfaceJeu.isShooting == false) {
 					new Audio(lien);
 					Avion.setNombreVie(Avion.getNombreVie() - 1);
 					setEnabled(false);
@@ -69,14 +70,11 @@ public class MeteoriteGlace extends Score {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
+					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
+					Bouclier.bouclierActived = false;
 
-					new java.util.Timer().schedule(new java.util.TimerTask() {
-						@Override
-						public void run() {
-							Bouclier.bouclierActived = false;
-						}
-					}, Bouclier.bouclierTime);
 				}
+
 				if (collision() && isEnabled() && InterfaceJeu.isShooting == true) {
 					new Audio("/cda/poo/music/destruction.wav");
 					Score.setScoreMeteor(Score.getScoreMeteor() + 5);
@@ -98,7 +96,6 @@ public class MeteoriteGlace extends Score {
 		};
 		timer.schedule(timerTask, 10, 10);
 	}
-
 
 	public boolean collision() {
 

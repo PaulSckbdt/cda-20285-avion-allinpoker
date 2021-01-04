@@ -19,7 +19,7 @@ public class Missile extends Score {
 	public static int yDepart;
 	public static int width;
 	public static int height;
-	public static boolean shootingActivated = true;
+	public static boolean shootingActivated = false;
 	public static int nbShoot;
 	public static ImageIcon iExplosion = new ImageIcon(Avion.class.getResource("/cda/poo/images/explosion.png"));
 	
@@ -41,7 +41,7 @@ public class Missile extends Score {
 
 		Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask() {
-			
+
 			@Override
 			public void run() {
 				if (collision() && isEnabled()) {
