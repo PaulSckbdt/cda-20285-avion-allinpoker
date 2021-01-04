@@ -1,16 +1,19 @@
 package cda.interfaceGraphique;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.UIManager;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import cda.poo.json.JsonTools;
+
 
 public class InterfaceGameOver {
 
@@ -28,6 +31,9 @@ public class InterfaceGameOver {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
+					JsonTools.jsonWrite();
+
 					InterfaceGameOver window = new InterfaceGameOver();
 					window.frame.setVisible(true);
 				} catch (Exception e) {

@@ -20,22 +20,24 @@ import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
 import cda.poo.objects.GestionDifficulte;
+import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnBonus;
 import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
-//	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+	static Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	public static JFrame frame;
 	public static JFrame frameGameOver;
+	public static InterfaceJeu game;
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
 	public static boolean isShooting;
 
 	public static void main(String[] args) throws InterruptedException {
 
-		new InterfaceJeu();
+		game = new InterfaceJeu();
 	}
 
 	public InterfaceJeu() {
@@ -123,7 +125,7 @@ public class InterfaceJeu {
 							labelTirAvion.setVisible(false);
 							isShooting = false;
 						}
-					}, 510);
+					}, 270);
 
 				}
 			}
@@ -216,6 +218,7 @@ public class InterfaceJeu {
 					timerScore.cancel();
 					SpawnMeteor.setDoSpawn(false);
 					SpawnBonus.setDoSpawn(false);
+					frame.removeAll();
 					InterfaceJeu.frame.setVisible(false);
 					InterfaceJeu.frame.setEnabled(false);
 					InterfaceGameOver.main(null);
@@ -224,4 +227,27 @@ public class InterfaceJeu {
 		};
 		timerVie.schedule(taskVie, 150, 150);
 	}
+
+
+	public void time() {
+		int X = 5;
+		for (int i = 0; i < 10; i++) {
+			long s = System.nanoTime();
+			while ((System.nanoTime() - s) / 1000000000 < X)
+				;
+		}
+	}
+
+	public static String getNom() {
+		return joueur.getNom();
+	}
+
+	public static int getScore() {
+		return Score.getScoreMeteor();
+	}
+
 }
+
+
+
+
