@@ -17,6 +17,11 @@ public class SpawnMeteor extends Thread {
 	public int difficulte;
 	public static GestionDifficulte gestionDiff = new GestionDifficulte();
 	public Avion avion;
+	public static boolean doSpawn = true;
+
+	public static void setDoSpawn(boolean doSpawn) {
+		SpawnMeteor.doSpawn = doSpawn;
+	}
 
 	public SpawnMeteor(JFrame vFrame, JLabel vFondEcran, Avion vAvion) {
 
@@ -29,7 +34,7 @@ public class SpawnMeteor extends Thread {
 	@Override
 	public void run() {
 
-		while (true) {
+		while (doSpawn) {
 
 			int typeMeteorite = new Random().nextInt(5);
 //			int typeMeteorite = 4;
