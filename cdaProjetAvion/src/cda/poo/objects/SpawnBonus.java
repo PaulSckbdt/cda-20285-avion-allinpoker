@@ -35,11 +35,9 @@ public class SpawnBonus extends Thread {
 
 			Random r = new Random();
 			int typeBonus = r.nextInt(2);
-//			int typeMeteorite = 4;
-
 			try {
 
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 
 			} catch (Exception e) {
 				e.printStackTrace();
