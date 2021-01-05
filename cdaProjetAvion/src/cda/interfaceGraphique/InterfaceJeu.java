@@ -26,11 +26,8 @@ import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
-<<<<<<< HEAD
-=======
 	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
->>>>>>> a3a9856 (fix bug score rejouer)
 	public static JFrame frame;
 	public static JFrame frameGameOver;
 	public static InterfaceJeu game;
@@ -143,7 +140,7 @@ public class InterfaceJeu {
 			}
 		});
 
-		// fond
+		// FOND
 
 		JLabel fondEcranJeu = new JLabel("");
 		fondEcranJeu.setLabelFor(frame);
@@ -151,6 +148,7 @@ public class InterfaceJeu {
 		fondEcranJeu.setBounds(0, 0, 634, 711);
 		fondEcranJeu.setHorizontalAlignment(SwingConstants.TRAILING);
 		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
+		fondEcranJeu.setVisible(true);
 		frame.getContentPane().add(fondEcranJeu);
 
 		// meteorites
@@ -189,14 +187,6 @@ public class InterfaceJeu {
 		LabelScore.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		LabelScore.setBounds(226, 0, 154, 48);
 		frame.getContentPane().add(LabelScore);
-		
-		// niveau 
-		
-		JLabel lblNiveau = new JLabel("Level  " + SpawnMeteor.niveauDifficulte);
-		lblNiveau.setForeground(Color.WHITE);
-		lblNiveau.setFont(new Font("Viner Hand ITC", Font.BOLD, 16));
-		lblNiveau.setBounds(10, 11, 122, 37);
-		frame.getContentPane().add(lblNiveau);
 
 		Timer timerScore = new Timer();
 		TimerTask taskScore = new TimerTask() {
@@ -204,7 +194,7 @@ public class InterfaceJeu {
 			public void run() {
 				LabelScore.setText("Score : " + Score.getScoreMeteor());
 				LabelMunitions.setText("Munitions : " + Missile.nbShoot);
-				lblNiveau.setText("Level  " + SpawnMeteor.niveauDifficulte);
+
 			}
 		};
 		timerScore.schedule(taskScore, 50, 50);
@@ -218,7 +208,6 @@ public class InterfaceJeu {
 		LabelNbVie.setBounds(470, 0, 154, 48);
 		frame.getContentPane().add(LabelNbVie);
 
-		
 		Timer timerVie = new Timer();
 		TimerTask taskVie = new TimerTask() {
 			@Override
@@ -240,9 +229,4 @@ public class InterfaceJeu {
 		timerVie.schedule(taskVie, 150, 150);
 	}
 
-
 }
-
-
-
-
