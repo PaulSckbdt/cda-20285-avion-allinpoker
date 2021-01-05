@@ -63,10 +63,10 @@ public class InterfaceSaisieNom {
 
 				// début test nomSaisi ***********************************************
 
-				if (nomSaisi.length() < 3 || nomSaisi.length() > 6) {
+				if (nomSaisi.length() < 3 || nomSaisi.length() > 6 || nomSaisi.contains(";")) {
 					fieldNomJoueur.setText("");
 				}
-				if (nomSaisi.length() >= 3 && nomSaisi.length() <= 6) {
+				if (nomSaisi.length() >= 3 && nomSaisi.length() <= 6 && !nomSaisi.contains(";")) {
 
 					Joueur joueur = new Joueur(nomSaisi);
 					joueurActuel = joueur;
