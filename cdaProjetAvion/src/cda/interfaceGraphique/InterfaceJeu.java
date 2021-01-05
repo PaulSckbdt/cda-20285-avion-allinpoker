@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -88,27 +90,31 @@ public class InterfaceJeu {
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_UP && 200 < vMonAvion.getY()) {
-					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 15);
-					vMonAvion.setIcon(Avion.iAvionUp);
-					vMonAvion.setVisible(true);
-				}
-				if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
-					vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
-					vMonAvion.setIcon(Avion.iAvion);
-					vMonAvion.setVisible(true);
-				}
-				if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < vMonAvion.getX()) {
-					vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
-					vMonAvion.setIcon(Avion.iAvionGauche);
-					vMonAvion.setVisible(true);
-				}
-				if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > vMonAvion.getX()) {
-					vMonAvion.setLocation(vMonAvion.getX() + 15, vMonAvion.getY());
-					vMonAvion.setIcon(Avion.iAvionDroite);
-					vMonAvion.setVisible(true);
-				}
 
+				if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN
+						|| e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
+					if (e.getKeyCode() == KeyEvent.VK_UP && 200 < vMonAvion.getY()) {
+						vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 15);
+						vMonAvion.setIcon(Avion.iAvionUp);
+						vMonAvion.setVisible(true);
+					}
+					if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
+						vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
+						vMonAvion.setIcon(Avion.iAvion);
+						vMonAvion.setVisible(true);
+					}
+					if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < vMonAvion.getX()) {
+						vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
+						vMonAvion.setIcon(Avion.iAvionGauche);
+						vMonAvion.setVisible(true);
+					}
+					if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > vMonAvion.getX()) {
+						vMonAvion.setLocation(vMonAvion.getX() + 15, vMonAvion.getY());
+						vMonAvion.setIcon(Avion.iAvionDroite);
+						vMonAvion.setVisible(true);
+					}
+				}
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()
 						&& Missile.shootingActivated == true) {
 					isShooting = true;
@@ -126,11 +132,35 @@ public class InterfaceJeu {
 						public void run() {
 							labelTirAvion.setVisible(false);
 							isShooting = false;
+
 						}
 					}, 270);
+				}
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					frame.addMouseMotionListener(new MouseMotionListener() {
 
+						@Override
+						public void mouseMoved(MouseEvent e) {
+
+							vMonAvion.setLocation(e.getX() - 40, e.getY() - 40);
+							vMonAvion.setIcon(Avion.iAvionDroite);
+							vMonAvion.setVisible(true);
+
+							vMonAvion.setIcon(Avion.iAvionGauche);
+							vMonAvion.setVisible(true);
+
+						}
+
+						@Override
+						public void mouseDragged(MouseEvent e) {
+							vMonAvion.setLocation(e.getX() - 40, e.getY() - 40);
+							vMonAvion.setIcon(Avion.iAvionDroite);
+							vMonAvion.setVisible(true);
+						}
+					});
 				}
 			}
+
 		});
 
 		frame.addKeyListener(new KeyAdapter() {
