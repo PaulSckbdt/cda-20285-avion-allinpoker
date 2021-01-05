@@ -1,4 +1,4 @@
-package cda.poo.json;
+package cda.json;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

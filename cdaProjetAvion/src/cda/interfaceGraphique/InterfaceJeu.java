@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,6 +20,7 @@ import cda.poo.music.Audio;
 import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
+import cda.poo.objects.FondAleatoire;
 import cda.poo.objects.GestionDifficulte;
 import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnBonus;
@@ -34,6 +36,7 @@ public class InterfaceJeu {
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
 	public static boolean isShooting;
+	public static int randomFond = (new Random().nextInt(3)) + 1;
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -146,10 +149,6 @@ public class InterfaceJeu {
 		fondEcranJeu.setLabelFor(frame);
 		fondEcranJeu.setBackground(Color.DARK_GRAY);
 		fondEcranJeu.setBounds(0, 0, 634, 711);
-		fondEcranJeu.setHorizontalAlignment(SwingConstants.TRAILING);
-		fondEcranJeu.setIcon(new ImageIcon(InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile.gif")));
-		fondEcranJeu.setVisible(true);
-		frame.getContentPane().add(fondEcranJeu);
 
 		// meteorites
 
@@ -161,6 +160,8 @@ public class InterfaceJeu {
 		SpawnBonus spwn2 = new SpawnBonus(frame, fondEcranJeu, vMonAvion);
 		spwn2.start();
 
+		fondEcranJeu.setHorizontalAlignment(SwingConstants.TRAILING);
+		frame.getContentPane().add(fondEcranJeu);
 		// JOUEUR
 
 		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
@@ -188,13 +189,22 @@ public class InterfaceJeu {
 		LabelScore.setBounds(226, 0, 154, 48);
 		frame.getContentPane().add(LabelScore);
 
+		// niveau
+
+		JLabel lblNiveau = new JLabel("Level  " + GestionDifficulte.getNiveau());
+		lblNiveau.setForeground(Color.WHITE);
+		lblNiveau.setFont(new Font("Viner Hand ITC", Font.BOLD, 16));
+		lblNiveau.setBounds(10, 11, 122, 37);
+		frame.getContentPane().add(lblNiveau);
+
 		Timer timerScore = new Timer();
 		TimerTask taskScore = new TimerTask() {
 			@Override
 			public void run() {
 				LabelScore.setText("Score : " + Score.getScoreMeteor());
 				LabelMunitions.setText("Munitions : " + Missile.nbShoot);
-
+				lblNiveau.setText("Level  " + GestionDifficulte.getNiveau());
+				new FondAleatoire(fondEcranJeu);
 			}
 		};
 		timerScore.schedule(taskScore, 50, 50);
@@ -228,5 +238,4 @@ public class InterfaceJeu {
 		};
 		timerVie.schedule(taskVie, 150, 150);
 	}
-
 }
