@@ -1,8 +1,9 @@
 package cda.poo.objects;
-import java.util.Iterator;
 import java.util.Random;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 import cda.poo.meteor.Meteorite;
 import cda.poo.meteor.MeteoriteFeu;
 import cda.poo.meteor.MeteoriteGlace;
