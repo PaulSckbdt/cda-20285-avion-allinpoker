@@ -15,7 +15,7 @@ import cda.poo.meteor.Score;
 
 public class JsonTools {
 	private static File file;
-	private static String nomFichier = "scores.json";
+	private static String nomFichier = "C://Score/scores.json";
 
 
 	public static void main(String[] args) {
@@ -28,7 +28,7 @@ public class JsonTools {
 	}
 
 	public static void jsonWrite() {
-		
+		new File("C:\\Score").mkdir();
 		file = new File(nomFichier);
 		JSONObject jsonObject = new JSONObject();
 		try {
