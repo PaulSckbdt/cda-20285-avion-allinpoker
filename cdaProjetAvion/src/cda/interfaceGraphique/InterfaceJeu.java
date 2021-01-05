@@ -38,7 +38,6 @@ public class InterfaceJeu {
 	public static Avion vMonAvion;
 	public static JLabel labelTirAvion;
 	public static boolean isShooting;
-	public static int randomFond = (new Random().nextInt(3)) + 1;
 
 	public static void main(String[] args) throws InterruptedException {
 
