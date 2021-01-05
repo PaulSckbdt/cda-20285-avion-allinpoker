@@ -73,7 +73,7 @@ public class InterfaceInstructions {
 
 		// d√©but bouttonRetour ***********************************************
 
-		JButton BouttonPrecedent = new JButton("Pr√©c√©dent");
+		JButton BouttonPrecedent = new JButton("PrÈcÈdent");
 		BouttonPrecedent.setBackground(Color.LIGHT_GRAY);
 		BouttonPrecedent.addMouseListener(new MouseAdapter() {
 			@Override
