@@ -1,11 +1,9 @@
-package cda.poo.json;
+package cda.json;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
 import cda.interfaceGraphique.InterfaceSaisieNom;
-import cda.json.JSONException;
-import cda.json.JSONObject;
 import cda.poo.meteor.Score;
 import cda.poo.objects.Joueur;
 

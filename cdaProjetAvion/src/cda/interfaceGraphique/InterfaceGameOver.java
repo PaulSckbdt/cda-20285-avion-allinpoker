@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 
-import cda.poo.json.JsonTools;
+import cda.json.JsonTools;
 
 
 public class InterfaceGameOver {
