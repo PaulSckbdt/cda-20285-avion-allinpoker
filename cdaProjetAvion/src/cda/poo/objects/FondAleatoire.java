@@ -17,80 +17,80 @@ public class FondAleatoire {
 
 			if (InterfaceJeu.randomFond == 1) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau1.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau1.1.gif")));
 			} else if (InterfaceJeu.randomFond == 2) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau1.2.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau1.2.gif")));
 			} else if (InterfaceJeu.randomFond == 3) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau1.3.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau1.3.gif")));
 			} else if (InterfaceJeu.randomFond == 4) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau1.4.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau1.4.gif")));
 			}
 
 		} else if (GestionDifficulte.getNiveau() == 2) {
 
 			if (InterfaceJeu.randomFond == 1) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau2.1.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau2.1.gif")));
 			} else if (InterfaceJeu.randomFond == 2) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau2.2.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau2.2.gif")));
 			} else if (InterfaceJeu.randomFond == 3) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau2.3.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau2.3.gif")));
 			} else if (InterfaceJeu.randomFond == 4) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau2.4.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau2.4.gif")));
 			}
 
 		} else if (GestionDifficulte.getNiveau() == 3) {
 
 			if (InterfaceJeu.randomFond == 1) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau3.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau3.gif")));
 			} else if (InterfaceJeu.randomFond == 2) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau3.1.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau3.1.gif")));
 			} else if (InterfaceJeu.randomFond == 3) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau3.2.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau3.2.gif")));
 			} else if (InterfaceJeu.randomFond == 4) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau3.3.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau3.3.gif")));
 			}
 
 		} else if (GestionDifficulte.getNiveau() == 4) {
 
 			if (InterfaceJeu.randomFond == 1) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau4.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau4.gif")));
 			} else if (InterfaceJeu.randomFond == 2) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau4.1.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau4.1.gif")));
 			} else if (InterfaceJeu.randomFond == 3) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau4.2.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau4.2.gif")));
 			} else if (InterfaceJeu.randomFond == 4) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau4.3.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau4.3.gif")));
 			}
 
 		} else if (GestionDifficulte.getNiveau() == 5) {
 
 			if (InterfaceJeu.randomFond == 1) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau5.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau5.gif")));
 			} else if (InterfaceJeu.randomFond == 2) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau5.1.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau5.1.gif")));
 			} else if (InterfaceJeu.randomFond == 3) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau5..4.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau5..4.gif")));
 			} else if (InterfaceJeu.randomFond == 4) {
 				jlabel.setIcon(new ImageIcon(
-						InterfaceJeu.class.getResource("/cda/poo/images/fondEtoile/fondEtoileNiveau5.3.gif")));
+						InterfaceJeu.class.getResource("/cda/poo/images/fond etoile/fondEtoileNiveau5.3.gif")));
 			}
 		}
 	}
