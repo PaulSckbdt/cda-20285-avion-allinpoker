@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
-import cda.poo.json.JsonTools;
+import cda.json.JsonTools;
 
 public class InterfaceScore {
 	private static JFrame frame;
