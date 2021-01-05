@@ -30,7 +30,7 @@ import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
-	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+//	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
 
 	public static JFrame frame;
 	public static JFrame frameGameOver;
@@ -194,12 +194,12 @@ public class InterfaceJeu {
 		frame.getContentPane().add(fondEcranJeu);
 		// JOUEUR
 
-		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
-		LabelNomDuJoueur.setForeground(Color.WHITE);
-		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
-		frame.getContentPane().add(LabelNomDuJoueur);
+//		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
+//		LabelNomDuJoueur.setForeground(Color.WHITE);
+//		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
+//		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
+//		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
+//		frame.getContentPane().add(LabelNomDuJoueur);
 
 		// MUNITIONS
 
