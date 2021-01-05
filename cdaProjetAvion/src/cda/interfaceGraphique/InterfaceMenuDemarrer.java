@@ -94,7 +94,11 @@ public class InterfaceMenuDemarrer {
 
 		// d�but bouttonScore ***********************************************
 
-		JButton bouttonScore = new JButton("Scores");
+		JButton bouttonScore = new JButton("Dernier Score");
+		bouttonScore.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		bouttonScore.addMouseListener(new MouseAdapter() {
 			@Override
