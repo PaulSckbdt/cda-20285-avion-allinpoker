@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import cda.interfaceGraphique.InterfaceJeu;
 import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
+import cda.poo.objects.SpawnMeteor;
 
 public class MeteoriteFeu extends Score {
 
@@ -80,7 +81,7 @@ public class MeteoriteFeu extends Score {
 					}
 				}
 				setLocation(getX(), getY() + 1);
-				if (getY() == 715 && isEnabled()) {
+				if (getY() == 715 && isEnabled() && SpawnMeteor.doSpawn == true) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 1);
 				}
 			}
