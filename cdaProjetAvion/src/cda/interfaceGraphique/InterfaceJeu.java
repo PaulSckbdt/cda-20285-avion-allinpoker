@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Random;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Timer;
@@ -24,7 +23,6 @@ import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
 import cda.poo.objects.FondAleatoire;
 import cda.poo.objects.GestionDifficulte;
-import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnBonus;
 import cda.poo.objects.SpawnMeteor;
 
@@ -98,43 +96,52 @@ public class InterfaceJeu {
 						vMonAvion.setIcon(Avion.iAvionUp);
 						vMonAvion.setVisible(true);
 					}
+
 					if (e.getKeyCode() == KeyEvent.VK_DOWN && 651 > vMonAvion.getY()) {
 						vMonAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() + 15);
 						vMonAvion.setIcon(Avion.iAvion);
 						vMonAvion.setVisible(true);
 					}
+
 					if (e.getKeyCode() == KeyEvent.VK_LEFT && 0 < vMonAvion.getX()) {
 						vMonAvion.setLocation(vMonAvion.getX() - 15, vMonAvion.getY());
 						vMonAvion.setIcon(Avion.iAvionGauche);
 						vMonAvion.setVisible(true);
 					}
+
 					if (e.getKeyCode() == KeyEvent.VK_RIGHT && 574 > vMonAvion.getX()) {
 						vMonAvion.setLocation(vMonAvion.getX() + 15, vMonAvion.getY());
 						vMonAvion.setIcon(Avion.iAvionDroite);
 						vMonAvion.setVisible(true);
 					}
 				}
+
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && 200 < vMonAvion.getY()
 						&& Missile.shootingActivated == true) {
+
 					isShooting = true;
 					labelTirAvion.setLocation(vMonAvion.getX(), vMonAvion.getY() - 240);
+
 					if (Missile.shootingActivated == true) {
 						labelTirAvion.setVisible(true);
 					}
+
 					Missile.nbShoot--;
 					new Audio("/cda/poo/music/tirCut.wav");
+
 					if (Missile.nbShoot < 1) {
 						Missile.shootingActivated = false;
 					}
+
 					new java.util.Timer().schedule(new java.util.TimerTask() {
 						@Override
 						public void run() {
 							labelTirAvion.setVisible(false);
 							isShooting = false;
-
 						}
 					}, 270);
 				}
+
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					frame.addMouseMotionListener(new MouseMotionListener() {
 
@@ -144,10 +151,8 @@ public class InterfaceJeu {
 							vMonAvion.setLocation(e.getX() - 40, e.getY() - 40);
 							vMonAvion.setIcon(Avion.iAvionDroite);
 							vMonAvion.setVisible(true);
-
 							vMonAvion.setIcon(Avion.iAvionGauche);
 							vMonAvion.setVisible(true);
-
 						}
 
 						@Override
@@ -159,12 +164,13 @@ public class InterfaceJeu {
 					});
 				}
 			}
-
 		});
 
 		frame.addKeyListener(new KeyAdapter() {
+
 			@Override
 			public void keyReleased(KeyEvent e) {
+
 				if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN
 						|| e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_RIGHT) {
 					vMonAvion.setIcon(Avion.iAvion);
@@ -191,6 +197,7 @@ public class InterfaceJeu {
 
 		fondEcranJeu.setHorizontalAlignment(SwingConstants.TRAILING);
 		frame.getContentPane().add(fondEcranJeu);
+		
 		// JOUEUR
 
 //		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
@@ -220,23 +227,11 @@ public class InterfaceJeu {
 
 		// niveau
 
-		JLabel lblNiveau = new JLabel("Level  " + GestionDifficulte.getNiveau());
+		JLabel lblNiveau = new JLabel("           Level  1");
 		lblNiveau.setForeground(Color.WHITE);
 		lblNiveau.setFont(new Font("Viner Hand ITC", Font.BOLD, 16));
-		lblNiveau.setBounds(10, 11, 122, 37);
+		lblNiveau.setBounds(26, 672, 122, 37);
 		frame.getContentPane().add(lblNiveau);
-
-		Timer timerScore = new Timer();
-		TimerTask taskScore = new TimerTask() {
-			@Override
-			public void run() {
-				LabelScore.setText("Score : " + Score.getScoreMeteor());
-				LabelMunitions.setText("Munitions : " + Missile.nbShoot);
-				lblNiveau.setText("Level  " + GestionDifficulte.getNiveau());
-				new FondAleatoire(fondEcranJeu);
-			}
-		};
-		timerScore.schedule(taskScore, 50, 50);
 
 		// VIE
 
@@ -252,10 +247,13 @@ public class InterfaceJeu {
 			@Override
 			public void run() {
 				LabelNbVie.setText("Vie : " + Avion.getNombreVie());
+				LabelScore.setText("Score : " + Score.getScoreMeteor());
+				LabelMunitions.setText("Munitions : " + Missile.nbShoot);
+				lblNiveau.setText("Level  " + GestionDifficulte.getNiveau());
+				new FondAleatoire(fondEcranJeu);
 				if (Avion.getNombreVie() < 1) {
 					new AudioGameOver();
 					timerVie.cancel();
-					timerScore.cancel();
 					SpawnMeteor.setDoSpawn(false);
 					SpawnBonus.setDoSpawn(false);
 					frame.removeAll();
@@ -265,6 +263,6 @@ public class InterfaceJeu {
 				}
 			}
 		};
-		timerVie.schedule(taskVie, 150, 150);
+		timerVie.schedule(taskVie, 100, 100);
 	}
 }
