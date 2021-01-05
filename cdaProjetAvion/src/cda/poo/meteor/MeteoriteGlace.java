@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import cda.interfaceGraphique.InterfaceJeu;
 import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
+import cda.poo.objects.SpawnMeteor;
 
 public class MeteoriteGlace extends Score {
 
@@ -32,7 +33,6 @@ public class MeteoriteGlace extends Score {
 		mepImage("/cda/poo/images/meteorite-glace.png");
 		timerMeteoriteGlace("/cda/poo/music/collision.wav");
 	}
-
 
 	public Rectangle bounds() {
 		return (new Rectangle(getX(), getY(), getWidth(), getHeight()));
@@ -60,7 +60,8 @@ public class MeteoriteGlace extends Score {
 					setVisible(false);
 
 				}
-				if (collision() && isEnabled() && Bouclier.bouclierActived == true && InterfaceJeu.isShooting == false ) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == true
+						&& InterfaceJeu.isShooting == false) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
@@ -81,7 +82,7 @@ public class MeteoriteGlace extends Score {
 					}
 				}
 				setLocation(getX(), getY() + 2);
-				if (getY() == 710 && isEnabled()) {
+				if (getY() == 710 && isEnabled() && SpawnMeteor.doSpawn == true) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 3);
 				}
 			}

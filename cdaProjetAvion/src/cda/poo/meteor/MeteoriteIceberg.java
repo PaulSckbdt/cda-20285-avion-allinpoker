@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import cda.interfaceGraphique.InterfaceJeu;
 import cda.poo.music.Audio;
 import cda.poo.objects.Avion;
+import cda.poo.objects.SpawnMeteor;
 
 public class MeteoriteIceberg extends Score {
 	public Avion avion;
@@ -55,7 +56,8 @@ public class MeteoriteIceberg extends Score {
 					setEnabled(false);
 					setVisible(false);
 				}
-				if (collision() && isEnabled() && Bouclier.bouclierActived == true && InterfaceJeu.isShooting == false ) {
+				if (collision() && isEnabled() && Bouclier.bouclierActived == true
+						&& InterfaceJeu.isShooting == false) {
 					new Audio("/cda/poo/music/pointUp.wav");
 					setEnabled(false);
 					setVisible(false);
@@ -76,7 +78,7 @@ public class MeteoriteIceberg extends Score {
 					}
 				}
 				setLocation(getX(), getY() + 2);
-				if (getY() == 710 && isEnabled()) {
+				if (getY() == 710 && isEnabled() && SpawnMeteor.doSpawn == true) {
 					Score.setScoreMeteor(Score.getScoreMeteor() + 8);
 				}
 			}

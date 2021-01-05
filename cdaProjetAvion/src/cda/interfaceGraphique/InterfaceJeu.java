@@ -20,11 +20,17 @@ import cda.poo.music.AudioGameOver;
 import cda.poo.music.AudioMainLoop;
 import cda.poo.objects.Avion;
 import cda.poo.objects.GestionDifficulte;
+import cda.poo.objects.Joueur;
 import cda.poo.objects.SpawnBonus;
 import cda.poo.objects.SpawnMeteor;
 
 public class InterfaceJeu {
 
+<<<<<<< HEAD
+=======
+	Joueur joueur = new Joueur(InterfaceSaisieNom.getJoueurActuel());
+
+>>>>>>> a3a9856 (fix bug score rejouer)
 	public static JFrame frame;
 	public static JFrame frameGameOver;
 	public static InterfaceJeu game;
@@ -159,12 +165,12 @@ public class InterfaceJeu {
 
 		// JOUEUR
 
-//		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
-//		LabelNomDuJoueur.setForeground(Color.WHITE);
-//		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
-//		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
-//		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
-//		frame.getContentPane().add(LabelNomDuJoueur);
+		JLabel LabelNomDuJoueur = new JLabel("Joueur : " + joueur.getNom());
+		LabelNomDuJoueur.setForeground(Color.WHITE);
+		LabelNomDuJoueur.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		LabelNomDuJoueur.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelNomDuJoueur.setBounds(0, 0, 154, 48);
+		frame.getContentPane().add(LabelNomDuJoueur);
 
 		// MUNITIONS
 
