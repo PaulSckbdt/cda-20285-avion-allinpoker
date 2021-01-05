@@ -99,7 +99,7 @@ public class InterfaceMenuDemarrer {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		
+
 		bouttonScore.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

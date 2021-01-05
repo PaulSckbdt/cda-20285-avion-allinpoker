@@ -17,7 +17,6 @@ public class JsonTools {
 	private static File file;
 	private static String nomFichier = "C://Score/scores.json";
 
-
 	public static void main(String[] args) {
 //		String name = jsonReadName();
 //		String score = jsonReadScore();
@@ -47,7 +46,7 @@ public class JsonTools {
 		String name = null;
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader("scores.json"));
+			Object obj = parser.parse(new FileReader(nomFichier));
 			JSONObject jsonObject = (JSONObject) obj;
 			name = (String) jsonObject.get("name");
 //			System.out.println(name);
@@ -65,7 +64,7 @@ public class JsonTools {
 		String score = null;
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader("scores.json"));
+			Object obj = parser.parse(new FileReader(nomFichier));
 			JSONObject jsonObject = (JSONObject) obj;
 			score = (String) jsonObject.get("score");
 //			System.out.println(score);
@@ -83,7 +82,7 @@ public class JsonTools {
 		String date = null;
 		JSONParser parser = new JSONParser();
 		try {
-			Object obj = parser.parse(new FileReader("scores.json"));
+			Object obj = parser.parse(new FileReader(nomFichier));
 			JSONObject jsonObject = (JSONObject) obj;
 			date = (String) jsonObject.get("date");
 //			System.out.println(date);
